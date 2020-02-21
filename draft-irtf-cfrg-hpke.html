@@ -1215,23 +1215,23 @@ key and <code>pkX</code> is the public key<a href="#section-4-2.4" class="pilcro
           <code>pk(skX)</code>: The public key corresponding to private key <code>skX</code><a href="#section-4-2.5" class="pilcrow">¶</a>
 </li>
 <li id="section-4-2.6">
-          <code>len(x)</code>: The length of the octet string <code>x</code>, expressed as a
-two-octet unsigned integer in network (big-endian) byte order<a href="#section-4-2.6" class="pilcrow">¶</a>
+          <code>len(x)</code>: The length of the byte string <code>x</code>, expressed as a
+two-byte unsigned integer in network (big-endian) byte order<a href="#section-4-2.6" class="pilcrow">¶</a>
 </li>
 <li id="section-4-2.7">
-          <code>encode_big_endian(x, n)</code>: An octet string encoding the integer
+          <code>encode_big_endian(x, n)</code>: An byte string encoding the integer
 value <code>x</code> as an n-byte big-endian value<a href="#section-4-2.7" class="pilcrow">¶</a>
 </li>
 <li id="section-4-2.8">
-          <code>concat(x0, ..., xN)</code>: Concatenation of octet strings.
+          <code>concat(x0, ..., xN)</code>: Concatenation of byte strings.
 <code>concat(0x01, 0x0203, 0x040506) = 0x010203040506</code><a href="#section-4-2.8" class="pilcrow">¶</a>
 </li>
 <li id="section-4-2.9">
-          <code>zero(n)</code>: An all-zero octet string of length <code>n</code>. <code>zero(4) =
+          <code>zero(n)</code>: An all-zero byte string of length <code>n</code>. <code>zero(4) =
 0x00000000</code><a href="#section-4-2.9" class="pilcrow">¶</a>
 </li>
 <li id="section-4-2.10">
-          <code>xor(a,b)</code>: XOR of octet strings; <code>xor(0xF0F0, 0x1234) = 0xE2C4</code>.
+          <code>xor(a,b)</code>: XOR of byte strings; <code>xor(0xF0F0, 0x1234) = 0xE2C4</code>.
 It is an error to call this function with two arguments of unequal
 length.<a href="#section-4-2.10" class="pilcrow">¶</a>
 </li>
@@ -1250,10 +1250,10 @@ length.<a href="#section-4-2.10" class="pilcrow">¶</a>
 <ul>
 <li id="section-5-2.1.2.1">GenerateKeyPair(): Generate a key pair (sk, pk)<a href="#section-5-2.1.2.1" class="pilcrow">¶</a>
 </li>
-<li id="section-5-2.1.2.2">Marshal(pk): Produce a fixed-length octet string encoding the
+<li id="section-5-2.1.2.2">Marshal(pk): Produce a fixed-length byte string encoding the
 public key <code>pk</code><a href="#section-5-2.1.2.2" class="pilcrow">¶</a>
 </li>
-<li id="section-5-2.1.2.3">Unmarshal(enc): Parse a fixed-length octet string to recover a
+<li id="section-5-2.1.2.3">Unmarshal(enc): Parse a fixed-length byte string to recover a
 public key<a href="#section-5-2.1.2.3" class="pilcrow">¶</a>
 </li>
 <li id="section-5-2.1.2.4">Encap(pk): Generate an ephemeral, fixed-length symmetric key and
@@ -1272,9 +1272,9 @@ of the private key <code>skR</code> is assured that the ephemeral shared
 key is known only to the holder of the private key corresponding
 to <code>pkS</code><a href="#section-5-2.1.2.7" class="pilcrow">¶</a>
 </li>
-<li id="section-5-2.1.2.8">Nenc: The length in octets of an encapsulated key from this KEM<a href="#section-5-2.1.2.8" class="pilcrow">¶</a>
+<li id="section-5-2.1.2.8">Nenc: The length in bytes of an encapsulated key from this KEM<a href="#section-5-2.1.2.8" class="pilcrow">¶</a>
 </li>
-<li id="section-5-2.1.2.9">Npk: The length in octets of an encoded public key for this KEM<a href="#section-5-2.1.2.9" class="pilcrow">¶</a>
+<li id="section-5-2.1.2.9">Npk: The length in bytes of an encoded public key for this KEM<a href="#section-5-2.1.2.9" class="pilcrow">¶</a>
 </li>
 </ul>
 </li>
@@ -1284,7 +1284,7 @@ to <code>pkS</code><a href="#section-5-2.1.2.7" class="pilcrow">¶</a>
 <li id="section-5-2.2.2.1">Hash(m): Compute the cryptographic hash of input message <code>m</code><a href="#section-5-2.2.2.1" class="pilcrow">¶</a>
 </li>
 <li id="section-5-2.2.2.2">Extract(salt, IKM): Extract a pseudorandom key of fixed length
-from input keying material <code>IKM</code> and an optional octet string
+from input keying material <code>IKM</code> and an optional byte string
 <code>salt</code><a href="#section-5-2.2.2.2" class="pilcrow">¶</a>
 </li>
 <li id="section-5-2.2.2.3">Expand(PRK, info, L): Expand a pseudorandom key <code>PRK</code> using
@@ -1305,16 +1305,16 @@ optional string <code>info</code> into <code>L</code> bytes of output keying mat
 associated data <code>aad</code> with secret key <code>key</code> and nonce <code>nonce</code>,
 returning plaintext message <code>pt</code> or the error value <code>OpenError</code><a href="#section-5-2.3.2.2" class="pilcrow">¶</a>
 </li>
-<li id="section-5-2.3.2.3">Nk: The length in octets of a key for this algorithm<a href="#section-5-2.3.2.3" class="pilcrow">¶</a>
+<li id="section-5-2.3.2.3">Nk: The length in bytes of a key for this algorithm<a href="#section-5-2.3.2.3" class="pilcrow">¶</a>
 </li>
-<li id="section-5-2.3.2.4">Nn: The length in octets of a nonce for this algorithm<a href="#section-5-2.3.2.4" class="pilcrow">¶</a>
+<li id="section-5-2.3.2.4">Nn: The length in bytes of a nonce for this algorithm<a href="#section-5-2.3.2.4" class="pilcrow">¶</a>
 </li>
 </ul>
 </li>
 </ul>
 <p id="section-5-3">A set of algorithm identifiers for concrete instantiations of these
 primitives is provided in <a href="#ciphersuites" class="xref">Section 8</a>.  Algorithm identifier
-values are two octets long.<a href="#section-5-3" class="pilcrow">¶</a></p>
+values are two bytes long.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <div id="dh-based-kem">
 <section id="section-5.1">
         <h3 id="name-dh-based-kem">
@@ -1330,10 +1330,10 @@ for the DH group in use<a href="#section-5.1-2.1" class="pilcrow">¶</a>
 private key sk and public key pk to produce a shared secret
 of length Npk<a href="#section-5.1-2.2" class="pilcrow">¶</a>
 </li>
-<li id="section-5.1-2.3">Marshal(pk): Produce a fixed-length octet string
+<li id="section-5.1-2.3">Marshal(pk): Produce a fixed-length byte string
 encoding the public key <code>pk</code><a href="#section-5.1-2.3" class="pilcrow">¶</a>
 </li>
-<li id="section-5.1-2.4">Unmarshal(enc): Parse a fixed-length octet string to recover a
+<li id="section-5.1-2.4">Unmarshal(enc): Parse a fixed-length byte string to recover a
 public key<a href="#section-5.1-2.4" class="pilcrow">¶</a>
 </li>
 </ul>
@@ -1366,15 +1366,15 @@ def AuthDecap(enc, skR, pkS):
 as for the underlying DH group.  The Marshal functions for the
 curves referenced in {#ciphersuites} are as follows:<a href="#section-5.1-5" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-5.1-6.1">P-256: The X-coordinate of the point, encoded as a 32-octet
+<li id="section-5.1-6.1">P-256: The X-coordinate of the point, encoded as a 32-byte
 big-endian integer<a href="#section-5.1-6.1" class="pilcrow">¶</a>
 </li>
-<li id="section-5.1-6.2">P-521: The X-coordinate of the point, encoded as a 66-octet
+<li id="section-5.1-6.2">P-521: The X-coordinate of the point, encoded as a 66-byte
 big-endian integer<a href="#section-5.1-6.2" class="pilcrow">¶</a>
 </li>
-<li id="section-5.1-6.3">Curve25519: The standard 32-octet representation of the public key<a href="#section-5.1-6.3" class="pilcrow">¶</a>
+<li id="section-5.1-6.3">Curve25519: The standard 32-byte representation of the public key<a href="#section-5.1-6.3" class="pilcrow">¶</a>
 </li>
-<li id="section-5.1-6.4">Curve448: The standard 56-octet representation of the public key<a href="#section-5.1-6.4" class="pilcrow">¶</a>
+<li id="section-5.1-6.4">Curve448: The standard 56-byte representation of the public key<a href="#section-5.1-6.4" class="pilcrow">¶</a>
 </li>
 </ul>
 </section>
@@ -1398,7 +1398,7 @@ Additional Authenticated Data to the AEAD algorithm in use.<a href="#section-6-1
 <p id="section-6-2">In addition to the base case of encrypting to a public key, we
 include two authenticated variants, one of which authenticates
 possession of a pre-shared key, and one of which authenticates
-possession of a KEM private key.  The following one-octet values
+possession of a KEM private key.  The following one-byte values
 will be used to distinguish between modes:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
         <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
@@ -1496,7 +1496,7 @@ provided, then the recipient is assumed that the sender held the
 corresponding private key (assuming that <code>zz</code> and <code>enc</code> were
 generated using the AuthEncap / AuthDecap methods; see below).<a href="#section-6.1-5" class="pilcrow">¶</a></p>
 <p id="section-6.1-6">The HPKE algorithm identifiers, i.e., the KEM <code>kem_id</code>, KDF <code>kdf_id</code>, and
-AEAD <code>aead_id</code> 2-octet code points, are assumed implicit from the
+AEAD <code>aead_id</code> 2-byte code points, are assumed implicit from the
 implementation and not passed as parameters.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-6.1-7">
 <pre>
@@ -1596,7 +1596,7 @@ def SetupBaseR(enc, skR, info):
 <p id="section-6.1.2-1">This variant extends the base mechanism by allowing the recipient
 to authenticate that the sender possessed a given pre-shared key
 (PSK).  We assume that both parties have been provisioned with both
-the PSK value <code>psk</code> and another octet string <code>pskID</code> that is used to
+the PSK value <code>psk</code> and another byte string <code>pskID</code> that is used to
 identify which PSK should be used.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.2-2">The primary differences from the base case are:<a href="#section-6.1.2-2" class="pilcrow">¶</a></p>
 <ul>
@@ -1615,12 +1615,12 @@ dictionary attacks.<a href="#section-6.1.2-4" class="pilcrow">¶</a></p>
 def SetupPSKS(pkR, info, psk, pskID):
   zz, enc = Encap(pkR)
   return enc, KeySchedule(mode_psk, pkR, zz, enc, info,
-                          psk, pskSd, default_pkSm)
+                          psk, pskID, default_pkSm)
 
 def SetupPSKR(enc, skR, info, psk, pskID):
   zz = Decap(enc, skR)
   return KeySchedule(mode_psk, pk(skR), zz, enc, info,
-                     psk, pskSd, default_pkSm)
+                     psk, pskID, default_pkSm)
 </pre><a href="#section-6.1.2-5" class="pilcrow">¶</a>
 </div>
 </section>
@@ -1774,7 +1774,7 @@ def Context.Open(aad, ct):
         </h3>
 <p id="section-6.3-1">HPKE provides a interface for exporting secrets from the encryption Context, similar
 to the TLS 1.3 exporter interface (See <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>, Section 7.5). This interface takes as
-input a context string <code>exporter_context</code> and desired length <code>L</code> (in octets), and produces
+input a context string <code>exporter_context</code> and desired length <code>L</code> (in bytes), and produces
 a secret derived from the internal exporter secret using the corresponding KDF Expand
 function.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-6.3-2">
@@ -1908,7 +1908,7 @@ key <code>pkE</code> is on the curve.  The relevant validation procedures are
 defined in <span>[<a href="#keyagreement" class="xref">keyagreement</a>]</span>.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <p id="section-8.1-3">For the CFRG curves Curve25519 and Curve448, the Marshal function is
 the identity function, since these curves already use fixed-length
-octet strings for public keys.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+byte strings for public keys.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="kdf-ids">
