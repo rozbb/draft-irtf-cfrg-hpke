@@ -1615,12 +1615,12 @@ dictionary attacks.<a href="#section-6.1.2-4" class="pilcrow">¶</a></p>
 def SetupPSKS(pkR, info, psk, pskID):
   zz, enc = Encap(pkR)
   return enc, KeySchedule(mode_psk, pkR, zz, enc, info,
-                          psk, pskID, default_pkSm)
+                          psk, pskSd, default_pkSm)
 
 def SetupPSKR(enc, skR, info, psk, pskID):
   zz = Decap(enc, skR)
   return KeySchedule(mode_psk, pk(skR), zz, enc, info,
-                     psk, pskID, default_pkSm)
+                     psk, pskSd, default_pkSm)
 </pre><a href="#section-6.1.2-5" class="pilcrow">¶</a>
 </div>
 </section>

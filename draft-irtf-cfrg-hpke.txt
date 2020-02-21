@@ -633,12 +633,12 @@ Internet-Draft                    HPKE                     February 2020
    def SetupPSKS(pkR, info, psk, pskID):
      zz, enc = Encap(pkR)
      return enc, KeySchedule(mode_psk, pkR, zz, enc, info,
-                             psk, pskID, default_pkSm)
+                             psk, pskSd, default_pkSm)
 
    def SetupPSKR(enc, skR, info, psk, pskID):
      zz = Decap(enc, skR)
      return KeySchedule(mode_psk, pk(skR), zz, enc, info,
-                        psk, pskID, default_pkSm)
+                        psk, pskSd, default_pkSm)
 
 6.1.3.  Authentication using an Asymmetric Key
 
