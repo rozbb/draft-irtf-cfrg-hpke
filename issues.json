@@ -1,6 +1,318 @@
 [
 
   {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/42",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/42/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/42/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/42/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/42",
+    "id": 568828685,
+    "node_id": "MDU6SXNzdWU1Njg4Mjg2ODU=",
+    "number": 42,
+    "title": "Nenc and Npk for P512 are inconsistent within the draft",
+    "user": {
+      "login": "blipp",
+      "id": 138279,
+      "node_id": "MDQ6VXNlcjEzODI3OQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/138279?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/blipp",
+      "html_url": "https://github.com/blipp",
+      "followers_url": "https://api.github.com/users/blipp/followers",
+      "following_url": "https://api.github.com/users/blipp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/blipp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/blipp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/blipp/subscriptions",
+      "organizations_url": "https://api.github.com/users/blipp/orgs",
+      "repos_url": "https://api.github.com/users/blipp/repos",
+      "events_url": "https://api.github.com/users/blipp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/blipp/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-21T09:13:44Z",
+    "updated_at": "2020-02-21T09:13:44Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "In Section “DH-Based KEM”:\r\n\r\n```\r\n* P-521: The X-coordinate of the point, encoded as a 66-octet\r\n  big-endian integer\r\n```\r\n\r\nIn “Algorithm Identifiers” > “Key Encapsulation Mechanisms”:\r\n\r\n```\r\n| Value  | KEM               | Nenc | Npk | Reference      |\r\n|:-------|:------------------|:-----|:----|:---------------|\r\n| 0x0012 | DHKEM(P-521)      | 65   | 65  | {{NISTCurves}} |\r\n```"
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/41",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/41/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/41/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/41/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/41",
+    "id": 568827129,
+    "node_id": "MDU6SXNzdWU1Njg4MjcxMjk=",
+    "number": 41,
+    "title": "Length of PSKs in test vectors don't match with requirements",
+    "user": {
+      "login": "blipp",
+      "id": 138279,
+      "node_id": "MDQ6VXNlcjEzODI3OQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/138279?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/blipp",
+      "html_url": "https://github.com/blipp",
+      "followers_url": "https://api.github.com/users/blipp/followers",
+      "following_url": "https://api.github.com/users/blipp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/blipp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/blipp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/blipp/subscriptions",
+      "organizations_url": "https://api.github.com/users/blipp/orgs",
+      "repos_url": "https://api.github.com/users/blipp/repos",
+      "events_url": "https://api.github.com/users/blipp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/blipp/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-21T09:10:33Z",
+    "updated_at": "2020-02-21T09:10:33Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "The PSKs used in the test vectors currently are of length 6 bytes but should be 32 bytes for HKDF-SHA256 and 64 bytes for HKDF-SHA512."
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/40",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/40/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/40/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/40/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/40",
+    "id": 568826024,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzc4MTc4MDY5",
+    "number": 40,
+    "title": "Clarify definition of Npk and output of DH",
+    "user": {
+      "login": "blipp",
+      "id": 138279,
+      "node_id": "MDQ6VXNlcjEzODI3OQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/138279?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/blipp",
+      "html_url": "https://github.com/blipp",
+      "followers_url": "https://api.github.com/users/blipp/followers",
+      "following_url": "https://api.github.com/users/blipp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/blipp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/blipp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/blipp/subscriptions",
+      "organizations_url": "https://api.github.com/users/blipp/orgs",
+      "repos_url": "https://api.github.com/users/blipp/repos",
+      "events_url": "https://api.github.com/users/blipp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/blipp/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-21T09:08:07Z",
+    "updated_at": "2020-02-21T16:02:18Z",
+    "closed_at": "2020-02-21T16:02:17Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/40",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/40",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/40.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/40.patch"
+    },
+    "body": "Confirming with the F* specs of P256 and Curve25516, DH returns an encoded curve point. This means the output of DH is of length Npk."
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/39",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/39/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/39/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/39/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/39",
+    "id": 568817216,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzc4MTcwODk0",
+    "number": 39,
+    "title": "Refactor to use byte consistently instead of octet",
+    "user": {
+      "login": "blipp",
+      "id": 138279,
+      "node_id": "MDQ6VXNlcjEzODI3OQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/138279?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/blipp",
+      "html_url": "https://github.com/blipp",
+      "followers_url": "https://api.github.com/users/blipp/followers",
+      "following_url": "https://api.github.com/users/blipp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/blipp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/blipp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/blipp/subscriptions",
+      "organizations_url": "https://api.github.com/users/blipp/orgs",
+      "repos_url": "https://api.github.com/users/blipp/repos",
+      "events_url": "https://api.github.com/users/blipp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/blipp/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-21T08:48:04Z",
+    "updated_at": "2020-02-21T16:02:54Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/39",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/39",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/39.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/39.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/38",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/38/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/38/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/38/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/38",
+    "id": 568815633,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzc4MTY5NjEx",
+    "number": 38,
+    "title": "Fix typo at two occurrences of pskID",
+    "user": {
+      "login": "blipp",
+      "id": 138279,
+      "node_id": "MDQ6VXNlcjEzODI3OQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/138279?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/blipp",
+      "html_url": "https://github.com/blipp",
+      "followers_url": "https://api.github.com/users/blipp/followers",
+      "following_url": "https://api.github.com/users/blipp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/blipp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/blipp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/blipp/subscriptions",
+      "organizations_url": "https://api.github.com/users/blipp/orgs",
+      "repos_url": "https://api.github.com/users/blipp/repos",
+      "events_url": "https://api.github.com/users/blipp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/blipp/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-21T08:44:19Z",
+    "updated_at": "2020-02-21T09:15:12Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/38",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/38",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/38.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/38.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/37",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/37/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/37/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/37/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/37",
+    "id": 562725490,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzczMjY5NzMw",
+    "number": 37,
+    "title": "Update test vectors (with new sender/responder notation).",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-10T17:51:18Z",
+    "updated_at": "2020-02-12T01:41:11Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/37",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/37",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/37.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/37.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/36",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
     "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/36/labels{/name}",
@@ -43,7 +355,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2020-02-10T02:47:12Z",
-    "updated_at": "2020-02-10T04:05:07Z",
+    "updated_at": "2020-02-11T00:40:43Z",
     "closed_at": "2020-02-10T04:05:07Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -1309,7 +1621,10 @@
       "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/13.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/12",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
@@ -1621,10 +1936,7 @@
       "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/7.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/6",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
