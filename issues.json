@@ -1,6 +1,92 @@
 [
 
   {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/43",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/43/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/43/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/43/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/43",
+    "id": 569502967,
+    "node_id": "MDU6SXNzdWU1Njk1MDI5Njc=",
+    "number": 43,
+    "title": "Add CCM ciphersuites",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "assignees": [
+      {
+        "login": "chris-wood",
+        "id": 2172048,
+        "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/chris-wood",
+        "html_url": "https://github.com/chris-wood",
+        "followers_url": "https://api.github.com/users/chris-wood/followers",
+        "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+        "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+        "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+        "repos_url": "https://api.github.com/users/chris-wood/repos",
+        "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-23T14:24:22Z",
+    "updated_at": "2020-02-25T22:00:42Z",
+    "closed_at": "2020-02-25T22:00:42Z",
+    "author_association": "COLLABORATOR",
+    "body": "... for use in ECHO.\r\n\r\nAES-GCM-128: https://tools.ietf.org/html/rfc5116\r\nAES-CCM-128 (8-byte IV): https://tools.ietf.org/html/rfc6655\r\n\r\nWe should reference where these AEADs are defined, too (5116 for GCM, 8439 for ChaCha20Poly1305)."
+  },
+  {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/42",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
     "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/42/labels{/name}",
@@ -89,9 +175,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2020-02-21T09:10:33Z",
-    "updated_at": "2020-02-21T09:10:33Z",
+    "updated_at": "2020-02-21T16:21:46Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "The PSKs used in the test vectors currently are of length 6 bytes but should be 32 bytes for HKDF-SHA256 and 64 bytes for HKDF-SHA512."
@@ -184,7 +270,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -193,8 +279,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2020-02-21T08:48:04Z",
-    "updated_at": "2020-02-21T16:02:54Z",
-    "closed_at": null,
+    "updated_at": "2020-02-21T16:04:18Z",
+    "closed_at": "2020-02-21T16:04:18Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/39",
@@ -238,7 +324,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -247,8 +333,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2020-02-21T08:44:19Z",
-    "updated_at": "2020-02-21T09:15:12Z",
-    "closed_at": null,
+    "updated_at": "2020-02-21T16:04:41Z",
+    "closed_at": "2020-02-21T16:04:41Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/38",
@@ -292,17 +378,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2020-02-10T17:51:18Z",
-    "updated_at": "2020-02-12T01:41:11Z",
-    "closed_at": null,
+    "updated_at": "2020-02-24T14:14:17Z",
+    "closed_at": "2020-02-24T14:14:16Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/37",
@@ -1567,7 +1653,10 @@
       "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/14.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/13",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
@@ -1621,10 +1710,7 @@
       "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/13.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/12",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
