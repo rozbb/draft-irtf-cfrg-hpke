@@ -918,30 +918,30 @@ Internet-Draft                    HPKE                     February 2020
 
    HPKE has several security goals, depending on the mode of operation,
    against active and adaptive attackers that can compromise partial
-   secrets of senders S and R.  The desired security goals are detailed
-   below:
+   secrets of senders and recipients.  The desired security goals are
+   detailed below:
 
    *  Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
       security.
 
    *  Export key secrecy: Indistinguishability of the export secret from
-      a randomly generated string of similar length.
+      a uniformly random bitstring of equal length.
 
    *  Sender authentication: Proof of sender origin for Auth and AuthPSK
       modes.
 
-   The analysis considers two variants of HPKE usage: one-shot message
-   encryption and secret key export.  In the one-shot variant, S uses
-   the one-shot API to use the key once to encrypt a plaintext.  The
-   export variant is the same as one-shot variant, except that the
-   sender additionally exports two independent secrets using the secret
-   export interface.
+   The analysis considers two variants of HPKE usage: single-shot
+   message encryption and secret key export.  In the single-shot
+   variant, S uses the single-shot API to use the key once to encrypt a
+   plaintext.  The export variant is the same as single-shot variant,
+   except that the sender additionally exports two independent secrets
+   using the secret export interface.  We distinguish these two variants
+   as the single-shot API does not lend itself to use the Export
+   interface.s
 
    The table below summarizes the main results from [HPKEAnalysis].  N/A
    means that a property does not apply for the given mode, whereas X
    means the given mode satisfies the property.
-
-
 
 
 
@@ -954,35 +954,35 @@ Barnes & Bhargavan       Expires 28 August 2020                [Page 17]
 Internet-Draft                    HPKE                     February 2020
 
 
-    +----------+-----------------+--------------------+--------------+
-    | Variant  | Message Secrecy | Export Key Secrecy | Sender Auth. |
-    +==========+=================+====================+==============+
-    | Base,    | X               | N/A                | N/A          |
-    | one-shot |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | Base,    | X               | X                  | N/A          |
-    | export   |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | PSK,     | X               | N/A                | X            |
-    | one-shot |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | PSK,     | X               | X                  | X            |
-    | export   |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | Auth,    | X               | N/A                | X            |
-    | one-shot |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | Auth,    | X               | X                  | X            |
-    | export   |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | AuthPSK, | X               | N/A                | X            |
-    | one-shot |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
-    | AuthPSK, | X               | X                  | X            |
-    | export   |                 |                    |              |
-    +----------+-----------------+--------------------+--------------+
+   +-------------+-----------------+--------------------+--------------+
+   | Variant     | Message Secrecy | Export Key Secrecy | Sender       |
+   |             |                 |                    | Auth.        |
+   +=============+=================+====================+==============+
+   | Base,       | X               | N/A                | N/A          |
+   | single-shot |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
+   | Base,       | X               | X                  | N/A          |
+   | export      |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
+   | PSK,        | X               | N/A                | X            |
+   | single-shot |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
+   | PSK, export | X               | X                  | X            |
+   +-------------+-----------------+--------------------+--------------+
+   | Auth,       | X               | N/A                | X            |
+   | single-shot |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
+   | Auth,       | X               | X                  | X            |
+   | export      |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
+   | AuthPSK,    | X               | N/A                | X            |
+   | single-shot |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
+   | AuthPSK,    | X               | X                  | X            |
+   | export      |                 |                    |              |
+   +-------------+-----------------+--------------------+--------------+
 
-                                 Table 5
+                                  Table 5
 
    In this section, we consider a security issue that may arise in
    practice and an advanced use case.

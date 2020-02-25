@@ -2011,22 +2011,24 @@ byte strings for public keys.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-8-1">HPKE has several security goals, depending on the mode of operation,
 against active and adaptive attackers that can compromise partial secrets
-of senders S and R. The desired security goals are detailed below:<a href="#section-8-1" class="pilcrow">¶</a></p>
+of senders and recipients. The desired security goals are detailed below:<a href="#section-8-1" class="pilcrow">¶</a></p>
 <ul>
 <li id="section-8-2.1">Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
 security.<a href="#section-8-2.1" class="pilcrow">¶</a>
 </li>
 <li id="section-8-2.2">Export key secrecy: Indistinguishability of the export secret from
-a randomly generated string of similar length.<a href="#section-8-2.2" class="pilcrow">¶</a>
+a uniformly random bitstring of equal length.<a href="#section-8-2.2" class="pilcrow">¶</a>
 </li>
 <li id="section-8-2.3">Sender authentication: Proof of sender origin for Auth and AuthPSK modes.<a href="#section-8-2.3" class="pilcrow">¶</a>
 </li>
 </ul>
-<p id="section-8-3">The analysis considers two variants of HPKE usage: one-shot message
-encryption and secret key export. In the one-shot variant, S uses the
-one-shot API to use the key once to encrypt a plaintext. The export variant
-is the same as one-shot variant, except that the sender additionally exports
-two independent secrets using the secret export interface.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-3">The analysis considers two variants of HPKE usage: single-shot message
+encryption and secret key export. In the single-shot variant, S uses the
+single-shot API to use the key once to encrypt a plaintext. The export variant
+is the same as single-shot variant, except that the sender additionally exports
+two independent secrets using the secret export interface. We distinguish
+these two variants as the single-shot API does not lend itself to use
+the Export interface.s<a href="#section-8-3" class="pilcrow">¶</a></p>
 <p id="section-8-4">The table below summarizes the main results from <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. N/A
 means that a property does not apply for the given mode, whereas X means
 the given mode satisfies the property.<a href="#section-8-4" class="pilcrow">¶</a></p>
@@ -2042,7 +2044,7 @@ the given mode satisfies the property.<a href="#section-8-4" class="pilcrow">¶<
         </thead>
         <tbody>
           <tr>
-            <td class="text-left" rowspan="1" colspan="1">Base, one-shot</td>
+            <td class="text-left" rowspan="1" colspan="1">Base, single-shot</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
             <td class="text-left" rowspan="1" colspan="1">N/A</td>
             <td class="text-left" rowspan="1" colspan="1">N/A</td>
@@ -2054,7 +2056,7 @@ the given mode satisfies the property.<a href="#section-8-4" class="pilcrow">¶<
             <td class="text-left" rowspan="1" colspan="1">N/A</td>
           </tr>
           <tr>
-            <td class="text-left" rowspan="1" colspan="1">PSK, one-shot</td>
+            <td class="text-left" rowspan="1" colspan="1">PSK, single-shot</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
             <td class="text-left" rowspan="1" colspan="1">N/A</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
@@ -2066,7 +2068,7 @@ the given mode satisfies the property.<a href="#section-8-4" class="pilcrow">¶<
             <td class="text-left" rowspan="1" colspan="1">X</td>
           </tr>
           <tr>
-            <td class="text-left" rowspan="1" colspan="1">Auth, one-shot</td>
+            <td class="text-left" rowspan="1" colspan="1">Auth, single-shot</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
             <td class="text-left" rowspan="1" colspan="1">N/A</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
@@ -2078,7 +2080,7 @@ the given mode satisfies the property.<a href="#section-8-4" class="pilcrow">¶<
             <td class="text-left" rowspan="1" colspan="1">X</td>
           </tr>
           <tr>
-            <td class="text-left" rowspan="1" colspan="1">AuthPSK, one-shot</td>
+            <td class="text-left" rowspan="1" colspan="1">AuthPSK, single-shot</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
             <td class="text-left" rowspan="1" colspan="1">N/A</td>
             <td class="text-left" rowspan="1" colspan="1">X</td>
