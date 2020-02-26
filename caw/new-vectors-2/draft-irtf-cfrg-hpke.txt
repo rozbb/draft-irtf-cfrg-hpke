@@ -64,48 +64,48 @@ Internet-Draft                    HPKE                     February 2020
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   4
-   2.  Requirements Notation . . . . . . . . . . . . . . . . . . . .   4
-   3.  Security Properties . . . . . . . . . . . . . . . . . . . . .   5
-   4.  Notation  . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   5.  Cryptographic Dependencies  . . . . . . . . . . . . . . . . .   5
-     5.1.  DH-Based KEM  . . . . . . . . . . . . . . . . . . . . . .   7
-   6.  Hybrid Public Key Encryption  . . . . . . . . . . . . . . . .   8
-     6.1.  Creating the Encryption Context . . . . . . . . . . . . .   9
-       6.1.1.  Encryption to a Public Key  . . . . . . . . . . . . .  12
-       6.1.2.  Authentication using a Pre-Shared Key . . . . . . . .  12
-       6.1.3.  Authentication using an Asymmetric Key  . . . . . . .  13
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Requirements Notation . . . . . . . . . . . . . . . . . . . .   3
+   3.  Security Properties . . . . . . . . . . . . . . . . . . . . .   4
+   4.  Notation  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Cryptographic Dependencies  . . . . . . . . . . . . . . . . .   4
+     5.1.  DH-Based KEM  . . . . . . . . . . . . . . . . . . . . . .   6
+   6.  Hybrid Public Key Encryption  . . . . . . . . . . . . . . . .   7
+     6.1.  Creating the Encryption Context . . . . . . . . . . . . .   8
+       6.1.1.  Encryption to a Public Key  . . . . . . . . . . . . .  11
+       6.1.2.  Authentication using a Pre-Shared Key . . . . . . . .  11
+       6.1.3.  Authentication using an Asymmetric Key  . . . . . . .  12
        6.1.4.  Authentication using both a PSK and an Asymmetric
-               Key . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     6.2.  Encryption and Decryption . . . . . . . . . . . . . . . .  14
-     6.3.  Secret Export . . . . . . . . . . . . . . . . . . . . . .  16
-   7.  Single-Shot APIs  . . . . . . . . . . . . . . . . . . . . . .  16
-   8.  Algorithm Identifiers . . . . . . . . . . . . . . . . . . . .  16
-     8.1.  Key Encapsulation Mechanisms (KEMs) . . . . . . . . . . .  17
-     8.2.  Key Derivation Functions (KDFs) . . . . . . . . . . . . .  17
+               Key . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     6.2.  Encryption and Decryption . . . . . . . . . . . . . . . .  13
+     6.3.  Secret Export . . . . . . . . . . . . . . . . . . . . . .  15
+   7.  Single-Shot APIs  . . . . . . . . . . . . . . . . . . . . . .  15
+   8.  Algorithm Identifiers . . . . . . . . . . . . . . . . . . . .  15
+     8.1.  Key Encapsulation Mechanisms (KEMs) . . . . . . . . . . .  16
+     8.2.  Key Derivation Functions (KDFs) . . . . . . . . . . . . .  16
      8.3.  Authenticated Encryption with Associated Data (AEAD)
-           Functions . . . . . . . . . . . . . . . . . . . . . . . .  18
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  18
-     9.1.  External Requirements / Non-Goals . . . . . . . . . . . .  18
-     9.2.  Metadata Protection . . . . . . . . . . . . . . . . . . .  19
-     9.3.  Designated-Verifier Signature . . . . . . . . . . . . . .  19
-   10. Message Encoding  . . . . . . . . . . . . . . . . . . . . . .  20
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  20
-     11.1.  KEM Identifiers  . . . . . . . . . . . . . . . . . . . .  20
-     11.2.  KDF Identifiers  . . . . . . . . . . . . . . . . . . . .  21
-     11.3.  AEAD Identifiers . . . . . . . . . . . . . . . . . . . .  21
-   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  21
-     12.1.  Normative References . . . . . . . . . . . . . . . . . .  21
-     12.2.  Informative References . . . . . . . . . . . . . . . . .  22
-   Appendix A.  Test Vectors . . . . . . . . . . . . . . . . . . . .  24
-     A.1.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  24
-     A.2.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  24
-       A.2.1.  Base Setup Information  . . . . . . . . . . . . . . .  24
-     A.3.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  26
-     A.4.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  26
-     A.5.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  26
-       A.5.1.  Base Setup Information  . . . . . . . . . . . . . . .  26
-     A.6.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  28
+           Functions . . . . . . . . . . . . . . . . . . . . . . . .  17
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
+     9.1.  External Requirements / Non-Goals . . . . . . . . . . . .  17
+     9.2.  Metadata Protection . . . . . . . . . . . . . . . . . . .  18
+     9.3.  Designated-Verifier Signature . . . . . . . . . . . . . .  18
+   10. Message Encoding  . . . . . . . . . . . . . . . . . . . . . .  19
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  19
+     11.1.  KEM Identifiers  . . . . . . . . . . . . . . . . . . . .  19
+     11.2.  KDF Identifiers  . . . . . . . . . . . . . . . . . . . .  20
+     11.3.  AEAD Identifiers . . . . . . . . . . . . . . . . . . . .  20
+   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
+     12.1.  Normative References . . . . . . . . . . . . . . . . . .  20
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  21
+   Appendix A.  Test Vectors . . . . . . . . . . . . . . . . . . . .  23
+     A.1.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  23
+       A.1.1.  Base Setup Information  . . . . . . . . . . . . . . .  23
+       A.1.2.  PSK Setup Information . . . . . . . . . . . . . . . .  25
+       A.1.3.  Auth Setup Information  . . . . . . . . . . . . . . .  27
+       A.1.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  29
+     A.2.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  31
+       A.2.1.  Base Setup Information  . . . . . . . . . . . . . . .  31
+       A.2.2.  PSK Setup Information . . . . . . . . . . . . . . . .  33
 
 
 
@@ -114,67 +114,14 @@ Barnes & Bhargavan       Expires 29 August 2020                 [Page 2]
 Internet-Draft                    HPKE                     February 2020
 
 
-     A.7.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  28
-     A.8.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  28
-     A.9.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  28
-       A.9.1.  Base Setup Information  . . . . . . . . . . . . . . .  28
-     A.10. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  30
-     A.11. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  30
-     A.12. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  30
-     A.13. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  30
-     A.14. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  30
-     A.15. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  30
-       A.15.1.  PSK Setup Information  . . . . . . . . . . . . . . .  30
-     A.16. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  32
-     A.17. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  32
-     A.18. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  32
-       A.18.1.  PSK Setup Information  . . . . . . . . . . . . . . .  32
-     A.19. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  34
-     A.20. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  34
-     A.21. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  34
-     A.22. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  34
-       A.22.1.  PSK Setup Information  . . . . . . . . . . . . . . .  34
-     A.23. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  36
-     A.24. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  36
-     A.25. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  36
-     A.26. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  36
-     A.27. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  36
-     A.28. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  36
-       A.28.1.  Auth Setup Information . . . . . . . . . . . . . . .  36
-     A.29. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  38
-     A.30. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  38
-     A.31. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  38
-       A.31.1.  Auth Setup Information . . . . . . . . . . . . . . .  38
-     A.32. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  40
-     A.33. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  40
-     A.34. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  40
-     A.35. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  40
-       A.35.1.  Auth Setup Information . . . . . . . . . . . . . . .  40
-     A.36. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  42
-     A.37. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  42
-       A.37.1.  AuthPSK Setup Information  . . . . . . . . . . . . .  42
-     A.38. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  44
-     A.39. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  44
-     A.40. DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128 . . . . . . .  44
-     A.41. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  44
-     A.42. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  44
-     A.43. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  44
-     A.44. DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  44
-       A.44.1.  AuthPSK Setup Information  . . . . . . . . . . . . .  44
-     A.45. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  46
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 3]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-     A.46. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  46
-     A.47. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  46
-     A.48. DHKEM(P-521), HKDF-SHA512, AES-GCM-256  . . . . . . . . .  46
-       A.48.1.  AuthPSK Setup Information  . . . . . . . . . . . . .  46
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  48
+       A.2.3.  Auth Setup Information  . . . . . . . . . . . . . . .  35
+       A.2.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  37
+     A.3.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305 . . . . . . .  39
+       A.3.1.  Base Setup Information  . . . . . . . . . . . . . . .  39
+       A.3.2.  PSK Setup Information . . . . . . . . . . . . . . . .  41
+       A.3.3.  Auth Setup Information  . . . . . . . . . . . . . . .  43
+       A.3.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  45
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  47
 
 1.  Introduction
 
@@ -218,10 +165,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 4]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 3]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -277,7 +221,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 5]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 4]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -333,7 +277,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 6]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 5]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -389,7 +333,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 7]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 6]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -445,7 +389,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 8]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 7]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -501,7 +445,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                 [Page 9]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 8]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -557,7 +501,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 10]
+Barnes & Bhargavan       Expires 29 August 2020                 [Page 9]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -613,7 +557,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 11]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 10]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -669,7 +613,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 12]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 11]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -725,7 +669,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 13]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 12]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -781,7 +725,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 14]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 13]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -837,7 +781,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 15]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 14]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -893,7 +837,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 16]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 15]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -949,7 +893,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 17]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 16]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1005,7 +949,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 18]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 17]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1061,7 +1005,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 19]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 18]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1117,7 +1061,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 20]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 19]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1173,7 +1117,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 21]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 20]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1229,7 +1173,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 22]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 21]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1285,7 +1229,7 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 23]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 22]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1314,9 +1258,7 @@ Appendix A.  Test Vectors
 
 A.1.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
-A.2.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.2.1.  Base Setup Information
+A.1.1.  Base Setup Information
 
 
 
@@ -1341,7 +1283,9 @@ A.2.1.  Base Setup Information
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 24]
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 23]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1371,7 +1315,7 @@ Internet-Draft                    HPKE                     February 2020
    key: 11cf34f93b3d1e8f2e36f91c5a2d6818
    nonce: 23acef669d7f3bcc98f6d0ab
 
-A.2.1.1.  Encryptions
+A.1.1.1.  Encryptions
 
 
 
@@ -1397,7 +1341,7 @@ A.2.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 25]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 24]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1430,13 +1374,69 @@ Internet-Draft                    HPKE                     February 2020
    ciphertext: 3aeeea18f990589141df055a90f382a8096dbdae8f912291cfeff475ede4
    f9b023c3ce88f499f5a2dc44454241
 
-A.3.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
+A.1.2.  PSK Setup Information
 
-A.4.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
-A.5.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
 
-A.5.1.  Base Setup Information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 25]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   mode: 1
+   kemID: 2
+   kdfID: 1
+   aeadID: 1
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: c903da955074d28232e6ba339f4852abe9b4cb2383dce60ca88d6d14b16fc3e8
+   skS: 924b59aae3bcec73b8c2533513dfb0059c19e4ec8bd78e94cae7b73c2b8fe037
+   skE: f35123835eb4d8858e7f01c81840ec21b30d444c23f2e26c67f299e0c06df023
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: f1a4ebd32e84fe2614ad0a7270fb7dff328f275dc8b9d54c2345e5518130b42f
+   pkS: 6b5dcac8182954357e45a6f9eee722cab9509920441ecc3d2ada5d13f5dbda42
+   pkE: c44b2464180ddc477d579b824b2fc7931b0f59138f115af395443fd692ae1661
+   enc: c44b2464180ddc477d579b824b2fc7931b0f59138f115af395443fd692ae1661
+   zz: 8d669b593e5bc3bbdbde2a95ae892e68976a859136ebd77ea41a09d16602db57
+   context: 01000200010001c44b2464180ddc477d579b824b2fc7931b0f59138f115af39
+   5443fd692ae1661f1a4ebd32e84fe2614ad0a7270fb7dff328f275dc8b9d54c2345e5518
+   130b42f0000000000000000000000000000000000000000000000000000000000000000e
+   ca994d516108a16db86e155390f3c3cec6f0aff60ade1ae9e3189140b0f3dea55c404062
+   9c64c5efec2f7230407d612d16289d7c5d7afcf9340280abd2de1ab
+   secret: 640de51e7b5ae69424e64c931d7f28d9d495ca9c4c2ffdbc5c9f8a611dfa58c3
+   key: 53ade960668aa4983b4475e0273c2d9b
+   nonce: 86b6e1851b3de8f5793da87c
+
+A.1.2.1.  Encryptions
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1458,39 +1458,39 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 26]
 Internet-Draft                    HPKE                     February 2020
 
 
-   mode: 0
-   kemID: 1
-   kdfID: 1
-   aeadID: 3
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: efd90477fdb7b8f60357eec8d7ae348fef38b0c55c3298c09caf9d575990bd22
-   skS: 2ee3b88417a20b5fb0a527fefaae4066a6449d2d75bed96fa2478d58f300c411
-   skE: 2118dc1de1f6578b3576b4e6996fa6517ceb28a403fce626c8e0d430bd571f8b
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: 0441aa0ed8d749bab7f9a2ed9515ea60ad5b5cace45710f4ce6bf99bb44a1069d8a
-   9c12ef2f514fb1c9185c8db167c821b2aeb38d1f821ba1164101c85ede7ee13
-   pkS: 047a9f60ef11a46a211fa3ca38c14430a282cefac5b90866918d64ffad2cdfe7d41
-   fed52aaea83f703407ed9bb3db950023a1accb689ba91b5743cec9d4680d080
-   pkE: 049904661176dd864002718fee7b491330d54f45bd37172b6b9ae8038cce88b9f9f
-   ad47829699477de2fb014827b4a8e7f1e4a870304aad3d7986d68d35cd07ff6
-   enc: 049904661176dd864002718fee7b491330d54f45bd37172b6b9ae8038cce88b9f9f
-   ad47829699477de2fb014827b4a8e7f1e4a870304aad3d7986d68d35cd07ff6
-   zz: cd6e7bb5ff8c134f2a925e9ca022e65f5b487321bc3e576f377e6f01236a1bbb
-   context: 00000100010003049904661176dd864002718fee7b491330d54f45bd37172b6
-   b9ae8038cce88b9f9fad47829699477de2fb014827b4a8e7f1e4a870304aad3d7986d68d
-   35cd07ff60441aa0ed8d749bab7f9a2ed9515ea60ad5b5cace45710f4ce6bf99bb44a106
-   9d8a9c12ef2f514fb1c9185c8db167c821b2aeb38d1f821ba1164101c85ede7ee1300000
-   000000000000000000000000000000000000000000000000000000000000000000000000
-   00000000000000000000000000000000000000000000000000000e3b0c44298fc1c149af
-   bf4c8996fb92427ae41e4649b934ca495991b7852b85555c4040629c64c5efec2f723040
-   7d612d16289d7c5d7afcf9340280abd2de1ab
-   secret: 15a36bf657d3b3b4eb355d6bf2a595f710e4a4da37d2710964167ba8029227ee
-   key: fe8f6e7d61f81dc4cce9b185b4343323dcf7eaab8c2ac36239b2a9274c198868
-   nonce: e61fbe136571b0fa5753e51d
+   sequence number: 0
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d30
+   nonce: 86b6e1851b3de8f5793da87c
+   ciphertext: 680566a43d511463e8a64d81e89c9a2caacaaa268c815a864bbd4bd67edd
+   5300e1d1257f89962fa473c0e41918
 
-A.5.1.1.  Encryptions
+   sequence number: 1
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d31
+   nonce: 86b6e1851b3de8f5793da87d
+   ciphertext: a990169c45c7ef5cfaf1ee040f64e946b71424ad74165f59ef13ffe752e9
+   ea6d5e7e6edd366fdb62f76840b221
+
+   sequence number: 2
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d32
+   nonce: 86b6e1851b3de8f5793da87e
+   ciphertext: bb6acca5ee76f39ff44feea5a6d8d0b0a94f71767dffb24c023d2ba908c9
+   4c27b14ea1d1aa132088cdd801c7d0
+
+   sequence number: 4
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d34
+   nonce: 86b6e1851b3de8f5793da878
+   ciphertext: 001a42b2883eaf05954a784101575dc382f0fe5e61ea2e32dbb80d788ec7
+   3506e31fe0dc67ef7413e34af45c94
+
+A.1.3.  Auth Setup Information
+
+
+
+
 
 
 
@@ -1514,43 +1514,205 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 27]
 Internet-Draft                    HPKE                     February 2020
 
 
+   mode: 2
+   kemID: 2
+   kdfID: 1
+   aeadID: 1
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: 0a08a01d1f7033200bc94e8a551f7ef0b1c076940e2a4eb6d63df9cb03f65b66
+   skS: 274e3083ca1c7462f80b2586b811e8058f7d5077aaf57829804a632555bed1a6
+   skE: 5bb3e4aa6deff90de795b4b0f8dde7fa315a25d8b1a372324b60c09142ae8790
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: fcc53e696c9e98508909c461fd173c315d6fbdfb8bc5145bc5e14d8e8bdc891b
+   pkS: 8dce67e0beb5cbbba1f02f527f6bdf21d739d95f8236c408a231e7c5994e987a
+   pkE: 8e0385b6a817d31fa221a24a743d52c2f28babc3fd9c472b465ab3c554eb8705
+   enc: 8e0385b6a817d31fa221a24a743d52c2f28babc3fd9c472b465ab3c554eb8705
+   zz: c23a969bb27388e124753cddb87b961dcb8ea69df6ce06e2c38cf6b48a5baa0afcb8
+   87a3b59ea470e088c0c2438d52a6d62165edc7a574282b5600f85eb77920
+   context: 020002000100018e0385b6a817d31fa221a24a743d52c2f28babc3fd9c472b4
+   65ab3c554eb8705fcc53e696c9e98508909c461fd173c315d6fbdfb8bc5145bc5e14d8e8
+   bdc891b8dce67e0beb5cbbba1f02f527f6bdf21d739d95f8236c408a231e7c5994e987ae
+   3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85555c404062
+   9c64c5efec2f7230407d612d16289d7c5d7afcf9340280abd2de1ab
+   secret: 4daa0f01aeb98cbeaf4df37951738703e302377c3e67781a82215e5cc08c1015
+   key: 37d7bd91850532cd99a7ef92005385e5
+   nonce: a4d99fcff465f605298e42ed
+
+A.1.3.1.  Encryptions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 28]
+
+Internet-Draft                    HPKE                     February 2020
+
+
    sequence number: 0
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d30
-   nonce: e61fbe136571b0fa5753e51d
-   ciphertext: 8ca64a2de7e35f68444f4fbad9fad274e98515250c46602a775943efc0b7
-   9ce216005b465620050e465833dce0
+   nonce: a4d99fcff465f605298e42ed
+   ciphertext: 819dde5d20c32ab17b951ec95193e487e859e66f85b51ed8fe26ac1ef8ec
+   6a81f58e36a33bcfc753b6f99f6b85
 
    sequence number: 1
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d31
-   nonce: e61fbe136571b0fa5753e51c
-   ciphertext: 8c04a6d97f1b43b20b6431ebe5379a3b8fc44bafb74a1d7766c9299fb36d
-   2f2335321115f550d30a9eabe368fa
+   nonce: a4d99fcff465f605298e42ec
+   ciphertext: a74432530cedd02492e2a3b634e7c60e1be96099d00dbe7f1a98dad8cd0c
+   8ded65814ee41364a14f38abf71f36
 
    sequence number: 2
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d32
-   nonce: e61fbe136571b0fa5753e51f
-   ciphertext: c14f9a30f8cb66a4125a5165efd88fb3cfbf481009a0f880013d885abc44
-   6c9fce029a44dd0bad9be66ae18fa1
+   nonce: a4d99fcff465f605298e42ef
+   ciphertext: 83097210c9db0f6523f0fae2b501a8e0d2c0f07c051388aa8fdb1c7bd773
+   6da75b89b296fe9e1132a9cff06f82
 
    sequence number: 4
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d34
-   nonce: e61fbe136571b0fa5753e519
-   ciphertext: 221884f4ff14f3386e6bfb00f0179bba99da2c5a6a3867078b11fdea39c4
-   7f088dbdc8f271c842e97f6d048c71
+   nonce: a4d99fcff465f605298e42e9
+   ciphertext: 37bb31e8bdc4a604610a4cd9aa0bbf6b581cf3123b62455c41776b335f45
+   be8cca0d34a5cb1b2f18cdf7befd64
 
-A.6.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
+A.1.4.  AuthPSK Setup Information
 
-A.7.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
 
-A.8.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
 
-A.9.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
 
-A.9.1.  Base Setup Information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 29]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   mode: 3
+   kemID: 2
+   kdfID: 1
+   aeadID: 1
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: b6510cb5e716a9a482b5415c53c0c03cc2843036660a4a41c0ae5ff2153da8bb
+   skS: fae69766a126d64f01d0e7d98cd6ec3c070e7adbaad5175cdb85c726e645fab3
+   skE: a6b6bbb312dbebe9845ad17276d00177665a566a678f23e3cdd90246d6d7bc1b
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: ad24daab7cf5292112fe0c88d9b718ba1c13b9de117a562d81143e5cd44a6a34
+   pkS: 8fa928b39e2ac2e9e5169c82ac4858ed73e873b3997bd1c9f959b1536770bd70
+   pkE: 565332007b0fa753345902168c10a0ada434346dec1043f590e7cf2b65889825
+   enc: 565332007b0fa753345902168c10a0ada434346dec1043f590e7cf2b65889825
+   zz: 86be5ab07841ec62f86a9229b7c3a1ccc273a984aba4d889bc614ae781f9c42fe23f
+   a8affd75d61a5af02592b599f6f701a967d8d34317c0d9a3a1b3ce5fb95c
+   context: 03000200010001565332007b0fa753345902168c10a0ada434346dec1043f59
+   0e7cf2b65889825ad24daab7cf5292112fe0c88d9b718ba1c13b9de117a562d81143e5cd
+   44a6a348fa928b39e2ac2e9e5169c82ac4858ed73e873b3997bd1c9f959b1536770bd70e
+   ca994d516108a16db86e155390f3c3cec6f0aff60ade1ae9e3189140b0f3dea55c404062
+   9c64c5efec2f7230407d612d16289d7c5d7afcf9340280abd2de1ab
+   secret: 0e360737217bf54c4f9660414ad857dfcf0a2419aca181bd8ecdbe8dd1563a36
+   key: 9b59048c7fa79046b30866f60a14c7b6
+   nonce: 9e1b30052d1260a35b439162
+
+A.1.4.1.  Encryptions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 30]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   sequence number: 0
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d30
+   nonce: 9e1b30052d1260a35b439162
+   ciphertext: 7a9b7ce26eb18ff13f34e4e05e3c0064737c06000ffb9dd900f1eb63abb8
+   39f17af22009e38944bdf7842f6ce5
+
+   sequence number: 1
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d31
+   nonce: 9e1b30052d1260a35b439163
+   ciphertext: 0d4423c76fae6e6e38ef9b5768c16238ec0ff20014ac0d84b49d87cd0056
+   2d05ef67ab442b375d51bd1e931f62
+
+   sequence number: 2
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d32
+   nonce: 9e1b30052d1260a35b439160
+   ciphertext: 9f635ce5297959256dbcdb1acbbc7bb5a8f1100511090232e2e8f3d6ee4e
+   067a2c4311401b5f91ae7f5c0a99dc
+
+   sequence number: 4
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d34
+   nonce: 9e1b30052d1260a35b439166
+   ciphertext: 5b0a5bc354a87a07226abf016e8e689a6316cb6c42fa3506dedba813e042
+   9b8e3cacc2e6d311e900d6441f36be
+
+A.2.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
+
+A.2.1.  Base Setup Information
 
    mode: 0
    kemID: 3
@@ -1562,20 +1724,20 @@ A.9.1.  Base Setup Information
    skS: 009ad3116e7c9d3e09eab465eeae0712c29498d6c5a8b144410aa1ad3f19942f88b
    9ef89f77c33b14fd4bc23cab7e4154b1702d441d872d07fed197f10e6f29c6c82
    skE: 012bbe591757f8aa4e5640297ea45b669ba14ac5047d04d0ed136f74512ba916149
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 28]
-
-Internet-Draft                    HPKE                     February 2020
-
-
    b3bef43d64bc2e47e17ae9c9937dad167dd214c6aaf4a60c38140a9bfbf67f3ec
    psk: 3564623362383061383163623633636135393437306338333431346566373061633
    1636338303636333964303133353738343937343061303364616464666339
    pskID: 456e6e796e20447572696e206172616e204d6f726961
    pkR: 04003ff813033df935e1ad38eb47258b8f5634fb491437b82b17563d5910117f1b5
    193bb7be71fb8413cae9d538cbc9dacf792864941ceaa588cef0dbbf27e81495430014cc
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 31]
+
+Internet-Draft                    HPKE                     February 2020
+
+
    f9aca4bb88f6a416ca3339579b29a038c2124b2f9dfc9b306eb57b77961d6ad444daf3a7
    9be9088ff28624781cb93a87d3873f7d6ae11ca2195b0cdda5c6ed8
    pkS: 0400630359fc1cbb8257504d8a3242538558a82b0c826a29fe95f8ebdc0857067c7
@@ -1612,7 +1774,7 @@ Internet-Draft                    HPKE                     February 2020
    key: 4ecae7e036312dafda581ff13ca74aa62c564116f50e1125d1bfbd134e1f66dc
    nonce: 594baa22942e8a065e8183f0
 
-A.9.1.1.  Encryptions
+A.2.1.1.  Encryptions
 
 
 
@@ -1621,7 +1783,13 @@ A.9.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 29]
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 32]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1654,71 +1822,69 @@ Internet-Draft                    HPKE                     February 2020
    ciphertext: b682800ccd28b82fa7f15275647b3a1c0998e46a5be5772071a4865ce0be
    e99631fa62afc130f2e1fe8fc225c7
 
-A.10.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
+A.2.2.  PSK Setup Information
 
-A.11.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
+   mode: 1
+   kemID: 3
+   kdfID: 2
+   aeadID: 2
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: 01244fd7a0d476f49b7450267d272ec0f34c6a46e817df3cea2953e01fc43851a40
+   d73e07bc3a36faaa7ee39505dc451eb68e86a4f6716e02f4dc10296e1bb3a9252
+   skS: 01b61d8ec4cddae3fa76d941b05587b0a5afe0323ff8d7086178e4b4dbd2bfe07e8
+   3299fd8a232e8ba07b608b32907a626b4bc054b0b7d7bb56c7b7f7b4b9728c808
+   skE: 016c462ff76d276265231671f9df46cf2ae4b621f3f0e842ec15f6063ff841a0194
+   24ce5c39ddee352b0cc15cf2782b9b7aad0c3f5091d324c43de608c2464d4ef2e
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: 0400606978b77a55730536aabb3ff81b596466b1f0ecfe13c6a9c4f9633cb99662a
+   63019387cfca443c0d342b7e0b580dd88e226daa5c50ce0ee7fcd4d545f90868a6300746
+   fbdda2b4402c315b8b62b4d4aa9b4f9f818107c3bb5b4d4f536c6245f4f061c5dffadbc4
+   ff38c6b6577962993fc0859f5beeff052f63b94b93703d599bac13e
 
-A.12.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.13.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.14.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.15.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.15.1.  PSK Setup Information
 
 
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 30]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 33]
 
 Internet-Draft                    HPKE                     February 2020
 
 
-   mode: 1
-   kemID: 2
-   kdfID: 1
-   aeadID: 1
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: c903da955074d28232e6ba339f4852abe9b4cb2383dce60ca88d6d14b16fc3e8
-   skS: 924b59aae3bcec73b8c2533513dfb0059c19e4ec8bd78e94cae7b73c2b8fe037
-   skE: f35123835eb4d8858e7f01c81840ec21b30d444c23f2e26c67f299e0c06df023
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: f1a4ebd32e84fe2614ad0a7270fb7dff328f275dc8b9d54c2345e5518130b42f
-   pkS: 6b5dcac8182954357e45a6f9eee722cab9509920441ecc3d2ada5d13f5dbda42
-   pkE: c44b2464180ddc477d579b824b2fc7931b0f59138f115af395443fd692ae1661
-   enc: c44b2464180ddc477d579b824b2fc7931b0f59138f115af395443fd692ae1661
-   zz: 8d669b593e5bc3bbdbde2a95ae892e68976a859136ebd77ea41a09d16602db57
-   context: 01000200010001c44b2464180ddc477d579b824b2fc7931b0f59138f115af39
-   5443fd692ae1661f1a4ebd32e84fe2614ad0a7270fb7dff328f275dc8b9d54c2345e5518
-   130b42f0000000000000000000000000000000000000000000000000000000000000000e
-   ca994d516108a16db86e155390f3c3cec6f0aff60ade1ae9e3189140b0f3dea55c404062
-   9c64c5efec2f7230407d612d16289d7c5d7afcf9340280abd2de1ab
-   secret: 640de51e7b5ae69424e64c931d7f28d9d495ca9c4c2ffdbc5c9f8a611dfa58c3
-   key: 53ade960668aa4983b4475e0273c2d9b
-   nonce: 86b6e1851b3de8f5793da87c
+   pkS: 04008b2f8d9d12b888774f70ee6722025ebd0061910cac04d6b447879dd2170c176
+   39a20cdff247560af7ff8a1cd7767de74fe5712cb18197171d14b8e4a030c0edb190199a
+   5fcdb5b15e036e9989eab241b050257de70bc963221dbbdd054dfac2f6557248ba14c635
+   a5de2a8b06b6ca54182fb6c065b0ddaeb157104ef78a5e1dcb97640
+   pkE: 0401464b59282a6b88623ee6449b1132a252bc7be17d59e6731c69f4ede2ff357b6
+   8e973f528ad45e087745642a06fd7e6292a7b182860ecdcf10eb6cbe0ec347ed07801f49
+   1c84614cb63ec0e5dd6ab8f4f52906b8126f8813682db6365dc7101c4069823ecffa5c80
+   b5b2e62f2c66706195b65ec415f6d64dab4cb716885a7c0945a071b
+   enc: 0401464b59282a6b88623ee6449b1132a252bc7be17d59e6731c69f4ede2ff357b6
+   8e973f528ad45e087745642a06fd7e6292a7b182860ecdcf10eb6cbe0ec347ed07801f49
+   1c84614cb63ec0e5dd6ab8f4f52906b8126f8813682db6365dc7101c4069823ecffa5c80
+   b5b2e62f2c66706195b65ec415f6d64dab4cb716885a7c0945a071b
+   zz: 01d325aaa842b0d08c52203e3de519f5822a91a4fb6b84f7a22bdbaa58738a8b0c60
+   578c76fda19a9dbfd8bdcebf5885d80723ca6eb512738b40e166ac234bab931c
+   context: 010003000200020401464b59282a6b88623ee6449b1132a252bc7be17d59e67
+   31c69f4ede2ff357b68e973f528ad45e087745642a06fd7e6292a7b182860ecdcf10eb6c
+   be0ec347ed07801f491c84614cb63ec0e5dd6ab8f4f52906b8126f8813682db6365dc710
+   1c4069823ecffa5c80b5b2e62f2c66706195b65ec415f6d64dab4cb716885a7c0945a071
+   b0400606978b77a55730536aabb3ff81b596466b1f0ecfe13c6a9c4f9633cb99662a6301
+   9387cfca443c0d342b7e0b580dd88e226daa5c50ce0ee7fcd4d545f90868a6300746fbdd
+   a2b4402c315b8b62b4d4aa9b4f9f818107c3bb5b4d4f536c6245f4f061c5dffadbc4ff38
+   c6b6577962993fc0859f5beeff052f63b94b93703d599bac13e000000000000000000000
+   000000000000000000000000000000000000000000000000000000000000000000000000
+   000000000000000000000000000000000000000000000000000000000000000000000000
+   000000000000000000000000000000000000000000000000000000000000000000000000
+   00000000000000000000000000000f19e7afbe93b9d8b9837fe0a40ada462caf9a031824
+   8f66dd7832fac65a58dcacbf170937f825b35d22fd19125483b1f2f6993549423617d8ab
+   9f65322d627b6490ce9df289fea4615a6eef004e5cec7a77f0f0478e663643a1ab75945a
+   0082e5b91ad84905c1632605d8377ed3d2cb688cf352d67466c37bfaa08c8c765077b
+   secret: a2ff54181b5c15413a7ead08e580b0c079bfadbfd0ec947b12df653783bb826e
+   04e1b078bbf7624756dfab4248b662f652eef613e70b2f8da7416c40d652e050
+   key: 24065fd86a68c21bcd1f69eea7d9624f15d3778f0c96c2ff8a03c04d8b5e6846
+   nonce: 51fb39ad98f3a339a26a764e
 
-A.15.1.1.  Encryptions
-
-
-
-
-
-
-
-
-
-
-
+A.2.2.1.  Encryptions
 
 
 
@@ -1733,7 +1899,9 @@ A.15.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 31]
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 34]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1741,40 +1909,96 @@ Internet-Draft                    HPKE                     February 2020
    sequence number: 0
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d30
-   nonce: 86b6e1851b3de8f5793da87c
-   ciphertext: 680566a43d511463e8a64d81e89c9a2caacaaa268c815a864bbd4bd67edd
-   5300e1d1257f89962fa473c0e41918
+   nonce: 51fb39ad98f3a339a26a764e
+   ciphertext: 9411c8988f7336d65b934ad5edea81b657f341d1f1e5d41bb05fa19903d2
+   1f4c7f3f6462a0c5fbcaab67020efc
 
    sequence number: 1
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d31
-   nonce: 86b6e1851b3de8f5793da87d
-   ciphertext: a990169c45c7ef5cfaf1ee040f64e946b71424ad74165f59ef13ffe752e9
-   ea6d5e7e6edd366fdb62f76840b221
+   nonce: 51fb39ad98f3a339a26a764f
+   ciphertext: d8c98f96bd510b91c120a517fcac300cee5af2eaf3478cf08b06279c12fb
+   46acde7f83012f0134f0329132217a
 
    sequence number: 2
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d32
-   nonce: 86b6e1851b3de8f5793da87e
-   ciphertext: bb6acca5ee76f39ff44feea5a6d8d0b0a94f71767dffb24c023d2ba908c9
-   4c27b14ea1d1aa132088cdd801c7d0
+   nonce: 51fb39ad98f3a339a26a764c
+   ciphertext: 361e7edb6a1192913e60b30fc058ae2d2af118503a6c053b956e4259ffd0
+   64b7bdbbe4451e74528b14f15bd44f
 
    sequence number: 4
    plaintext: 4265617574792069732074727574682c20747275746820626561757479
    aad: 436f756e742d34
-   nonce: 86b6e1851b3de8f5793da878
-   ciphertext: 001a42b2883eaf05954a784101575dc382f0fe5e61ea2e32dbb80d788ec7
-   3506e31fe0dc67ef7413e34af45c94
+   nonce: 51fb39ad98f3a339a26a764a
+   ciphertext: 1e392fcdf179a034b0bb34062fa359dab4bde3093600d7739f0b30d31b0b
+   6f831c6440c8102eb5a683cb78dde5
 
-A.16.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
+A.2.3.  Auth Setup Information
 
-A.17.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
+   mode: 2
+   kemID: 3
+   kdfID: 2
+   aeadID: 2
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: 0167e7922fb57fe3a23622c078e92353a1108e6bfadbd977455db6a0bbf61f42ea4
+   6b880d138a95e14c3aaa1fb8625229990e275126e00f1fb49aaad09e18fe097df
+   skS: 01c1b5c8c23e3c076ad3ff2334981aea232aeeb884498c9b50140e425c3fb98bc4c
+   1a37368596ea2183e48cc5f948bdd53eab21eb475494907dcffbadcde086afb9b
+   skE: 0064ce1aab784114ca4e8da89951b72ddb688a8f38d49fbede30acc8b48f16bb80f
+   1ccc2e5d4079988b23c8042ee1f971789562affd99c7a09044c2f4499553f3c78
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: 0401f99b3daeec2adb4d9dc34fe981c761083890a9c446c1debbfffca9c35db09e6
+   78c03d5c062b13854151034d65e121123a6eb1e5f2e475ac78e13c56121a0fbe43801c6c
+   fc7b845f902d2a036aa89dfbd3c1ae148f278b71f83d68bc9cc4ee65e43c484f19456663
+   ac3f04c1d824b4dd0edce454b36d933235f6025968468ec53bcb275
 
-A.18.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.18.1.  PSK Setup Information
 
 
+Barnes & Bhargavan       Expires 29 August 2020                [Page 35]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   pkS: 0400b04e91f3a4ae9ca6de1d1df6642685100b87d667c39bb39ef49c5b8da5ca33c
+   d54ce4a3fda1cc02295f501d21ff858f005731288b5095a0a9ea18e468890ae3f1a00b5f
+   b6a0b5ad28e0bb9285f86adc92e4764cf71da57cfc9315b9c661176b2f5248b9bea5ca66
+   f2edfb422a755795d9f2ff91e9d36c3e1996de867c8f151c13ced3d
+   pkE: 04019290abae722dd3a5dc603c3baec5275a7490fd85d779132dd00fbe5876bece2
+   d8ae51aab0ebd48ed43e0e017316be0c6e1e8290589b59c17670979586e6fea2ee300467
+   d9d8c8fe93da9961d25e569cb87937666bf4abdf9493edb14b2c64e41d7b4b695f63f940
+   f51c9f8b8921f713575978140cadcae55f78175fb14fd6dbfa7bcb0
+   enc: 04019290abae722dd3a5dc603c3baec5275a7490fd85d779132dd00fbe5876bece2
+   d8ae51aab0ebd48ed43e0e017316be0c6e1e8290589b59c17670979586e6fea2ee300467
+   d9d8c8fe93da9961d25e569cb87937666bf4abdf9493edb14b2c64e41d7b4b695f63f940
+   f51c9f8b8921f713575978140cadcae55f78175fb14fd6dbfa7bcb0
+   zz: 002ae310e807be1850299dd1bc9e606de09ccf62eed02abd88793fcdf22e2008cf55
+   80108cbe9c5d4f813e5f560bfc4964c2d932700833ccf4af6eb4454457d1ffa70153c4d1
+   23d448a732603b37a84ec20cae6387477f0005e9024a29b20843dadb7843c198c2688532
+   3335e6335496e12aa522490ad3cba3744fe848b0357292f657ad
+   context: 0200030002000204019290abae722dd3a5dc603c3baec5275a7490fd85d7791
+   32dd00fbe5876bece2d8ae51aab0ebd48ed43e0e017316be0c6e1e8290589b59c1767097
+   9586e6fea2ee300467d9d8c8fe93da9961d25e569cb87937666bf4abdf9493edb14b2c64
+   e41d7b4b695f63f940f51c9f8b8921f713575978140cadcae55f78175fb14fd6dbfa7bcb
+   00401f99b3daeec2adb4d9dc34fe981c761083890a9c446c1debbfffca9c35db09e678c0
+   3d5c062b13854151034d65e121123a6eb1e5f2e475ac78e13c56121a0fbe43801c6cfc7b
+   845f902d2a036aa89dfbd3c1ae148f278b71f83d68bc9cc4ee65e43c484f19456663ac3f
+   04c1d824b4dd0edce454b36d933235f6025968468ec53bcb2750400b04e91f3a4ae9ca6d
+   e1d1df6642685100b87d667c39bb39ef49c5b8da5ca33cd54ce4a3fda1cc02295f501d21
+   ff858f005731288b5095a0a9ea18e468890ae3f1a00b5fb6a0b5ad28e0bb9285f86adc92
+   e4764cf71da57cfc9315b9c661176b2f5248b9bea5ca66f2edfb422a755795d9f2ff91e9
+   d36c3e1996de867c8f151c13ced3dcf83e1357eefb8bdf1542850d66d8007d620e4050b5
+   715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a53
+   8327af927da3e490ce9df289fea4615a6eef004e5cec7a77f0f0478e663643a1ab75945a
+   0082e5b91ad84905c1632605d8377ed3d2cb688cf352d67466c37bfaa08c8c765077b
+   secret: 5b6235bd3622027add71cf60f17b7673541ecb2bbe49085baf10ebe89134ab64
+   11bd0b75b4621ce47dcd1649700c2903eb5629edd18ee585245123cb2c450b69
+   key: d81f29eae626b1d6de7684dcf8bf9a385155836eb6cc8cfa39f4ac790948967e
+   nonce: ca84d6c140a4f270e9af08ec
+
+A.2.3.1.  Encryptions
 
 
 
@@ -1789,7 +2013,287 @@ A.18.1.  PSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 32]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 36]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   sequence number: 0
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d30
+   nonce: ca84d6c140a4f270e9af08ec
+   ciphertext: e93a30618031c82fb2f2396e56eac0d6ccb7d8f9ade21e8fadbd5f994b71
+   4975e9d4a3b58d2c768f51d4d5f0cd
+
+   sequence number: 1
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d31
+   nonce: ca84d6c140a4f270e9af08ed
+   ciphertext: 3738ec9417ac07e1e1c9ee6d0722d74972ed3c3020a5b44b495ecf576e95
+   0291d06d0f0f73bb6844831f130ed4
+
+   sequence number: 2
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d32
+   nonce: ca84d6c140a4f270e9af08ee
+   ciphertext: 49bc86ef2ff0653da3a1099b15efd56aacfa80361c819ea82e1eca24a657
+   69dd67982ab0467e6574907a0e1d73
+
+   sequence number: 4
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d34
+   nonce: ca84d6c140a4f270e9af08e8
+   ciphertext: 65d227ce7b5acd1038bfbcf85ecdc042e2531195c49c37dc74eec2c2d3f3
+   cf036adb4bfbac222267748263eb4f
+
+A.2.4.  AuthPSK Setup Information
+
+   mode: 3
+   kemID: 3
+   kdfID: 2
+   aeadID: 2
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: 018ff7b8d424aaf0ed811739a1980fbac4a4a788d856951b30252ecf87bf4786f6a
+   a517c5871a41b418b815e5c7a764e43288a0e398cafb1a11f84ddae80f1fc6eae
+   skS: 001c70b0b9c82580dd9ffb1686a4c1ce8d5d54e669905d2bf91c6e40b81605bae50
+   9d22a262435100f2da38a40094bdaabd88ec9a548100274108c0549aa88f0647f
+   skE: 01c2e688a75c6f16702a9053d5fddc6ed0b848ebc19a7312ec6d995d8537c0480e9
+   5bad4886c152cd156777af7b9d2b915ea017668fb462d3cb777a83ba5fb3cc941
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: 040073825b5a6284f6e024a1d1fb192645e8af25e62f95f72d62ff36dc8ed4de4c5
+   5d3dc48fbb3cb747c766b024f03fd9cb0f70bfe08529389e18d4a26fa62c1124e3e01988
+   10d300f3a1ae823224013e6ab198195375c54c6df5ef6ee2de9f884735e01d0bf023e518
+   e81759ed2d4c3de949b9117c39cab6186d4c8a21d6271cbf88d073c
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 37]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   pkS: 04007b742d25deaf50156f092ca17b3ce582a77da2db3be658e5e8d1df40fa83ac5
+   c5e5d673249d1f8cf678c4328dc09718c232850c18ff99dd87e15910b49825c321200e6b
+   6cd8010792f5be0c01079a87ca1abc03a9567674a034436a5fd7cc6ecf6ea54c92d1ef0a
+   240f1e407348f69cda753f7b6ed24ede658391612c1c56c778f5ac4
+   pkE: 0400e6201790d044da8ec517fc3b427e8f45039dcf45268b1b542e944e9aa30c8d8
+   0efd5b5336ae3a8cc5954d3cfe6f8fc245b9de6dae80d0976568f3018e5e55c572700c0d
+   399df6f437ed1a002100da5fee7ecbe22f457e296ea896f160b3d8240c7c4ff8b32f9712
+   2be011bc7d896e76a1ace94347f2260db92e64d523578b96c1f93f4
+   enc: 0400e6201790d044da8ec517fc3b427e8f45039dcf45268b1b542e944e9aa30c8d8
+   0efd5b5336ae3a8cc5954d3cfe6f8fc245b9de6dae80d0976568f3018e5e55c572700c0d
+   399df6f437ed1a002100da5fee7ecbe22f457e296ea896f160b3d8240c7c4ff8b32f9712
+   2be011bc7d896e76a1ace94347f2260db92e64d523578b96c1f93f4
+   zz: 01d8c0c1dd80d293c21d47b9702adb3b62822216294b5f5b1f42c80f9a520bd4388a
+   4910d46faf98b6a70261165258584bf5e2e3966f89e3063e118a0ce2d15b8b910157e379
+   8b86b0a6bb49caf0ab4622627652f8dde2ac7eab1a517a02e688a47eacacae285657000e
+   9cc98025d6f06ff5889ba5f9e44233d560bdb4a19c1461236dfb
+   context: 030003000200020400e6201790d044da8ec517fc3b427e8f45039dcf45268b1
+   b542e944e9aa30c8d80efd5b5336ae3a8cc5954d3cfe6f8fc245b9de6dae80d0976568f3
+   018e5e55c572700c0d399df6f437ed1a002100da5fee7ecbe22f457e296ea896f160b3d8
+   240c7c4ff8b32f97122be011bc7d896e76a1ace94347f2260db92e64d523578b96c1f93f
+   4040073825b5a6284f6e024a1d1fb192645e8af25e62f95f72d62ff36dc8ed4de4c55d3d
+   c48fbb3cb747c766b024f03fd9cb0f70bfe08529389e18d4a26fa62c1124e3e0198810d3
+   00f3a1ae823224013e6ab198195375c54c6df5ef6ee2de9f884735e01d0bf023e518e817
+   59ed2d4c3de949b9117c39cab6186d4c8a21d6271cbf88d073c04007b742d25deaf50156
+   f092ca17b3ce582a77da2db3be658e5e8d1df40fa83ac5c5e5d673249d1f8cf678c4328d
+   c09718c232850c18ff99dd87e15910b49825c321200e6b6cd8010792f5be0c01079a87ca
+   1abc03a9567674a034436a5fd7cc6ecf6ea54c92d1ef0a240f1e407348f69cda753f7b6e
+   d24ede658391612c1c56c778f5ac4f19e7afbe93b9d8b9837fe0a40ada462caf9a031824
+   8f66dd7832fac65a58dcacbf170937f825b35d22fd19125483b1f2f6993549423617d8ab
+   9f65322d627b6490ce9df289fea4615a6eef004e5cec7a77f0f0478e663643a1ab75945a
+   0082e5b91ad84905c1632605d8377ed3d2cb688cf352d67466c37bfaa08c8c765077b
+   secret: ebac42c5954a94acb80e36ad504a9ea835704cc0d6a12c54b8f8f16739e0f673
+   292766c0a9178ebd5483c4b08abc80f9c496fef07fce5e580a262e5411f74cba
+   key: 4a3b4976b783d37f708b3be231b4dc7d03d52ddfc4499eb2dbd74e08581c20b0
+   nonce: 855531ca5f30cd5b596148be
+
+A.2.4.1.  Encryptions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 38]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   sequence number: 0
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d30
+   nonce: 855531ca5f30cd5b596148be
+   ciphertext: c9883e246c7619387b29d1bd40af6b6aac0d223a5a28570b02eb86a337b7
+   e09450c20d131cebeab6abd704df2b
+
+   sequence number: 1
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d31
+   nonce: 855531ca5f30cd5b596148bf
+   ciphertext: a2e0f8a4c52f3f0de2edd67c91d8e4f36e4f8ba2eec9226e96386b784970
+   b9b21e7bf1a574500e5a2254c96eb5
+
+   sequence number: 2
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d32
+   nonce: 855531ca5f30cd5b596148bc
+   ciphertext: 2d4ea06f7c024df4bddc0b2755f115f3582edd149aaf3134870877c3cdc3
+   3b1262e39402296948799835712fb9
+
+   sequence number: 4
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d34
+   nonce: 855531ca5f30cd5b596148ba
+   ciphertext: ea9612bea28e4e3ecabf9194953d0c7da39ea9a7bf361d29f224b18fe053
+   47408d9381d1c332b61e2e01d94191
+
+A.3.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
+
+A.3.1.  Base Setup Information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 39]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   mode: 0
+   kemID: 1
+   kdfID: 1
+   aeadID: 3
+   info: 4f6465206f6e2061204772656369616e2055726e
+   skR: efd90477fdb7b8f60357eec8d7ae348fef38b0c55c3298c09caf9d575990bd22
+   skS: 2ee3b88417a20b5fb0a527fefaae4066a6449d2d75bed96fa2478d58f300c411
+   skE: 2118dc1de1f6578b3576b4e6996fa6517ceb28a403fce626c8e0d430bd571f8b
+   psk: 3564623362383061383163623633636135393437306338333431346566373061633
+   1636338303636333964303133353738343937343061303364616464666339
+   pskID: 456e6e796e20447572696e206172616e204d6f726961
+   pkR: 0441aa0ed8d749bab7f9a2ed9515ea60ad5b5cace45710f4ce6bf99bb44a1069d8a
+   9c12ef2f514fb1c9185c8db167c821b2aeb38d1f821ba1164101c85ede7ee13
+   pkS: 047a9f60ef11a46a211fa3ca38c14430a282cefac5b90866918d64ffad2cdfe7d41
+   fed52aaea83f703407ed9bb3db950023a1accb689ba91b5743cec9d4680d080
+   pkE: 049904661176dd864002718fee7b491330d54f45bd37172b6b9ae8038cce88b9f9f
+   ad47829699477de2fb014827b4a8e7f1e4a870304aad3d7986d68d35cd07ff6
+   enc: 049904661176dd864002718fee7b491330d54f45bd37172b6b9ae8038cce88b9f9f
+   ad47829699477de2fb014827b4a8e7f1e4a870304aad3d7986d68d35cd07ff6
+   zz: cd6e7bb5ff8c134f2a925e9ca022e65f5b487321bc3e576f377e6f01236a1bbb
+   context: 00000100010003049904661176dd864002718fee7b491330d54f45bd37172b6
+   b9ae8038cce88b9f9fad47829699477de2fb014827b4a8e7f1e4a870304aad3d7986d68d
+   35cd07ff60441aa0ed8d749bab7f9a2ed9515ea60ad5b5cace45710f4ce6bf99bb44a106
+   9d8a9c12ef2f514fb1c9185c8db167c821b2aeb38d1f821ba1164101c85ede7ee1300000
+   000000000000000000000000000000000000000000000000000000000000000000000000
+   00000000000000000000000000000000000000000000000000000e3b0c44298fc1c149af
+   bf4c8996fb92427ae41e4649b934ca495991b7852b85555c4040629c64c5efec2f723040
+   7d612d16289d7c5d7afcf9340280abd2de1ab
+   secret: 15a36bf657d3b3b4eb355d6bf2a595f710e4a4da37d2710964167ba8029227ee
+   key: fe8f6e7d61f81dc4cce9b185b4343323dcf7eaab8c2ac36239b2a9274c198868
+   nonce: e61fbe136571b0fa5753e51d
+
+A.3.1.1.  Encryptions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 40]
+
+Internet-Draft                    HPKE                     February 2020
+
+
+   sequence number: 0
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d30
+   nonce: e61fbe136571b0fa5753e51d
+   ciphertext: 8ca64a2de7e35f68444f4fbad9fad274e98515250c46602a775943efc0b7
+   9ce216005b465620050e465833dce0
+
+   sequence number: 1
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d31
+   nonce: e61fbe136571b0fa5753e51c
+   ciphertext: 8c04a6d97f1b43b20b6431ebe5379a3b8fc44bafb74a1d7766c9299fb36d
+   2f2335321115f550d30a9eabe368fa
+
+   sequence number: 2
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d32
+   nonce: e61fbe136571b0fa5753e51f
+   ciphertext: c14f9a30f8cb66a4125a5165efd88fb3cfbf481009a0f880013d885abc44
+   6c9fce029a44dd0bad9be66ae18fa1
+
+   sequence number: 4
+   plaintext: 4265617574792069732074727574682c20747275746820626561757479
+   aad: 436f756e742d34
+   nonce: e61fbe136571b0fa5753e519
+   ciphertext: 221884f4ff14f3386e6bfb00f0179bba99da2c5a6a3867078b11fdea39c4
+   7f088dbdc8f271c842e97f6d048c71
+
+A.3.2.  PSK Setup Information
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes & Bhargavan       Expires 29 August 2020                [Page 41]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1826,7 +2330,7 @@ Internet-Draft                    HPKE                     February 2020
    key: b0b09b57b888ab7f5ff36c301bbecf73a10c952f3089b298969894bdb6ec092c
    nonce: 293fb9ecc6499ab799f74aba
 
-A.18.1.1.  Encryptions
+A.3.2.1.  Encryptions
 
 
 
@@ -1845,7 +2349,7 @@ A.18.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 33]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 42]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -1878,77 +2382,10 @@ Internet-Draft                    HPKE                     February 2020
    ciphertext: 3a2cc9fd2ce341bff18b3a55949afca1ad73faf18e6d331fa37a467dbef1
    5696b2fea0228808f7bc121ee2b2e3
 
-A.19.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.20.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.21.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.22.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.22.1.  PSK Setup Information
-
-   mode: 1
-   kemID: 3
-   kdfID: 2
-   aeadID: 2
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: 01244fd7a0d476f49b7450267d272ec0f34c6a46e817df3cea2953e01fc43851a40
-   d73e07bc3a36faaa7ee39505dc451eb68e86a4f6716e02f4dc10296e1bb3a9252
-   skS: 01b61d8ec4cddae3fa76d941b05587b0a5afe0323ff8d7086178e4b4dbd2bfe07e8
-   3299fd8a232e8ba07b608b32907a626b4bc054b0b7d7bb56c7b7f7b4b9728c808
-   skE: 016c462ff76d276265231671f9df46cf2ae4b621f3f0e842ec15f6063ff841a0194
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 34]
-
-Internet-Draft                    HPKE                     February 2020
+A.3.3.  Auth Setup Information
 
 
-   24ce5c39ddee352b0cc15cf2782b9b7aad0c3f5091d324c43de608c2464d4ef2e
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: 0400606978b77a55730536aabb3ff81b596466b1f0ecfe13c6a9c4f9633cb99662a
-   63019387cfca443c0d342b7e0b580dd88e226daa5c50ce0ee7fcd4d545f90868a6300746
-   fbdda2b4402c315b8b62b4d4aa9b4f9f818107c3bb5b4d4f536c6245f4f061c5dffadbc4
-   ff38c6b6577962993fc0859f5beeff052f63b94b93703d599bac13e
-   pkS: 04008b2f8d9d12b888774f70ee6722025ebd0061910cac04d6b447879dd2170c176
-   39a20cdff247560af7ff8a1cd7767de74fe5712cb18197171d14b8e4a030c0edb190199a
-   5fcdb5b15e036e9989eab241b050257de70bc963221dbbdd054dfac2f6557248ba14c635
-   a5de2a8b06b6ca54182fb6c065b0ddaeb157104ef78a5e1dcb97640
-   pkE: 0401464b59282a6b88623ee6449b1132a252bc7be17d59e6731c69f4ede2ff357b6
-   8e973f528ad45e087745642a06fd7e6292a7b182860ecdcf10eb6cbe0ec347ed07801f49
-   1c84614cb63ec0e5dd6ab8f4f52906b8126f8813682db6365dc7101c4069823ecffa5c80
-   b5b2e62f2c66706195b65ec415f6d64dab4cb716885a7c0945a071b
-   enc: 0401464b59282a6b88623ee6449b1132a252bc7be17d59e6731c69f4ede2ff357b6
-   8e973f528ad45e087745642a06fd7e6292a7b182860ecdcf10eb6cbe0ec347ed07801f49
-   1c84614cb63ec0e5dd6ab8f4f52906b8126f8813682db6365dc7101c4069823ecffa5c80
-   b5b2e62f2c66706195b65ec415f6d64dab4cb716885a7c0945a071b
-   zz: 01d325aaa842b0d08c52203e3de519f5822a91a4fb6b84f7a22bdbaa58738a8b0c60
-   578c76fda19a9dbfd8bdcebf5885d80723ca6eb512738b40e166ac234bab931c
-   context: 010003000200020401464b59282a6b88623ee6449b1132a252bc7be17d59e67
-   31c69f4ede2ff357b68e973f528ad45e087745642a06fd7e6292a7b182860ecdcf10eb6c
-   be0ec347ed07801f491c84614cb63ec0e5dd6ab8f4f52906b8126f8813682db6365dc710
-   1c4069823ecffa5c80b5b2e62f2c66706195b65ec415f6d64dab4cb716885a7c0945a071
-   b0400606978b77a55730536aabb3ff81b596466b1f0ecfe13c6a9c4f9633cb99662a6301
-   9387cfca443c0d342b7e0b580dd88e226daa5c50ce0ee7fcd4d545f90868a6300746fbdd
-   a2b4402c315b8b62b4d4aa9b4f9f818107c3bb5b4d4f536c6245f4f061c5dffadbc4ff38
-   c6b6577962993fc0859f5beeff052f63b94b93703d599bac13e000000000000000000000
-   000000000000000000000000000000000000000000000000000000000000000000000000
-   000000000000000000000000000000000000000000000000000000000000000000000000
-   000000000000000000000000000000000000000000000000000000000000000000000000
-   00000000000000000000000000000f19e7afbe93b9d8b9837fe0a40ada462caf9a031824
-   8f66dd7832fac65a58dcacbf170937f825b35d22fd19125483b1f2f6993549423617d8ab
-   9f65322d627b6490ce9df289fea4615a6eef004e5cec7a77f0f0478e663643a1ab75945a
-   0082e5b91ad84905c1632605d8377ed3d2cb688cf352d67466c37bfaa08c8c765077b
-   secret: a2ff54181b5c15413a7ead08e580b0c079bfadbfd0ec947b12df653783bb826e
-   04e1b078bbf7624756dfab4248b662f652eef613e70b2f8da7416c40d652e050
-   key: 24065fd86a68c21bcd1f69eea7d9624f15d3778f0c96c2ff8a03c04d8b5e6846
-   nonce: 51fb39ad98f3a339a26a764e
 
-A.22.1.1.  Encryptions
 
 
 
@@ -1957,175 +2394,18 @@ A.22.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 35]
-
-Internet-Draft                    HPKE                     February 2020
 
 
-   sequence number: 0
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d30
-   nonce: 51fb39ad98f3a339a26a764e
-   ciphertext: 9411c8988f7336d65b934ad5edea81b657f341d1f1e5d41bb05fa19903d2
-   1f4c7f3f6462a0c5fbcaab67020efc
 
-   sequence number: 1
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d31
-   nonce: 51fb39ad98f3a339a26a764f
-   ciphertext: d8c98f96bd510b91c120a517fcac300cee5af2eaf3478cf08b06279c12fb
-   46acde7f83012f0134f0329132217a
 
-   sequence number: 2
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d32
-   nonce: 51fb39ad98f3a339a26a764c
-   ciphertext: 361e7edb6a1192913e60b30fc058ae2d2af118503a6c053b956e4259ffd0
-   64b7bdbbe4451e74528b14f15bd44f
 
-   sequence number: 4
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d34
-   nonce: 51fb39ad98f3a339a26a764a
-   ciphertext: 1e392fcdf179a034b0bb34062fa359dab4bde3093600d7739f0b30d31b0b
-   6f831c6440c8102eb5a683cb78dde5
 
-A.23.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
 
-A.24.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
 
-A.25.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
-A.26.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
-A.27.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
-A.28.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.28.1.  Auth Setup Information
-
-
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 36]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-   mode: 2
-   kemID: 2
-   kdfID: 1
-   aeadID: 1
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: 0a08a01d1f7033200bc94e8a551f7ef0b1c076940e2a4eb6d63df9cb03f65b66
-   skS: 274e3083ca1c7462f80b2586b811e8058f7d5077aaf57829804a632555bed1a6
-   skE: 5bb3e4aa6deff90de795b4b0f8dde7fa315a25d8b1a372324b60c09142ae8790
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: fcc53e696c9e98508909c461fd173c315d6fbdfb8bc5145bc5e14d8e8bdc891b
-   pkS: 8dce67e0beb5cbbba1f02f527f6bdf21d739d95f8236c408a231e7c5994e987a
-   pkE: 8e0385b6a817d31fa221a24a743d52c2f28babc3fd9c472b465ab3c554eb8705
-   enc: 8e0385b6a817d31fa221a24a743d52c2f28babc3fd9c472b465ab3c554eb8705
-   zz: c23a969bb27388e124753cddb87b961dcb8ea69df6ce06e2c38cf6b48a5baa0afcb8
-   87a3b59ea470e088c0c2438d52a6d62165edc7a574282b5600f85eb77920
-   context: 020002000100018e0385b6a817d31fa221a24a743d52c2f28babc3fd9c472b4
-   65ab3c554eb8705fcc53e696c9e98508909c461fd173c315d6fbdfb8bc5145bc5e14d8e8
-   bdc891b8dce67e0beb5cbbba1f02f527f6bdf21d739d95f8236c408a231e7c5994e987ae
-   3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85555c404062
-   9c64c5efec2f7230407d612d16289d7c5d7afcf9340280abd2de1ab
-   secret: 4daa0f01aeb98cbeaf4df37951738703e302377c3e67781a82215e5cc08c1015
-   key: 37d7bd91850532cd99a7ef92005385e5
-   nonce: a4d99fcff465f605298e42ed
-
-A.28.1.1.  Encryptions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 37]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-   sequence number: 0
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d30
-   nonce: a4d99fcff465f605298e42ed
-   ciphertext: 819dde5d20c32ab17b951ec95193e487e859e66f85b51ed8fe26ac1ef8ec
-   6a81f58e36a33bcfc753b6f99f6b85
-
-   sequence number: 1
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d31
-   nonce: a4d99fcff465f605298e42ec
-   ciphertext: a74432530cedd02492e2a3b634e7c60e1be96099d00dbe7f1a98dad8cd0c
-   8ded65814ee41364a14f38abf71f36
-
-   sequence number: 2
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d32
-   nonce: a4d99fcff465f605298e42ef
-   ciphertext: 83097210c9db0f6523f0fae2b501a8e0d2c0f07c051388aa8fdb1c7bd773
-   6da75b89b296fe9e1132a9cff06f82
-
-   sequence number: 4
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d34
-   nonce: a4d99fcff465f605298e42e9
-   ciphertext: 37bb31e8bdc4a604610a4cd9aa0bbf6b581cf3123b62455c41776b335f45
-   be8cca0d34a5cb1b2f18cdf7befd64
-
-A.29.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.30.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.31.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.31.1.  Auth Setup Information
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 38]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 43]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -2163,7 +2443,7 @@ Internet-Draft                    HPKE                     February 2020
    key: e23b412870ea8ce4d178df789d5cf6a4b3f2df9d5b1e9580c95696393d9db28d
    nonce: 6a6049cb5c7765a88960c320
 
-A.31.1.1.  Encryptions
+A.3.3.1.  Encryptions
 
 
 
@@ -2181,7 +2461,7 @@ A.31.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 39]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 44]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -2214,254 +2494,30 @@ Internet-Draft                    HPKE                     February 2020
    ciphertext: 71adc526725cb8bec5c149a81da7cdd57ea5a342437dd937514ed4332f4c
    e641c8095cf87a21cf53fdbb6ae89b
 
-A.32.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.33.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.34.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.35.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.35.1.  Auth Setup Information
-
-   mode: 2
-   kemID: 3
-   kdfID: 2
-   aeadID: 2
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: 0167e7922fb57fe3a23622c078e92353a1108e6bfadbd977455db6a0bbf61f42ea4
-   6b880d138a95e14c3aaa1fb8625229990e275126e00f1fb49aaad09e18fe097df
-   skS: 01c1b5c8c23e3c076ad3ff2334981aea232aeeb884498c9b50140e425c3fb98bc4c
-   1a37368596ea2183e48cc5f948bdd53eab21eb475494907dcffbadcde086afb9b
-   skE: 0064ce1aab784114ca4e8da89951b72ddb688a8f38d49fbede30acc8b48f16bb80f
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 40]
-
-Internet-Draft                    HPKE                     February 2020
+A.3.4.  AuthPSK Setup Information
 
 
-   1ccc2e5d4079988b23c8042ee1f971789562affd99c7a09044c2f4499553f3c78
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: 0401f99b3daeec2adb4d9dc34fe981c761083890a9c446c1debbfffca9c35db09e6
-   78c03d5c062b13854151034d65e121123a6eb1e5f2e475ac78e13c56121a0fbe43801c6c
-   fc7b845f902d2a036aa89dfbd3c1ae148f278b71f83d68bc9cc4ee65e43c484f19456663
-   ac3f04c1d824b4dd0edce454b36d933235f6025968468ec53bcb275
-   pkS: 0400b04e91f3a4ae9ca6de1d1df6642685100b87d667c39bb39ef49c5b8da5ca33c
-   d54ce4a3fda1cc02295f501d21ff858f005731288b5095a0a9ea18e468890ae3f1a00b5f
-   b6a0b5ad28e0bb9285f86adc92e4764cf71da57cfc9315b9c661176b2f5248b9bea5ca66
-   f2edfb422a755795d9f2ff91e9d36c3e1996de867c8f151c13ced3d
-   pkE: 04019290abae722dd3a5dc603c3baec5275a7490fd85d779132dd00fbe5876bece2
-   d8ae51aab0ebd48ed43e0e017316be0c6e1e8290589b59c17670979586e6fea2ee300467
-   d9d8c8fe93da9961d25e569cb87937666bf4abdf9493edb14b2c64e41d7b4b695f63f940
-   f51c9f8b8921f713575978140cadcae55f78175fb14fd6dbfa7bcb0
-   enc: 04019290abae722dd3a5dc603c3baec5275a7490fd85d779132dd00fbe5876bece2
-   d8ae51aab0ebd48ed43e0e017316be0c6e1e8290589b59c17670979586e6fea2ee300467
-   d9d8c8fe93da9961d25e569cb87937666bf4abdf9493edb14b2c64e41d7b4b695f63f940
-   f51c9f8b8921f713575978140cadcae55f78175fb14fd6dbfa7bcb0
-   zz: 002ae310e807be1850299dd1bc9e606de09ccf62eed02abd88793fcdf22e2008cf55
-   80108cbe9c5d4f813e5f560bfc4964c2d932700833ccf4af6eb4454457d1ffa70153c4d1
-   23d448a732603b37a84ec20cae6387477f0005e9024a29b20843dadb7843c198c2688532
-   3335e6335496e12aa522490ad3cba3744fe848b0357292f657ad
-   context: 0200030002000204019290abae722dd3a5dc603c3baec5275a7490fd85d7791
-   32dd00fbe5876bece2d8ae51aab0ebd48ed43e0e017316be0c6e1e8290589b59c1767097
-   9586e6fea2ee300467d9d8c8fe93da9961d25e569cb87937666bf4abdf9493edb14b2c64
-   e41d7b4b695f63f940f51c9f8b8921f713575978140cadcae55f78175fb14fd6dbfa7bcb
-   00401f99b3daeec2adb4d9dc34fe981c761083890a9c446c1debbfffca9c35db09e678c0
-   3d5c062b13854151034d65e121123a6eb1e5f2e475ac78e13c56121a0fbe43801c6cfc7b
-   845f902d2a036aa89dfbd3c1ae148f278b71f83d68bc9cc4ee65e43c484f19456663ac3f
-   04c1d824b4dd0edce454b36d933235f6025968468ec53bcb2750400b04e91f3a4ae9ca6d
-   e1d1df6642685100b87d667c39bb39ef49c5b8da5ca33cd54ce4a3fda1cc02295f501d21
-   ff858f005731288b5095a0a9ea18e468890ae3f1a00b5fb6a0b5ad28e0bb9285f86adc92
-   e4764cf71da57cfc9315b9c661176b2f5248b9bea5ca66f2edfb422a755795d9f2ff91e9
-   d36c3e1996de867c8f151c13ced3dcf83e1357eefb8bdf1542850d66d8007d620e4050b5
-   715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a53
-   8327af927da3e490ce9df289fea4615a6eef004e5cec7a77f0f0478e663643a1ab75945a
-   0082e5b91ad84905c1632605d8377ed3d2cb688cf352d67466c37bfaa08c8c765077b
-   secret: 5b6235bd3622027add71cf60f17b7673541ecb2bbe49085baf10ebe89134ab64
-   11bd0b75b4621ce47dcd1649700c2903eb5629edd18ee585245123cb2c450b69
-   key: d81f29eae626b1d6de7684dcf8bf9a385155836eb6cc8cfa39f4ac790948967e
-   nonce: ca84d6c140a4f270e9af08ec
 
-A.35.1.1.  Encryptions
 
 
 
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 41]
-
-Internet-Draft                    HPKE                     February 2020
 
 
-   sequence number: 0
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d30
-   nonce: ca84d6c140a4f270e9af08ec
-   ciphertext: e93a30618031c82fb2f2396e56eac0d6ccb7d8f9ade21e8fadbd5f994b71
-   4975e9d4a3b58d2c768f51d4d5f0cd
 
-   sequence number: 1
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d31
-   nonce: ca84d6c140a4f270e9af08ed
-   ciphertext: 3738ec9417ac07e1e1c9ee6d0722d74972ed3c3020a5b44b495ecf576e95
-   0291d06d0f0f73bb6844831f130ed4
 
-   sequence number: 2
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d32
-   nonce: ca84d6c140a4f270e9af08ee
-   ciphertext: 49bc86ef2ff0653da3a1099b15efd56aacfa80361c819ea82e1eca24a657
-   69dd67982ab0467e6574907a0e1d73
 
-   sequence number: 4
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d34
-   nonce: ca84d6c140a4f270e9af08e8
-   ciphertext: 65d227ce7b5acd1038bfbcf85ecdc042e2531195c49c37dc74eec2c2d3f3
-   cf036adb4bfbac222267748263eb4f
 
-A.36.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
 
-A.37.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
-A.37.1.  AuthPSK Setup Information
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 42]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-   mode: 3
-   kemID: 2
-   kdfID: 1
-   aeadID: 1
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: b6510cb5e716a9a482b5415c53c0c03cc2843036660a4a41c0ae5ff2153da8bb
-   skS: fae69766a126d64f01d0e7d98cd6ec3c070e7adbaad5175cdb85c726e645fab3
-   skE: a6b6bbb312dbebe9845ad17276d00177665a566a678f23e3cdd90246d6d7bc1b
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: ad24daab7cf5292112fe0c88d9b718ba1c13b9de117a562d81143e5cd44a6a34
-   pkS: 8fa928b39e2ac2e9e5169c82ac4858ed73e873b3997bd1c9f959b1536770bd70
-   pkE: 565332007b0fa753345902168c10a0ada434346dec1043f590e7cf2b65889825
-   enc: 565332007b0fa753345902168c10a0ada434346dec1043f590e7cf2b65889825
-   zz: 86be5ab07841ec62f86a9229b7c3a1ccc273a984aba4d889bc614ae781f9c42fe23f
-   a8affd75d61a5af02592b599f6f701a967d8d34317c0d9a3a1b3ce5fb95c
-   context: 03000200010001565332007b0fa753345902168c10a0ada434346dec1043f59
-   0e7cf2b65889825ad24daab7cf5292112fe0c88d9b718ba1c13b9de117a562d81143e5cd
-   44a6a348fa928b39e2ac2e9e5169c82ac4858ed73e873b3997bd1c9f959b1536770bd70e
-   ca994d516108a16db86e155390f3c3cec6f0aff60ade1ae9e3189140b0f3dea55c404062
-   9c64c5efec2f7230407d612d16289d7c5d7afcf9340280abd2de1ab
-   secret: 0e360737217bf54c4f9660414ad857dfcf0a2419aca181bd8ecdbe8dd1563a36
-   key: 9b59048c7fa79046b30866f60a14c7b6
-   nonce: 9e1b30052d1260a35b439162
-
-A.37.1.1.  Encryptions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 43]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-   sequence number: 0
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d30
-   nonce: 9e1b30052d1260a35b439162
-   ciphertext: 7a9b7ce26eb18ff13f34e4e05e3c0064737c06000ffb9dd900f1eb63abb8
-   39f17af22009e38944bdf7842f6ce5
-
-   sequence number: 1
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d31
-   nonce: 9e1b30052d1260a35b439163
-   ciphertext: 0d4423c76fae6e6e38ef9b5768c16238ec0ff20014ac0d84b49d87cd0056
-   2d05ef67ab442b375d51bd1e931f62
-
-   sequence number: 2
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d32
-   nonce: 9e1b30052d1260a35b439160
-   ciphertext: 9f635ce5297959256dbcdb1acbbc7bb5a8f1100511090232e2e8f3d6ee4e
-   067a2c4311401b5f91ae7f5c0a99dc
-
-   sequence number: 4
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d34
-   nonce: 9e1b30052d1260a35b439166
-   ciphertext: 5b0a5bc354a87a07226abf016e8e689a6316cb6c42fa3506dedba813e042
-   9b8e3cacc2e6d311e900d6441f36be
-
-A.38.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.39.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.40.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
-
-A.41.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.42.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.43.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.44.  DHKEM(P-256), HKDF-SHA256, ChaCha20Poly1305
-
-A.44.1.  AuthPSK Setup Information
-
-
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 44]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 45]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -2499,7 +2555,7 @@ Internet-Draft                    HPKE                     February 2020
    key: 8d0e8ea21988d7eed10e5b4addba4f0865cd36f87c24181121703eb88961ef2a
    nonce: 83af2565d56b585c5380ed11
 
-A.44.1.1.  Encryptions
+A.3.4.1.  Encryptions
 
 
 
@@ -2517,7 +2573,7 @@ A.44.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 45]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 46]
 
 Internet-Draft                    HPKE                     February 2020
 
@@ -2550,118 +2606,6 @@ Internet-Draft                    HPKE                     February 2020
    ciphertext: 8ea25c2e1e93441779fce40df6b0f88664d1953a250fc9c531bc1dc9b630
    39c6061f181e685efb0ed413a0f589
 
-A.45.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.46.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.47.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.48.  DHKEM(P-521), HKDF-SHA512, AES-GCM-256
-
-A.48.1.  AuthPSK Setup Information
-
-   mode: 3
-   kemID: 3
-   kdfID: 2
-   aeadID: 2
-   info: 4f6465206f6e2061204772656369616e2055726e
-   skR: 018ff7b8d424aaf0ed811739a1980fbac4a4a788d856951b30252ecf87bf4786f6a
-   a517c5871a41b418b815e5c7a764e43288a0e398cafb1a11f84ddae80f1fc6eae
-   skS: 001c70b0b9c82580dd9ffb1686a4c1ce8d5d54e669905d2bf91c6e40b81605bae50
-   9d22a262435100f2da38a40094bdaabd88ec9a548100274108c0549aa88f0647f
-   skE: 01c2e688a75c6f16702a9053d5fddc6ed0b848ebc19a7312ec6d995d8537c0480e9
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 46]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-   5bad4886c152cd156777af7b9d2b915ea017668fb462d3cb777a83ba5fb3cc941
-   psk: 3564623362383061383163623633636135393437306338333431346566373061633
-   1636338303636333964303133353738343937343061303364616464666339
-   pskID: 456e6e796e20447572696e206172616e204d6f726961
-   pkR: 040073825b5a6284f6e024a1d1fb192645e8af25e62f95f72d62ff36dc8ed4de4c5
-   5d3dc48fbb3cb747c766b024f03fd9cb0f70bfe08529389e18d4a26fa62c1124e3e01988
-   10d300f3a1ae823224013e6ab198195375c54c6df5ef6ee2de9f884735e01d0bf023e518
-   e81759ed2d4c3de949b9117c39cab6186d4c8a21d6271cbf88d073c
-   pkS: 04007b742d25deaf50156f092ca17b3ce582a77da2db3be658e5e8d1df40fa83ac5
-   c5e5d673249d1f8cf678c4328dc09718c232850c18ff99dd87e15910b49825c321200e6b
-   6cd8010792f5be0c01079a87ca1abc03a9567674a034436a5fd7cc6ecf6ea54c92d1ef0a
-   240f1e407348f69cda753f7b6ed24ede658391612c1c56c778f5ac4
-   pkE: 0400e6201790d044da8ec517fc3b427e8f45039dcf45268b1b542e944e9aa30c8d8
-   0efd5b5336ae3a8cc5954d3cfe6f8fc245b9de6dae80d0976568f3018e5e55c572700c0d
-   399df6f437ed1a002100da5fee7ecbe22f457e296ea896f160b3d8240c7c4ff8b32f9712
-   2be011bc7d896e76a1ace94347f2260db92e64d523578b96c1f93f4
-   enc: 0400e6201790d044da8ec517fc3b427e8f45039dcf45268b1b542e944e9aa30c8d8
-   0efd5b5336ae3a8cc5954d3cfe6f8fc245b9de6dae80d0976568f3018e5e55c572700c0d
-   399df6f437ed1a002100da5fee7ecbe22f457e296ea896f160b3d8240c7c4ff8b32f9712
-   2be011bc7d896e76a1ace94347f2260db92e64d523578b96c1f93f4
-   zz: 01d8c0c1dd80d293c21d47b9702adb3b62822216294b5f5b1f42c80f9a520bd4388a
-   4910d46faf98b6a70261165258584bf5e2e3966f89e3063e118a0ce2d15b8b910157e379
-   8b86b0a6bb49caf0ab4622627652f8dde2ac7eab1a517a02e688a47eacacae285657000e
-   9cc98025d6f06ff5889ba5f9e44233d560bdb4a19c1461236dfb
-   context: 030003000200020400e6201790d044da8ec517fc3b427e8f45039dcf45268b1
-   b542e944e9aa30c8d80efd5b5336ae3a8cc5954d3cfe6f8fc245b9de6dae80d0976568f3
-   018e5e55c572700c0d399df6f437ed1a002100da5fee7ecbe22f457e296ea896f160b3d8
-   240c7c4ff8b32f97122be011bc7d896e76a1ace94347f2260db92e64d523578b96c1f93f
-   4040073825b5a6284f6e024a1d1fb192645e8af25e62f95f72d62ff36dc8ed4de4c55d3d
-   c48fbb3cb747c766b024f03fd9cb0f70bfe08529389e18d4a26fa62c1124e3e0198810d3
-   00f3a1ae823224013e6ab198195375c54c6df5ef6ee2de9f884735e01d0bf023e518e817
-   59ed2d4c3de949b9117c39cab6186d4c8a21d6271cbf88d073c04007b742d25deaf50156
-   f092ca17b3ce582a77da2db3be658e5e8d1df40fa83ac5c5e5d673249d1f8cf678c4328d
-   c09718c232850c18ff99dd87e15910b49825c321200e6b6cd8010792f5be0c01079a87ca
-   1abc03a9567674a034436a5fd7cc6ecf6ea54c92d1ef0a240f1e407348f69cda753f7b6e
-   d24ede658391612c1c56c778f5ac4f19e7afbe93b9d8b9837fe0a40ada462caf9a031824
-   8f66dd7832fac65a58dcacbf170937f825b35d22fd19125483b1f2f6993549423617d8ab
-   9f65322d627b6490ce9df289fea4615a6eef004e5cec7a77f0f0478e663643a1ab75945a
-   0082e5b91ad84905c1632605d8377ed3d2cb688cf352d67466c37bfaa08c8c765077b
-   secret: ebac42c5954a94acb80e36ad504a9ea835704cc0d6a12c54b8f8f16739e0f673
-   292766c0a9178ebd5483c4b08abc80f9c496fef07fce5e580a262e5411f74cba
-   key: 4a3b4976b783d37f708b3be231b4dc7d03d52ddfc4499eb2dbd74e08581c20b0
-   nonce: 855531ca5f30cd5b596148be
-
-A.48.1.1.  Encryptions
-
-
-
-
-
-
-Barnes & Bhargavan       Expires 29 August 2020                [Page 47]
-
-Internet-Draft                    HPKE                     February 2020
-
-
-   sequence number: 0
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d30
-   nonce: 855531ca5f30cd5b596148be
-   ciphertext: c9883e246c7619387b29d1bd40af6b6aac0d223a5a28570b02eb86a337b7
-   e09450c20d131cebeab6abd704df2b
-
-   sequence number: 1
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d31
-   nonce: 855531ca5f30cd5b596148bf
-   ciphertext: a2e0f8a4c52f3f0de2edd67c91d8e4f36e4f8ba2eec9226e96386b784970
-   b9b21e7bf1a574500e5a2254c96eb5
-
-   sequence number: 2
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d32
-   nonce: 855531ca5f30cd5b596148bc
-   ciphertext: 2d4ea06f7c024df4bddc0b2755f115f3582edd149aaf3134870877c3cdc3
-   3b1262e39402296948799835712fb9
-
-   sequence number: 4
-   plaintext: 4265617574792069732074727574682c20747275746820626561757479
-   aad: 436f756e742d34
-   nonce: 855531ca5f30cd5b596148ba
-   ciphertext: ea9612bea28e4e3ecabf9194953d0c7da39ea9a7bf361d29f224b18fe053
-   47408d9381d1c332b61e2e01d94191
-
 Authors' Addresses
 
    Richard L. Barnes
@@ -2685,4 +2629,4 @@ Authors' Addresses
 
 
 
-Barnes & Bhargavan       Expires 29 August 2020                [Page 48]
+Barnes & Bhargavan       Expires 29 August 2020                [Page 47]
