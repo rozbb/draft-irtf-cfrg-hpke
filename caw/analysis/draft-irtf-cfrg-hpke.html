@@ -1166,7 +1166,7 @@ proofs of IND-CCA2 security, or fail to provide test vectors.<a href="#section-1
 of the functions provided by the collection of schemes above, but
 specified with sufficient clarity that they can be interoperably
 implemented and formally verified. It is secure against (adaptive)
-chosen ciphertext attacks (IND-CCA2 secure) under standard assumptions
+chosen ciphertext attacks (IND-CCA2 secure) under classical assumptions
 about the underlying primitives <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. A summary of this
 analysis is in <a href="#sec-properties" class="xref">Section 8.1</a>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
@@ -2045,8 +2045,7 @@ fail, and second to verify the two additional properties noted above.<a href="#s
 any IND-CCA2 scheme, and the DH group and KDF satisfy the following
 conditions:<a href="#section-8.1-4" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-8.1-5.1">DH group: The gap Computational Diffie-Hellman (CDH) problem is hard
-<span>[<a href="#GAP" class="xref">GAP</a>]</span>.<a href="#section-8.1-5.1" class="pilcrow">¶</a>
+<li id="section-8.1-5.1">DH group: The gap Diffie-Hellman (GDH) problem is hard <span>[<a href="#GAP" class="xref">GAP</a>]</span>.<a href="#section-8.1-5.1" class="pilcrow">¶</a>
 </li>
 <li id="section-8.1-5.2">Hash: Collision resistance.<a href="#section-8.1-5.2" class="pilcrow">¶</a>
 </li>
@@ -2136,6 +2135,10 @@ the given mode satisfies the property.<a href="#section-8.1-8" class="pilcrow">�
 will be necessary to prove their security.  The results from <span>[<a href="#CS01" class="xref">CS01</a>]</span>
 provide some indication that any IND-CCA2 KEM will suffice here, but are
 not conclusive given the difference in schemes.<a href="#section-8.1-10" class="pilcrow">¶</a></p>
+<p id="section-8.1-11">In addition, both <span>[<a href="#CS01" class="xref">CS01</a>]</span> and <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span> are premised on classical
+security models and assumptions, and do not consider attackers capable of quantum
+computation. A full proof of post-quantum security would need to take this
+difference into account, in addition to simply using a post-quantum KEM.<a href="#section-8.1-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="external-requirements-non-goals">
