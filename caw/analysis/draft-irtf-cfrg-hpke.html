@@ -985,13 +985,16 @@ primitives.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 <ul class="toc ulEmpty">
 <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-external-requirements-non-g" class="xref">External Requirements / Non-Goals</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-security-properties" class="xref">Security Properties</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-metadata-protection" class="xref">Metadata Protection</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-external-requirements-non-g" class="xref">External Requirements / Non-Goals</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.8.2.3">
-                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-designated-verifier-signatu" class="xref">Designated-Verifier Signature</a><a href="#section-toc.1-1.8.2.3.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-metadata-protection" class="xref">Metadata Protection</a><a href="#section-toc.1-1.8.2.3.1" class="pilcrow">¶</a></p>
+</li>
+<li class="toc ulEmpty" id="section-toc.1-1.8.2.4">
+                <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="xref">8.4</a>.  <a href="#name-designated-verifier-signatu" class="xref">Designated-Verifier Signature</a><a href="#section-toc.1-1.8.2.4.1" class="pilcrow">¶</a></p>
 </li>
 </ul>
 </li>
@@ -1162,9 +1165,10 @@ proofs of IND-CCA2 security, or fail to provide test vectors.<a href="#section-1
 <p id="section-1-4">This document defines an HPKE scheme that provides a subset
 of the functions provided by the collection of schemes above, but
 specified with sufficient clarity that they can be interoperably
-implemented and formally verified. A security analysis of this
-specification is available in <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. A summary of
-this analysis is in <a href="#sec-considerations" class="xref">Section 8</a>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+implemented and formally verified. It is secure against (adaptive)
+chosen ciphertext attacks (IND-CCA2 secure) under standard assumptions
+about the underlying primitives <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. A summary of this
+analysis is in <a href="#sec-properties" class="xref">Section 8.1</a>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-notation">
@@ -2009,176 +2013,182 @@ byte strings for public keys.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
       <h2 id="name-security-considerations">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-8-1">HPKE makes the following assumptions about its cryptographic
-dependencies.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<div id="sec-properties">
+<section id="section-8.1">
+        <h3 id="name-security-properties">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-security-properties" class="section-name selfRef">Security Properties</a>
+        </h3>
+<p id="section-8.1-1">HPKE makes the following cryptographic assumptions about KDF interfaces:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-8-2.1">Hash: Collision resistance.<a href="#section-8-2.1" class="pilcrow">¶</a>
+<li id="section-8.1-2.1">Hash: Collision resistance.<a href="#section-8.1-2.1" class="pilcrow">¶</a>
 </li>
-<li id="section-8-2.2">Extract: Indifferentiable from a random oracle.<a href="#section-8-2.2" class="pilcrow">¶</a>
+<li id="section-8.1-2.2">Extract: Indifferentiable from a random oracle.<a href="#section-8.1-2.2" class="pilcrow">¶</a>
 </li>
-<li id="section-8-2.3">Expand: Behaves as a pseudorandom function wherein the first
-argument is the key.<a href="#section-8-2.3" class="pilcrow">¶</a>
+<li id="section-8.1-2.3">Expand: Behaves as a pseudorandom function wherein the first
+argument is the key.<a href="#section-8.1-2.3" class="pilcrow">¶</a>
 </li>
 </ul>
-<p id="section-8-3">For the DH-based KEM, HPKE also assumes the gap Computational
-Diffie-Hellman (CDH) problem is hard <span>[<a href="#GAP" class="xref">GAP</a>]</span>.<a href="#section-8-3" class="pilcrow">¶</a></p>
-<p id="section-8-4">HPKE has several security goals, depending on the mode of operation,
+<p id="section-8.1-3">The functions specified in <a href="#kdf-ids" class="xref">Section 7.2</a> achieve these properties.
+Moreover, for DH-based KEMs, HPKE assumes the gap Computational Diffie-Hellman
+(CDH) problem is hard <span>[<a href="#GAP" class="xref">GAP</a>]</span>. The DH-based KEMs specified in <a href="#kem-ids" class="xref">Section 7.1</a>
+also achieve these properties.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+<p id="section-8.1-4">HPKE has several security goals, depending on the mode of operation,
 against active and adaptive attackers that can compromise partial secrets
-of senders and recipients. The desired security goals are detailed below:<a href="#section-8-4" class="pilcrow">¶</a></p>
+of senders and recipients. The desired security goals are detailed below:<a href="#section-8.1-4" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-8-5.1">Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
-security.<a href="#section-8-5.1" class="pilcrow">¶</a>
+<li id="section-8.1-5.1">Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
+security.<a href="#section-8.1-5.1" class="pilcrow">¶</a>
 </li>
-<li id="section-8-5.2">Export key secrecy: Indistinguishability of each export secret from a
-uniformly random bitstring of equal length.<a href="#section-8-5.2" class="pilcrow">¶</a>
+<li id="section-8.1-5.2">Export key secrecy: Indistinguishability of each export secret from a
+uniformly random bitstring of equal length.<a href="#section-8.1-5.2" class="pilcrow">¶</a>
 </li>
-<li id="section-8-5.3">Sender authentication: Proof of sender origin for Auth and AuthPSK modes.<a href="#section-8-5.3" class="pilcrow">¶</a>
+<li id="section-8.1-5.3">Sender authentication: Proof of sender origin for Auth and AuthPSK modes.<a href="#section-8.1-5.3" class="pilcrow">¶</a>
 </li>
 </ul>
-<p id="section-8-6">The analysis considers two variants of HPKE usage: single-shot message
+<p id="section-8.1-6">The analysis considers two variants of HPKE usage: single-shot message
 encryption and secret key export. In the single-shot variant, S uses the
 single-shot API to use the key once to encrypt a plaintext. The export variant
 is the same as single-shot variant, except that the sender additionally exports
 two independent secrets using the secret export interface. We distinguish
-these two variants as the single-shot API does not lend itself to use
-the Export interface.<a href="#section-8-6" class="pilcrow">¶</a></p>
-<p id="section-8-7">The table below summarizes the main results from <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. N/A
+these two variants because the single-shot API does not lend itself to use
+the Export interface.<a href="#section-8.1-6" class="pilcrow">¶</a></p>
+<p id="section-8.1-7">The table below summarizes the main results from <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. N/A
 means that a property does not apply for the given mode, whereas X means
-the given mode satisfies the property.<a href="#section-8-7" class="pilcrow">¶</a></p>
+the given mode satisfies the property.<a href="#section-8.1-7" class="pilcrow">¶</a></p>
 <table class="center" id="table-5">
-        <caption><a href="#table-5" class="selfRef">Table 5</a></caption>
+          <caption><a href="#table-5" class="selfRef">Table 5</a></caption>
 <thead>
-          <tr>
-            <th class="text-left" rowspan="1" colspan="1">Variant</th>
-            <th class="text-left" rowspan="1" colspan="1">Message Secrecy</th>
-            <th class="text-left" rowspan="1" colspan="1">Export Key Secrecy</th>
-            <th class="text-left" rowspan="1" colspan="1">Sender Auth.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">Base, single-shot</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">N/A</td>
-            <td class="text-left" rowspan="1" colspan="1">N/A</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">Base, export</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">N/A</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">PSK, single-shot</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">N/A</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">PSK, export</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">Auth, single-shot</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">N/A</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">Auth, export</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">AuthPSK, single-shot</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">N/A</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">AuthPSK, export</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-            <td class="text-left" rowspan="1" colspan="1">X</td>
-          </tr>
-        </tbody>
-      </table>
-<p id="section-8-9">In this section, we consider a security issue that may arise in practice
-and an advanced use case.<a href="#section-8-9" class="pilcrow">¶</a></p>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Variant</th>
+              <th class="text-center" rowspan="1" colspan="1">Message Sec.</th>
+              <th class="text-center" rowspan="1" colspan="1">Export Sec.</th>
+              <th class="text-center" rowspan="1" colspan="1">Sender Auth.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Base, single-shot</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">N/A</td>
+              <td class="text-center" rowspan="1" colspan="1">N/A</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">PSK, single-shot</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">N/A</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Auth, single-shot</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">N/A</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">AuthPSK, single-shot</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">N/A</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Base, export</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">N/A</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">PSK, export</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">Auth, export</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">AuthPSK, export</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+              <td class="text-center" rowspan="1" colspan="1">X</td>
+            </tr>
+          </tbody>
+        </table>
+</section>
+</div>
 <div id="external-requirements-non-goals">
-<section id="section-8.1">
+<section id="section-8.2">
         <h3 id="name-external-requirements-non-g">
-<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-external-requirements-non-g" class="section-name selfRef">External Requirements / Non-Goals</a>
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-external-requirements-non-g" class="section-name selfRef">External Requirements / Non-Goals</a>
         </h3>
-<p id="section-8.1-1">HPKE is designed to be a fairly low-level primitive, and thus does not provide
-several features that a more high-level protocol might provide, for example:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-1">HPKE is designed to be a fairly low-level primitive, and thus does not provide
+several features that a more high-level protocol might provide, for example:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-8.1-2.1">Downgrade prevention - HPKE assumes that the sender and recipient agree on
+<li id="section-8.2-2.1">Downgrade prevention - HPKE assumes that the sender and recipient agree on
 what algorithms to use.  Depending on how these algorithms are negotiated, it
 may be possible for an intermediary to force the two parties to use
-suboptimal algorithms.<a href="#section-8.1-2.1" class="pilcrow">¶</a>
+suboptimal algorithms.<a href="#section-8.2-2.1" class="pilcrow">¶</a>
 </li>
-<li id="section-8.1-2.2">Replay protection - The requirement that ciphertexts be presented to the
+<li id="section-8.2-2.2">Replay protection - The requirement that ciphertexts be presented to the
 Context.Open function in the same order they were generated by Context.Seal
 provides a degree of replay protection within a stream of ciphertexts
-resulting from a given Context.  HPKE provides no other replay protection.<a href="#section-8.1-2.2" class="pilcrow">¶</a>
+resulting from a given Context.  HPKE provides no other replay protection.<a href="#section-8.2-2.2" class="pilcrow">¶</a>
 </li>
-<li id="section-8.1-2.3">Forward secrecy - HPKE ciphertexts are not forward-secure. In mode_base
+<li id="section-8.2-2.3">Forward secrecy - HPKE ciphertexts are not forward-secure. In mode_base
 and mode_auth, a given ciphertext can be decrypted if the recipient's public
 encryption key is compromised. In mode_psk and mode_auth_psk, a given
 ciphertext can be decrypted if the recipient's public encryption key and the
-PSK are compromised.<a href="#section-8.1-2.3" class="pilcrow">¶</a>
+PSK are compromised.<a href="#section-8.2-2.3" class="pilcrow">¶</a>
 </li>
 </ul>
 </section>
 </div>
 <div id="metadata-protection">
-<section id="section-8.2">
+<section id="section-8.3">
         <h3 id="name-metadata-protection">
-<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-metadata-protection" class="section-name selfRef">Metadata Protection</a>
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-metadata-protection" class="section-name selfRef">Metadata Protection</a>
         </h3>
-<p id="section-8.2-1">The authenticated modes of HPKE (PSK, Auth, AuthPSK) require that the recipient
+<p id="section-8.3-1">The authenticated modes of HPKE (PSK, Auth, AuthPSK) require that the recipient
 know what key material to use for the sender.  This can be signaled in
 applications by sending the PSK ID (<code>pskID</code> above) and/or the sender's public
 key (<code>pkS</code>).  However, these values themselves might be considered sensitive,
-since in a given application context, they might identify the sender.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
-<p id="section-8.2-2">An application that wishes to protect these metadata values without requiring
+since in a given application context, they might identify the sender.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<p id="section-8.3-2">An application that wishes to protect these metadata values without requiring
 further provisioning of keys can use an additional instance of HPKE, using the
 unauthenticated base mode.  Where the application might have sent <code>(pskID, pkS,
 enc, ciphertext)</code> before, it would now send (enc2, ciphertext2, enc, ciphertext),
 where <code>(enc2, ciphertext2)</code> represent the encryption of the <code>pskID</code> and <code>pkS</code>
-values.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
-<p id="section-8.2-3">The cost of this approach is an additional KEM operation each for the sender and
+values.<a href="#section-8.3-2" class="pilcrow">¶</a></p>
+<p id="section-8.3-3">The cost of this approach is an additional KEM operation each for the sender and
 the recipient.  A potential lower-cost approach (involving only symmetric
 operations) would be available if the nonce-protection schemes in <span>[<a href="#BNT19" class="xref">BNT19</a>]</span>
 could be extended to cover other metadata.  However, this construction would
-require further analysis.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+require further analysis.<a href="#section-8.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="designated-verifier-signature">
-<section id="section-8.3">
+<section id="section-8.4">
         <h3 id="name-designated-verifier-signatu">
-<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-designated-verifier-signatu" class="section-name selfRef">Designated-Verifier Signature</a>
+<a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-designated-verifier-signatu" class="section-name selfRef">Designated-Verifier Signature</a>
         </h3>
-<p id="section-8.3-1">The Auth and AuthPSK modes HPKE can be used to construct a lightweight
+<p id="section-8.4-1">The Auth and AuthPSK modes HPKE can be used to construct a lightweight
 "designated-verifier signature" scheme <span>[<a href="#JKR96" class="xref">JKR96</a>]</span>, in the sense that the message
 is authenticated as coming from the sender, but the only party who can verify
-the authentication is the recipient (the holder of <code>skR</code>).<a href="#section-8.3-1" class="pilcrow">¶</a></p>
-<p id="section-8.3-2">To create such a signature, the sender simply performs a normal HPKE setup in
+the authentication is the recipient (the holder of <code>skR</code>).<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-2">To create such a signature, the sender simply performs a normal HPKE setup in
 the proper mode, and calls the Seal method on the resulting context with an
 empty plaintext value and the content to be signed as AAD.  This produces an
-encoded key <code>enc</code> and a ciphertext value that contains only the AAD tag.<a href="#section-8.3-2" class="pilcrow">¶</a></p>
-<p id="section-8.3-3">For example, using DHKEM-X25519 and AES-128-GCM, this would produce a 48-byte
-signature comprising a 32-byte ephemeral X25519 key and a 16-byte GCM tag.<a href="#section-8.3-3" class="pilcrow">¶</a></p>
-<p id="section-8.3-4">To verify such a signature, the recipient performs the corresponding HPKE setup
+encoded key <code>enc</code> and a ciphertext value that contains only the AAD tag.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
+<p id="section-8.4-3">For example, using DHKEM-X25519 and AES-128-GCM, this would produce a 48-byte
+signature comprising a 32-byte ephemeral X25519 key and a 16-byte GCM tag.<a href="#section-8.4-3" class="pilcrow">¶</a></p>
+<p id="section-8.4-4">To verify such a signature, the recipient performs the corresponding HPKE setup
 and calls Open with the provided ciphertext.  If the AEAD authentication passes,
-then the signature is valid.<a href="#section-8.3-4" class="pilcrow">¶</a></p>
-<p id="section-8.3-5">This scheme re-uses the authentication scheme underlying the AEAD algorithm in
+then the signature is valid.<a href="#section-8.4-4" class="pilcrow">¶</a></p>
+<p id="section-8.4-5">This scheme re-uses the authentication scheme underlying the AEAD algorithm in
 use, while using the KEM to establish a one-time authentication key from a pair
-of KEM public keys.<a href="#section-8.3-5" class="pilcrow">¶</a></p>
+of KEM public keys.<a href="#section-8.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
