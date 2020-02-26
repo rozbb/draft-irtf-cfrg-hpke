@@ -94,7 +94,7 @@ Table of Contents
      10.1.  KEM Identifiers  . . . . . . . . . . . . . . . . . . . .  20
      10.2.  KDF Identifiers  . . . . . . . . . . . . . . . . . . . .  21
      10.3.  AEAD Identifiers . . . . . . . . . . . . . . . . . . . .  21
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  22
      11.1.  Normative References . . . . . . . . . . . . . . . . . .  22
      11.2.  Informative References . . . . . . . . . . . . . . . . .  22
    Appendix A.  Test Vectors . . . . . . . . . . . . . . . . . . . .  24
@@ -928,10 +928,14 @@ Internet-Draft                    HPKE                     February 2020
    *  Expand: Behaves as a pseudorandom function wherein the first
       argument is the key.
 
-   The functions specified in Section 7.2 achieve these properties.
-   Moreover, for DH-based KEMs, HPKE assumes the gap Computational
-   Diffie-Hellman (CDH) problem is hard [GAP].  The DH-based KEMs
-   specified in Section 7.1 also achieve these properties.
+   All AEAD algorithms are assumed to have IND-CPA (indistinguishable
+   under chosen plaintext attacks) and INT-CTXT (ciphertext integrity)
+   security.  For DH-based KEMs, HPKE assumes the gap Computational
+   Diffie-Hellman (CDH) problem is hard [GAP].  (Security analysis for
+   general KEMs has not yet been completed.)
+
+   The functions specified in Section 7.1, Section 7.2, and Section 7.3
+   achieve these properties.
 
    HPKE has several security goals, depending on the mode of operation,
    against active and adaptive attackers that can compromise partial
@@ -941,11 +945,7 @@ Internet-Draft                    HPKE                     February 2020
    *  Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
       security.
 
-   *  Export key secrecy: Indistinguishability of each export secret
-      from a uniformly random bitstring of equal length.
 
-   *  Sender authentication: Proof of sender origin for Auth and AuthPSK
-      modes.
 
 
 
@@ -953,6 +953,12 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 17]
 
 Internet-Draft                    HPKE                     February 2020
 
+
+   *  Export key secrecy: Indistinguishability of each export secret
+      from a uniformly random bitstring of equal length.
+
+   *  Sender authentication: Proof of sender origin for Auth and AuthPSK
+      modes.
 
    The analysis considers two variants of HPKE usage: single-shot
    message encryption and secret key export.  In the single-shot
@@ -995,13 +1001,7 @@ Internet-Draft                    HPKE                     February 2020
    not provide several features that a more high-level protocol might
    provide, for example:
 
-   *  Downgrade prevention - HPKE assumes that the sender and recipient
-      agree on what algorithms to use.  Depending on how these
-      algorithms are negotiated, it may be possible for an intermediary
-      to force the two parties to use suboptimal algorithms.
 
-   *  Replay protection - The requirement that ciphertexts be presented
-      to the Context.Open function in the same order they were generated
 
 
 
@@ -1010,6 +1010,13 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 18]
 Internet-Draft                    HPKE                     February 2020
 
 
+   *  Downgrade prevention - HPKE assumes that the sender and recipient
+      agree on what algorithms to use.  Depending on how these
+      algorithms are negotiated, it may be possible for an intermediary
+      to force the two parties to use suboptimal algorithms.
+
+   *  Replay protection - The requirement that ciphertexts be presented
+      to the Context.Open function in the same order they were generated
       by Context.Seal provides a degree of replay protection within a
       stream of ciphertexts resulting from a given Context.  HPKE
       provides no other replay protection.
@@ -1051,13 +1058,6 @@ Internet-Draft                    HPKE                     February 2020
    but the only party who can verify the authentication is the recipient
    (the holder of "skR").
 
-   To create such a signature, the sender simply performs a normal HPKE
-   setup in the proper mode, and calls the Seal method on the resulting
-   context with an empty plaintext value and the content to be signed as
-   AAD.  This produces an encoded key "enc" and a ciphertext value that
-   contains only the AAD tag.
-
-
 
 
 
@@ -1065,6 +1065,12 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 19]
 
 Internet-Draft                    HPKE                     February 2020
 
+
+   To create such a signature, the sender simply performs a normal HPKE
+   setup in the proper mode, and calls the Seal method on the resulting
+   context with an empty plaintext value and the content to be signed as
+   AAD.  This produces an encoded key "enc" and a ciphertext value that
+   contains only the AAD tag.
 
    For example, using DHKEM-X25519 and AES-128-GCM, this would produce a
    48-byte signature comprising a 32-byte ephemeral X25519 key and a
@@ -1108,12 +1114,6 @@ Internet-Draft                    HPKE                     February 2020
 
    Template:
 
-   *  Value: The two-byte identifier for the algorithm
-
-   *  KEM: The name of the algorithm
-
-   *  Nenc: The length in bytes of an encapsulated key produced by the
-      algorithm
 
 
 
@@ -1121,6 +1121,13 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 20]
 
 Internet-Draft                    HPKE                     February 2020
 
+
+   *  Value: The two-byte identifier for the algorithm
+
+   *  KEM: The name of the algorithm
+
+   *  Nenc: The length in bytes of an encapsulated key produced by the
+      algorithm
 
    *  Npk: The length in bytes of an encoded public key for the
       algorithm
@@ -1164,19 +1171,18 @@ Internet-Draft                    HPKE                     February 2020
 
    *  Nn: The length in bytes of a nonce for this algorithm
 
-   *  Reference: Where this algorithm is defined
-
-   Initial contents: Provided in Section 7.3
-
-11.  References
-
-
 
 
 Barnes & Bhargavan       Expires 29 August 2020                [Page 21]
 
 Internet-Draft                    HPKE                     February 2020
 
+
+   *  Reference: Where this algorithm is defined
+
+   Initial contents: Provided in Section 7.3
+
+11.  References
 
 11.1.  Normative References
 
@@ -1220,12 +1226,6 @@ Internet-Draft                    HPKE                     February 2020
 
    [GCM]      Dworkin, M., "Recommendation for block cipher modes of
               operation :", DOI 10.6028/nist.sp.800-38d, National
-              Institute of Standards and Technology report, 2007,
-              <https://doi.org/10.6028/nist.sp.800-38d>.
-
-   [HPKEAnalysis]
-              "An Analysis of Hybrid Public Key Encryption", 2020,
-              <https://eprint.iacr.org/2020/243.pdf>.
 
 
 
@@ -1233,6 +1233,13 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 22]
 
 Internet-Draft                    HPKE                     February 2020
 
+
+              Institute of Standards and Technology report, 2007,
+              <https://doi.org/10.6028/nist.sp.800-38d>.
+
+   [HPKEAnalysis]
+              "An Analysis of Hybrid Public Key Encryption", 2020,
+              <https://eprint.iacr.org/2020/243.pdf>.
 
    [I-D.ietf-mls-protocol]
               Barnes, R., Beurdouche, B., Millican, J., Omara, E., Cohn-
@@ -1275,13 +1282,6 @@ Internet-Draft                    HPKE                     February 2020
    [NISTCurves]
               "Digital Signature Standard (DSS)",
               DOI 10.6028/nist.fips.186-4, National Institute of
-              Standards and Technology report, July 2013,
-              <https://doi.org/10.6028/nist.fips.186-4>.
-
-   [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
-              Key Derivation Function (HKDF)", RFC 5869,
-              DOI 10.17487/RFC5869, May 2010,
-              <https://www.rfc-editor.org/info/rfc5869>.
 
 
 
@@ -1289,6 +1289,14 @@ Barnes & Bhargavan       Expires 29 August 2020                [Page 23]
 
 Internet-Draft                    HPKE                     February 2020
 
+
+              Standards and Technology report, July 2013,
+              <https://doi.org/10.6028/nist.fips.186-4>.
+
+   [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
+              Key Derivation Function (HKDF)", RFC 5869,
+              DOI 10.17487/RFC5869, May 2010,
+              <https://www.rfc-editor.org/info/rfc5869>.
 
    [RFC6637]  Jivsov, A., "Elliptic Curve Cryptography (ECC) in
               OpenPGP", RFC 6637, DOI 10.17487/RFC6637, June 2012,
@@ -1324,14 +1332,6 @@ Appendix A.  Test Vectors
 A.1.  DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128
 
 A.1.1.  AuthPSK Setup Information
-
-
-
-
-
-
-
-
 
 
 
