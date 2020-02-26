@@ -2018,43 +2018,56 @@ byte strings for public keys.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
         <h3 id="name-security-properties">
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-security-properties" class="section-name selfRef">Security Properties</a>
         </h3>
-<p id="section-8.1-1">HPKE makes the following cryptographic assumptions about KDF interfaces:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">HPKE has several security goals, depending on the mode of operation,
+against active and adaptive attackers that can compromise partial
+secrets of senders and recipients. The desired security goals are
+detailed below:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-8.1-2.1">Hash: Collision resistance.<a href="#section-8.1-2.1" class="pilcrow">¶</a>
+<li id="section-8.1-2.1">Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
+security<a href="#section-8.1-2.1" class="pilcrow">¶</a>
 </li>
-<li id="section-8.1-2.2">Extract: Indifferentiable from a random oracle.<a href="#section-8.1-2.2" class="pilcrow">¶</a>
+<li id="section-8.1-2.2">Export key secrecy: Indistinguishability of each export
+secret from a uniformly random bitstring of equal length<a href="#section-8.1-2.2" class="pilcrow">¶</a>
 </li>
-<li id="section-8.1-2.3">Expand: Behaves as a pseudorandom function wherein the first
-argument is the key.<a href="#section-8.1-2.3" class="pilcrow">¶</a>
+<li id="section-8.1-2.3">Sender authentication: Proof of sender origin for Auth and AuthPSK
+modes<a href="#section-8.1-2.3" class="pilcrow">¶</a>
 </li>
 </ul>
-<p id="section-8.1-3">All AEAD algorithms are assumed to have IND-CPA (indistinguishable
-under chosen plaintext attacks) and INT-CTXT (ciphertext integrity)
-security. For DH-based KEMs, HPKE assumes the gap Computational Diffie-Hellman
-(CDH) problem is hard <span>[<a href="#GAP" class="xref">GAP</a>]</span>. (Security analysis for general KEMs has
-not yet been completed.)<a href="#section-8.1-3" class="pilcrow">¶</a></p>
-<p id="section-8.1-4">The functions specified in <a href="#kem-ids" class="xref">Section 7.1</a>, <a href="#kdf-ids" class="xref">Section 7.2</a>, and <a href="#aead-ids" class="xref">Section 7.3</a> achieve
-these properties.<a href="#section-8.1-4" class="pilcrow">¶</a></p>
-<p id="section-8.1-5">HPKE has several security goals, depending on the mode of operation,
-against active and adaptive attackers that can compromise partial secrets
-of senders and recipients. The desired security goals are detailed below:<a href="#section-8.1-5" class="pilcrow">¶</a></p>
+<p id="section-8.1-3">It is shown in <span>[<a href="#CS01" class="xref">CS01</a>]</span> that a hybrid scheme of essentially the same
+form described here is IND-CCA2-secure as long as the the underlying KEM
+and AEAD schemes are IND-CCA2-secure.  The main difference between the
+scheme proposed there and the scheme in this document (both named HPKE)
+is that we interpose some KDF calls between the KEM and
+the AEAD.  So further analysis is needed on two fronts, first to verify
+that the additional KDF calls do not cause the IND-CCA2 property to
+fail, and second to verify the two additional properties noted above.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+<p id="section-8.1-4">This work has been done for the case where the KEM is DHKEM, the AEAD is
+any IND-CCA2 scheme, and the DH group and KDF satisfy the following
+conditions:<a href="#section-8.1-4" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-8.1-6.1">Message secrecy: Privacy of the sender's messages, i.e., IND-CCA2
-security.<a href="#section-8.1-6.1" class="pilcrow">¶</a>
+<li id="section-8.1-5.1">DH group: The gap Computational Diffie-Hellman (CDH) problem is hard
+<span>[<a href="#GAP" class="xref">GAP</a>]</span>.<a href="#section-8.1-5.1" class="pilcrow">¶</a>
 </li>
-<li id="section-8.1-6.2">Export key secrecy: Indistinguishability of each export secret from a
-uniformly random bitstring of equal length.<a href="#section-8.1-6.2" class="pilcrow">¶</a>
+<li id="section-8.1-5.2">Hash: Collision resistance.<a href="#section-8.1-5.2" class="pilcrow">¶</a>
 </li>
-<li id="section-8.1-6.3">Sender authentication: Proof of sender origin for Auth and AuthPSK modes.<a href="#section-8.1-6.3" class="pilcrow">¶</a>
+<li id="section-8.1-5.3">Extract: Indifferentiable from a random oracle.<a href="#section-8.1-5.3" class="pilcrow">¶</a>
+</li>
+<li id="section-8.1-5.4">Expand: Behaves as a pseudorandom function wherein the first argument
+is the key.<a href="#section-8.1-5.4" class="pilcrow">¶</a>
 </li>
 </ul>
-<p id="section-8.1-7">The analysis considers two variants of HPKE usage: single-shot message
-encryption and secret key export. In the single-shot variant, S uses the
-single-shot API to use the key once to encrypt a plaintext. The export variant
-is the same as single-shot variant, except that the sender additionally exports
-two independent secrets using the secret export interface. We distinguish
-these two variants because the single-shot API does not lend itself to use
-the Export interface.<a href="#section-8.1-7" class="pilcrow">¶</a></p>
+<p id="section-8.1-6">In particular, the KDFs and DH groups defined in this document (see
+<a href="#kdf-ids" class="xref">Section 7.2</a> and <a href="#kem-ids" class="xref">Section 7.1</a>) satisfy these properties.<a href="#section-8.1-6" class="pilcrow">¶</a></p>
+<p id="section-8.1-7">The analysis in <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span> demonstrates that under these
+constraints, HPKE continues to provide IND-CCA2 security, and provides
+the additional properties noted above.  The analysis considers two
+variants of HPKE usage: single-shot message encryption and secret key
+export. In the single-shot variant, S uses the single-shot API to use
+the key once to encrypt a plaintext. The export variant is the same as
+single-shot variant, except that the sender additionally exports two
+independent secrets using the secret export interface. We distinguish
+these two variants because the single-shot API does not lend itself to
+use the Export interface.<a href="#section-8.1-7" class="pilcrow">¶</a></p>
 <p id="section-8.1-8">The table below summarizes the main results from <span>[<a href="#HPKEAnalysis" class="xref">HPKEAnalysis</a>]</span>. N/A
 means that a property does not apply for the given mode, whereas X means
 the given mode satisfies the property.<a href="#section-8.1-8" class="pilcrow">¶</a></p>
@@ -2119,6 +2132,10 @@ the given mode satisfies the property.<a href="#section-8.1-8" class="pilcrow">�
             </tr>
           </tbody>
         </table>
+<p id="section-8.1-10">If non-DH-based KEM schemes are to be used with HPKE, further analysis
+will be necessary to prove their security.  The results from <span>[<a href="#CS01" class="xref">CS01</a>]</span>
+provide some indication that any IND-CCA2 KEM will suffice here, but are
+not conclusive given the difference in schemes.<a href="#section-8.1-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="external-requirements-non-goals">
@@ -2329,6 +2346,9 @@ These are two-byte values, so the maximum possible value is 0xFFFF = 65535.<a hr
 <dt id="BNT19">[BNT19]</dt>
 <dd>
 <span class="refTitle">"Nonces Are Noticed: AEAD Revisited"</span>, <time datetime="2019">2019</time>, <span>&lt;<a href="http://dx.doi.org/10.1007/978-3-030-26948-7_9">http://dx.doi.org/10.1007/978-3-030-26948-7_9</a>&gt;</span>. </dd>
+<dt id="CS01">[CS01]</dt>
+<dd>
+<span class="refTitle">"Design and Analysis of Practical Public-Key Encryption Schemes Secure against Adaptive Chosen Ciphertext Attack"</span>, <time datetime="2001">2001</time>, <span>&lt;<a href="https://eprint.iacr.org/2001/108">https://eprint.iacr.org/2001/108</a>&gt;</span>. </dd>
 <dt id="fiveG">[fiveG]</dt>
 <dd>
 <span class="refTitle">"Security architecture and procedures for 5G System"</span>, <time datetime="2019">2019</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3169">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3169</a>&gt;</span>. </dd>
