@@ -43,7 +43,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2020-02-26T02:29:04Z",
-    "updated_at": "2020-02-26T02:47:06Z",
+    "updated_at": "2020-02-27T13:29:06Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -52,7 +52,7 @@
       "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/45.diff",
       "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/45.patch"
     },
-    "body": "With new PSK lengths and more fields."
+    "body": "With new PSK lengths and more fields. Addresses #41."
   },
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/44",
@@ -88,7 +88,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -97,8 +97,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2020-02-25T23:01:46Z",
-    "updated_at": "2020-02-26T15:49:40Z",
-    "closed_at": null,
+    "updated_at": "2020-02-26T20:52:59Z",
+    "closed_at": "2020-02-26T20:52:59Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/44",
@@ -228,17 +228,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2020-02-21T09:13:44Z",
-    "updated_at": "2020-02-21T09:13:44Z",
-    "closed_at": null,
+    "updated_at": "2020-02-27T13:28:47Z",
+    "closed_at": "2020-02-27T13:28:46Z",
     "author_association": "CONTRIBUTOR",
     "body": "In Section “DH-Based KEM”:\r\n\r\n```\r\n* P-521: The X-coordinate of the point, encoded as a 66-octet\r\n  big-endian integer\r\n```\r\n\r\nIn “Algorithm Identifiers” > “Key Encapsulation Mechanisms”:\r\n\r\n```\r\n| Value  | KEM               | Nenc | Npk | Reference      |\r\n|:-------|:------------------|:-----|:----|:---------------|\r\n| 0x0012 | DHKEM(P-521)      | 65   | 65  | {{NISTCurves}} |\r\n```"
   },
@@ -1332,17 +1332,17 @@
         "description": ""
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2019-11-12T17:11:33Z",
-    "updated_at": "2020-01-23T03:05:55Z",
-    "closed_at": null,
+    "updated_at": "2020-02-27T13:27:59Z",
+    "closed_at": "2020-02-27T13:27:59Z",
     "author_association": "COLLABORATOR",
     "body": "For example, the base mode does not provide KCI resistance. "
   },
