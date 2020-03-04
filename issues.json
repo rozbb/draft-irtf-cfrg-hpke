@@ -1,6 +1,216 @@
 [
 
   {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/49",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/49/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/49/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/49/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/49",
+    "id": 574165587,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzgyNTQxNTcx",
+    "number": 49,
+    "title": "Correct KEM sizes for NIST curves.",
+    "user": {
+      "login": "Bren2010",
+      "id": 416022,
+      "node_id": "MDQ6VXNlcjQxNjAyMg==",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/416022?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Bren2010",
+      "html_url": "https://github.com/Bren2010",
+      "followers_url": "https://api.github.com/users/Bren2010/followers",
+      "following_url": "https://api.github.com/users/Bren2010/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Bren2010/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Bren2010/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Bren2010/subscriptions",
+      "organizations_url": "https://api.github.com/users/Bren2010/orgs",
+      "repos_url": "https://api.github.com/users/Bren2010/repos",
+      "events_url": "https://api.github.com/users/Bren2010/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Bren2010/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2020-03-02T18:34:43Z",
+    "updated_at": "2020-03-04T18:46:11Z",
+    "closed_at": "2020-03-04T18:46:11Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/49",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/49",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/49.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/49.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/48",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/48/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/48/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/48/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/48",
+    "id": 572793991,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzgxNDIyMTM3",
+    "number": 48,
+    "title": "Add domain separation",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-28T14:34:38Z",
+    "updated_at": "2020-02-28T17:52:03Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/48",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/48",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/48.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/48.patch"
+    },
+    "body": "Add RFC number domain separation tag. Clone KeySchedule Hash calls with one-byte prefix.\r\n\r\nThis attempts to address #47.\r\n\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/47",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/47/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/47/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/47/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/47",
+    "id": 572791237,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzgxNDE5ODcx",
+    "number": 47,
+    "title": "Domain separation",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-28T14:30:09Z",
+    "updated_at": "2020-02-28T14:30:57Z",
+    "closed_at": "2020-02-28T14:30:57Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/47",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/47",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/47.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/47.patch"
+    },
+    "body": "Tries to address #46. \r\n\r\ncc @blipp "
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/46",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/46/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/46/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/46/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/46",
+    "id": 572790832,
+    "node_id": "MDU6SXNzdWU1NzI3OTA4MzI=",
+    "number": 46,
+    "title": "Add domain separation for expanded secrets",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-28T14:29:29Z",
+    "updated_at": "2020-02-28T14:29:29Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We currently have none!"
+  },
+  {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/45",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
     "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/45/labels{/name}",
@@ -34,7 +244,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -43,8 +253,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2020-02-26T02:29:04Z",
-    "updated_at": "2020-02-27T13:29:06Z",
-    "closed_at": null,
+    "updated_at": "2020-02-28T14:34:05Z",
+    "closed_at": "2020-02-28T14:34:05Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/45",
@@ -276,17 +486,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2020-02-21T09:10:33Z",
-    "updated_at": "2020-02-21T16:21:46Z",
-    "closed_at": null,
+    "updated_at": "2020-02-28T14:35:28Z",
+    "closed_at": "2020-02-28T14:35:28Z",
     "author_association": "CONTRIBUTOR",
     "body": "The PSKs used in the test vectors currently are of length 6 bytes but should be 32 bytes for HKDF-SHA256 and 64 bytes for HKDF-SHA512."
   },
@@ -1449,7 +1659,10 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "The draft only has success test vectors. Negative ones would be good, too."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/19",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
@@ -1653,10 +1866,7 @@
     "closed_at": "2020-01-20T16:26:12Z",
     "author_association": "COLLABORATOR",
     "body": "It may be desirable to export a secret, as with the TLS exporter.  Adding such a feature would add a bit of complexity, and dilute the focus on PKE."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/15",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
