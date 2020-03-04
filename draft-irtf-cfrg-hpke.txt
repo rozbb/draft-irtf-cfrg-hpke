@@ -5,8 +5,8 @@
 Network Working Group                                        R.L. Barnes
 Internet-Draft                                                     Cisco
 Intended status: Informational                              K. Bhargavan
-Expires: 31 August 2020                                            Inria
-                                                        28 February 2020
+Expires: 5 September 2020                                          Inria
+                                                            4 March 2020
 
 
                       Hybrid Public Key Encryption
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2020.
+   This Internet-Draft will expire on 5 September 2020.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 1]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 1]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    extracted from this document must include Simplified BSD License text
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 2]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 2]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
        A.2.3.  Auth Setup Information  . . . . . . . . . . . . . . .  36
@@ -165,9 +165,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 3]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 3]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
 2.  Requirements Notation
@@ -221,9 +221,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 4]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 4]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
       -  Marshal(pk): Produce a fixed-length byte string encoding the
@@ -277,9 +277,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 5]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 5]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
       -  Open(key, nonce, aad, ct): Decrypt ciphertext "ct" using
@@ -333,9 +333,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 6]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 6]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    def Encap(pkR):
@@ -362,11 +362,13 @@ Internet-Draft                    HPKE                     February 2020
    for the underlying DH group.  The Marshal functions for the curves
    referenced in {#ciphersuites} are as follows:
 
-   *  P-256: The X-coordinate of the point, encoded as a 32-byte big-
-      endian integer
+   *  P-256: A single byte set to 4, followed by the X-coordinate and
+      the Y-coordinate of the point, encoded as 32-byte big-endian
+      integers
 
-   *  P-521: The X-coordinate of the point, encoded as a 66-byte big-
-      endian integer
+   *  P-521: A single byte set to 4, followed by the X-coordinate and
+      the Y-coordinate of the point, encoded as 66-byte big-endian
+      integers
 
    *  Curve25519: The standard 32-byte representation of the public key
 
@@ -384,16 +386,16 @@ Internet-Draft                    HPKE                     February 2020
    in identity information) and an "aad" parameter that provides
    Additional Authenticated Data to the AEAD algorithm in use.
 
+
+
+
+Barnes & Bhargavan      Expires 5 September 2020                [Page 7]
+
+Internet-Draft                    HPKE                        March 2020
+
+
    In addition to the base case of encrypting to a public key, we
    include two authenticated variants, one of which authenticates
-
-
-
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 7]
-
-Internet-Draft                    HPKE                     February 2020
-
-
    possession of a pre-shared key, and one of which authenticates
    possession of a KEM private key.  The following one-byte values will
    be used to distinguish between modes:
@@ -440,15 +442,15 @@ Internet-Draft                    HPKE                     February 2020
 
    *  "zz" - A shared secret generated via the KEM for this transaction
 
-   *  "enc" - An encapsulated key produced by the KEM for the recipient
 
 
 
-
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 8]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 8]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
+
+   *  "enc" - An encapsulated key produced by the KEM for the recipient
 
    *  "info" - Application-supplied information (optional; default value
       "")
@@ -499,11 +501,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-
-
-Barnes & Bhargavan       Expires 31 August 2020                 [Page 9]
+Barnes & Bhargavan      Expires 5 September 2020                [Page 9]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    default_pkSm = zero(Npk)
@@ -557,9 +557,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 10]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 10]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    struct {
@@ -613,9 +613,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 11]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 11]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    The primary differences from the base case are:
@@ -669,9 +669,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 12]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 12]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    def SetupAuthS(pkR, info, skS):
@@ -725,9 +725,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 13]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 13]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    *  A sequence number (initially 0)
@@ -781,9 +781,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 14]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 14]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
 5.3.  Secret Export
@@ -837,9 +837,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 15]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 15]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
 7.1.  Key Encapsulation Mechanisms (KEMs)
@@ -849,11 +849,11 @@ Internet-Draft                    HPKE                     February 2020
         +========+===================+======+=====+==============+
         | 0x0000 | (reserved)        | N/A  | N/A | N/A          |
         +--------+-------------------+------+-----+--------------+
-        | 0x0010 | DHKEM(P-256)      | 32   | 32  | [NISTCurves] |
+        | 0x0010 | DHKEM(P-256)      | 65   | 65  | [NISTCurves] |
         +--------+-------------------+------+-----+--------------+
-        | 0x0011 | DHKEM(P-384)      | 48   | 48  | [NISTCurves] |
+        | 0x0011 | DHKEM(P-384)      | 97   | 97  | [NISTCurves] |
         +--------+-------------------+------+-----+--------------+
-        | 0x0012 | DHKEM(P-521)      | 66   | 66  | [NISTCurves] |
+        | 0x0012 | DHKEM(P-521)      | 133  | 133 | [NISTCurves] |
         +--------+-------------------+------+-----+--------------+
         | 0x0020 | DHKEM(Curve25519) | 32   | 32  | [RFC7748]    |
         +--------+-------------------+------+-----+--------------+
@@ -893,9 +893,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 16]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 16]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
 7.3.  Authenticated Encryption with Associated Data (AEAD) Functions
@@ -949,9 +949,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 17]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 17]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    *  DH group: The gap Diffie-Hellman (GDH) problem is hard [GAP].
@@ -1005,9 +1005,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 18]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 18]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    If non-DH-based KEM schemes are to be used with HPKE, further
@@ -1061,9 +1061,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 19]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 19]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    ciphertext2)" represent the encryption of the "pskID" and "pkS"
@@ -1117,9 +1117,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 20]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 20]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    *  HPKE KDF Identifiers
@@ -1173,9 +1173,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 21]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 21]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
 10.3.  AEAD Identifiers
@@ -1229,9 +1229,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 22]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 22]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    [BNT19]    "Nonces Are Noticed: AEAD Revisited", 2019,
@@ -1285,9 +1285,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 23]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 23]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
               Techniques - Encryption Algorithms - Part 2 -- Asymmetric
@@ -1341,9 +1341,9 @@ Internet-Draft                    HPKE                     February 2020
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 24]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 24]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    [TestVectors]
@@ -1397,9 +1397,9 @@ A.1.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 25]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 25]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -1453,9 +1453,9 @@ A.1.2.  PSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 26]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 26]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 1
@@ -1509,9 +1509,9 @@ A.1.2.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 27]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 27]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -1565,9 +1565,9 @@ A.1.3.  Auth Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 28]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 28]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 2
@@ -1621,9 +1621,9 @@ A.1.3.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 29]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 29]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -1677,9 +1677,9 @@ A.1.4.  AuthPSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 30]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 30]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 3
@@ -1733,9 +1733,9 @@ A.1.4.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 31]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 31]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -1789,9 +1789,9 @@ A.2.1.  Base Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 32]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 32]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    f9aca4bb88f6a416ca3339579b29a038c2124b2f9dfc9b306eb57b77961d6ad444daf3a7
@@ -1845,9 +1845,9 @@ A.2.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 33]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 33]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -1901,9 +1901,9 @@ A.2.2.  PSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 34]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 34]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    pkS: 04008b2f8d9d12b888774f70ee6722025ebd0061910cac04d6b447879dd2170c176
@@ -1957,9 +1957,9 @@ A.2.2.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 35]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 35]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2013,9 +2013,9 @@ A.2.3.  Auth Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 36]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 36]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    pkS: 0400b04e91f3a4ae9ca6de1d1df6642685100b87d667c39bb39ef49c5b8da5ca33c
@@ -2069,9 +2069,9 @@ A.2.3.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 37]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 37]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2125,9 +2125,9 @@ A.2.4.  AuthPSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 38]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 38]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    pkS: 04007b742d25deaf50156f092ca17b3ce582a77da2db3be658e5e8d1df40fa83ac5
@@ -2181,9 +2181,9 @@ A.2.4.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 39]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 39]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2237,9 +2237,9 @@ A.3.1.  Base Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 40]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 40]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 0
@@ -2293,9 +2293,9 @@ A.3.1.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 41]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 41]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2349,9 +2349,9 @@ A.3.2.  PSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 42]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 42]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 1
@@ -2405,9 +2405,9 @@ A.3.2.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 43]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 43]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2461,9 +2461,9 @@ A.3.3.  Auth Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 44]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 44]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 2
@@ -2517,9 +2517,9 @@ A.3.3.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 45]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 45]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2573,9 +2573,9 @@ A.3.4.  AuthPSK Setup Information
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 46]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 46]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    mode: 3
@@ -2629,9 +2629,9 @@ A.3.4.1.  Encryptions
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 47]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 47]
 
-Internet-Draft                    HPKE                     February 2020
+Internet-Draft                    HPKE                        March 2020
 
 
    sequence number: 0
@@ -2685,4 +2685,4 @@ Authors' Addresses
 
 
 
-Barnes & Bhargavan       Expires 31 August 2020                [Page 48]
+Barnes & Bhargavan      Expires 5 September 2020               [Page 48]
