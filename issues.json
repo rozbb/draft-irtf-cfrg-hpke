@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/50",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/50/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/50/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/50/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/50",
+    "id": 577055486,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzg0OTIyOTkx",
+    "number": 50,
+    "title": "Use hash function to derive DHKEM shared secret",
+    "user": {
+      "login": "blipp",
+      "id": 138279,
+      "node_id": "MDQ6VXNlcjEzODI3OQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/138279?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/blipp",
+      "html_url": "https://github.com/blipp",
+      "followers_url": "https://api.github.com/users/blipp/followers",
+      "following_url": "https://api.github.com/users/blipp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/blipp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/blipp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/blipp/subscriptions",
+      "organizations_url": "https://api.github.com/users/blipp/orgs",
+      "repos_url": "https://api.github.com/users/blipp/repos",
+      "events_url": "https://api.github.com/users/blipp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/blipp/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-03-06T16:54:50Z",
+    "updated_at": "2020-03-06T17:22:02Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/pulls/50",
+      "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/50",
+      "diff_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/50.diff",
+      "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/50.patch"
+    },
+    "body": "The isolated DHKEM cannot be proven IND-CCA-secure as it is: In the current Encap, nothing is done with the result of the DH operation, `zz`. This means there is nowhere where the GDH assumption can be applied, as for this we need a comparison of a value with `g^ab` in the game, like `g^c = g^ab`, which we can then change in a game hop to `false`.\r\n\r\nThis is not a problem when looking at HPKE as a whole, because `zz` is fed into Extract which we model as a random oracle. For DHKEM isolated, this problem can be fixed by feeding the Diffie-Hellman shared secret through another random oracle before returning the result as `zz`.\r\n\r\nThe hash functions suggested in this pull request are chosen to correspond to the security level of the elliptic curve DH, respectively. If users of HPKE want to use only one hash function, then they need to choose the KDF depending on the used DHKEM. Specifying each DHKEM for multiple (i.e. different output size) hash functions seems overkill and like sending wrong signals about the security level of DHKEM.\r\n\r\nRegarding random oracle cloning: By introducing another call to a random oracle, which might be implemented by the same hash function, this becomes now more relevant than before. I think we need to make sure that Hash' and the calls to Hash inside HMAC are independent, to be able to use the indifferentiability theorem on SHAxxx. I looked at the input domains of these two calls for SHA256, SHA384, and SHA512 and they are indeed _already disjoint_ by their lengths. An open question is if we need to do something about the Hash calls `Hash(pskID)` and `Hash(info)` that we model as collision resistant. I like to discuss this with Bruno and/or Karthik before proceeding.\r\n\r\nThis pull request is to keep you in the loop, please feel free to provide preliminary feedback."
+  },
+  {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/49",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
     "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/49/labels{/name}",
@@ -95,9 +149,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 3,
     "created_at": "2020-02-28T14:34:38Z",
-    "updated_at": "2020-02-28T17:52:03Z",
+    "updated_at": "2020-03-06T19:37:24Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1603,7 +1657,10 @@
     "closed_at": "2020-01-23T17:20:23Z",
     "author_association": "CONTRIBUTOR",
     "body": "Both the constant `mode_psk_auth` and function names like `SetupAuthPSKR` are used. That's inconsistent because the order of `psk` and `auth` is different. Suggestion: change the constant to be `mode_auth_psk`, because there are more function names that would need to be changed otherwise."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/20",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
@@ -1659,10 +1716,7 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "The draft only has success test vectors. Negative ones would be good, too."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/19",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
