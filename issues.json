@@ -1,6 +1,102 @@
 [
 
   {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/53",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/53/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/53/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/53/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/53",
+    "id": 580164275,
+    "node_id": "MDU6SXNzdWU1ODAxNjQyNzU=",
+    "number": 53,
+    "title": "Mismatch on zz length for P-256",
+    "user": {
+      "login": "R1kM",
+      "id": 6841566,
+      "node_id": "MDQ6VXNlcjY4NDE1NjY=",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6841566?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/R1kM",
+      "html_url": "https://github.com/R1kM",
+      "followers_url": "https://api.github.com/users/R1kM/followers",
+      "following_url": "https://api.github.com/users/R1kM/following{/other_user}",
+      "gists_url": "https://api.github.com/users/R1kM/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/R1kM/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/R1kM/subscriptions",
+      "organizations_url": "https://api.github.com/users/R1kM/orgs",
+      "repos_url": "https://api.github.com/users/R1kM/repos",
+      "events_url": "https://api.github.com/users/R1kM/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/R1kM/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-03-12T19:15:52Z",
+    "updated_at": "2020-03-12T19:15:52Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "`zz`, as computed by `Decap`, is indicated to have length `Npk` https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#dh-based-kem.\r\nThis does not match the length of the test vector provided for P-256 https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#base-setup-information-2"
+  },
+  {
+    "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/52",
+    "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
+    "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/52/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/52/comments",
+    "events_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/52/events",
+    "html_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/52",
+    "id": 578166875,
+    "node_id": "MDU6SXNzdWU1NzgxNjY4NzU=",
+    "number": 52,
+    "title": "Mismatch on psk length for SHA256",
+    "user": {
+      "login": "R1kM",
+      "id": 6841566,
+      "node_id": "MDQ6VXNlcjY4NDE1NjY=",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6841566?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/R1kM",
+      "html_url": "https://github.com/R1kM",
+      "followers_url": "https://api.github.com/users/R1kM/followers",
+      "following_url": "https://api.github.com/users/R1kM/following{/other_user}",
+      "gists_url": "https://api.github.com/users/R1kM/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/R1kM/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/R1kM/subscriptions",
+      "organizations_url": "https://api.github.com/users/R1kM/orgs",
+      "repos_url": "https://api.github.com/users/R1kM/repos",
+      "events_url": "https://api.github.com/users/R1kM/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/R1kM/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-03-09T20:21:10Z",
+    "updated_at": "2020-03-09T20:21:10Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "At the moment, the length of psk in the test vectors is the same for SHA256 and SHA512. As far as I can tell, psk should only contain 32 bytes for SHA256 instead of 64.\r\nAdditionally, psk, pskID and pkS are not needed in the Base setup (https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#base-setup-information for instance)"
+  },
+  {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/51",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
     "labels_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/51/labels{/name}",
@@ -43,7 +139,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2020-03-09T15:09:51Z",
-    "updated_at": "2020-03-09T16:08:52Z",
+    "updated_at": "2020-03-09T16:11:29Z",
     "closed_at": "2020-03-09T16:08:52Z",
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -97,7 +193,7 @@
     "milestone": null,
     "comments": 10,
     "created_at": "2020-03-06T16:54:50Z",
-    "updated_at": "2020-03-09T11:39:58Z",
+    "updated_at": "2020-03-09T16:30:28Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -1553,7 +1649,10 @@
       "patch_url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/24.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/23",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
@@ -1663,10 +1762,7 @@
     "closed_at": "2020-02-27T13:27:59Z",
     "author_association": "COLLABORATOR",
     "body": "For example, the base mode does not provide KCI resistance. "
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke/issues/21",
     "repository_url": "https://api.github.com/repos/cfrg/draft-irtf-cfrg-hpke",
