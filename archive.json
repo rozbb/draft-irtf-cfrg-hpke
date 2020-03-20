@@ -1,0 +1,3874 @@
+{
+  "magic": "B8n2c@e8kvfx",
+  "timestamp": "2020-03-20T14:37:46.812754+00:00",
+  "repo": "cfrg/draft-irtf-cfrg-hpke",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    },
+    {
+      "name": "Pre-RGLC",
+      "description": "",
+      "color": "d4c5f9"
+    }
+  ],
+  "issues": [
+    {
+      "number": 10,
+      "id": "MDU6SXNzdWU1MTMzNzA1MDI=",
+      "title": "Link of reference [SECG] broken",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/10",
+      "state": "CLOSED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi, the link of reference \u201c[SECG] Elliptic Curve Cryptography, Standards for Efficient Cryptography Group, ver. 2\u201d seems broken. Instead of http://www.secg.org/download/aid-780/sec1-v2.pdf the following seems to work: https://secg.org/sec1-v2.pdf",
+      "createdAt": "2019-10-28T15:16:05Z",
+      "updatedAt": "2019-11-04T16:45:14Z",
+      "closedAt": "2019-11-04T16:45:14Z",
+      "comments": []
+    },
+    {
+      "number": 12,
+      "id": "MDU6SXNzdWU1MTYzNDM3MzY=",
+      "title": "Issues in test vectors",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/12",
+      "state": "CLOSED",
+      "author": "kelrit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Two issues I found in the test vectors:\r\n\r\n- kemID is incorrect. eg - for Curve25519, `kemID: 1` but it's specified as 2 in the draft.\r\n- Sequence numbers for generating nonces look off by one.\r\nFor DHKEM(Curve25519), HKDF-SHA256, AES-GCM-128, the initial nonce is `0d8e01f89fa5abab107f7fe9`, but the nonce used in the first encryption (sequence number 0) is `0d8e01f89fa5abab107f7fe8` - the initial one XOR 1.\r\nAs I understand the spec says it should be XOR 0.",
+      "createdAt": "2019-11-01T20:58:13Z",
+      "updatedAt": "2019-11-05T19:40:14Z",
+      "closedAt": "2019-11-04T16:42:06Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, @kelrit! I fixed this in #13.",
+          "createdAt": "2019-11-04T16:17:38Z",
+          "updatedAt": "2019-11-04T16:17:38Z"
+        },
+        {
+          "author": "kelrit",
+          "authorAssociation": "NONE",
+          "body": "@chris-wood Off by one and kemID looks fixed but now it looks like the wrong algorithm is used - \r\nDHKEM(Curve25519) uses a 56 byte key (looks like Curve448?), DHKEM(P-256) appears to be a 25519 key, etc.",
+          "createdAt": "2019-11-04T19:50:27Z",
+          "updatedAt": "2019-11-04T19:50:27Z"
+        },
+        {
+          "author": "kelrit",
+          "authorAssociation": "NONE",
+          "body": "Looks fixed with 4ae75616b42af5520cb88348e0ed5e456eee2815, thanks!",
+          "createdAt": "2019-11-05T19:40:07Z",
+          "updatedAt": "2019-11-05T19:40:14Z"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "MDU6SXNzdWU1MTcyNzM5NTg=",
+      "title": "Add an exporter",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/16",
+      "state": "CLOSED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "It may be desirable to export a secret, as with the TLS exporter.  Adding such a feature would add a bit of complexity, and dilute the focus on PKE.",
+      "createdAt": "2019-11-04T16:45:58Z",
+      "updatedAt": "2020-01-20T16:26:12Z",
+      "closedAt": "2020-01-20T16:26:12Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by #27. @bifurcation, please re-open if that's not the case!",
+          "createdAt": "2020-01-20T16:26:12Z",
+          "updatedAt": "2020-01-20T16:26:12Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "MDU6SXNzdWU1MTczMDg5OTQ=",
+      "title": "KeySchedule notation issues",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/19",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In the current draft (looking at branch master):\r\n\r\ndef KeySchedule(mode, pkRm, zz, enc, info, psk, pskID, pkIm):\r\n  VerifyMode(mode, psk, pskID, pkI)\r\n\r\n  pkRm = Marshal(pkR)\r\npkRm is given as parameter to KeySchedule but is calculated from pkR inside (suggestion: remove the line calculating it)\r\npkI is passed to VerifyMode, should be pkIm.\r\n\r\nFrom @dwd and @blipp ",
+      "createdAt": "2019-11-04T17:52:16Z",
+      "updatedAt": "2020-01-23T17:21:15Z",
+      "closedAt": "2020-01-23T17:21:15Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> pkRm is given as parameter to KeySchedule but is calculated from pkR inside (suggestion: remove the line calculating it)\r\n\r\nThis has since been fixed!\r\n\r\nThe other error still exists.",
+          "createdAt": "2020-01-23T03:01:58Z",
+          "updatedAt": "2020-01-23T03:01:58Z"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "MDU6SXNzdWU1MjEwMzQ0NDQ=",
+      "title": "Add negative test vectors",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/20",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "Pre-RGLC"
+      ],
+      "body": "The draft only has success test vectors. Negative ones would be good, too.",
+      "createdAt": "2019-11-11T15:39:27Z",
+      "updatedAt": "2020-01-23T02:57:37Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 21,
+      "id": "MDU6SXNzdWU1MjEyNTQ0MzU=",
+      "title": "Inconsistent naming of mode AuthPSK",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/21",
+      "state": "CLOSED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Both the constant `mode_psk_auth` and function names like `SetupAuthPSKR` are used. That's inconsistent because the order of `psk` and `auth` is different. Suggestion: change the constant to be `mode_auth_psk`, because there are more function names that would need to be changed otherwise.",
+      "createdAt": "2019-11-12T00:06:37Z",
+      "updatedAt": "2020-01-23T17:20:23Z",
+      "closedAt": "2020-01-23T17:20:23Z",
+      "comments": []
+    },
+    {
+      "number": 22,
+      "id": "MDU6SXNzdWU1MjE2ODMzMzE=",
+      "title": "Document security properties",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/22",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "Pre-RGLC"
+      ],
+      "body": "For example, the base mode does not provide KCI resistance. ",
+      "createdAt": "2019-11-12T17:11:33Z",
+      "updatedAt": "2020-02-27T13:27:59Z",
+      "closedAt": "2020-02-27T13:27:59Z",
+      "comments": [
+        {
+          "author": "emanjon",
+          "authorAssociation": "NONE",
+          "body": "What would KCI mean in this setting? The sender is unauthenticated in the base case.\r\n",
+          "createdAt": "2019-12-18T09:37:06Z",
+          "updatedAt": "2019-12-18T09:37:06Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> What would KCI mean in this setting? The sender is unauthenticated in the base case.\r\n\r\nNot sure off-hand. We need to work on that! ",
+          "createdAt": "2020-01-15T21:53:03Z",
+          "updatedAt": "2020-01-15T21:53:03Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Let's park this until the analysis is done. We can fill out this section with better details at that point.",
+          "createdAt": "2020-01-23T03:05:55Z",
+          "updatedAt": "2020-01-23T03:05:55Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This was fixed in #44.",
+          "createdAt": "2020-02-27T13:27:59Z",
+          "updatedAt": "2020-02-27T13:27:59Z"
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "MDU6SXNzdWU1NTA0NTA4MzE=",
+      "title": "Consider static DH oracles",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/28",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Do we need to be concerned about them? If receivers don't validate ephemeral keys (point on the curve, and in the right subgroup), what can go wrong?",
+      "createdAt": "2020-01-15T21:53:46Z",
+      "updatedAt": "2020-01-20T16:23:10Z",
+      "closedAt": "2020-01-20T16:23:09Z",
+      "comments": [
+        {
+          "author": "FredericJacobs",
+          "authorAssociation": "NONE",
+          "body": "I don\u2019t believe this is relevant for HPKE. My understanding is that such attacks require an oracle for the static scalar multiplier, which is not prevent in the ECDH that HPKE performs.",
+          "createdAt": "2020-01-16T02:51:55Z",
+          "updatedAt": "2020-01-16T02:51:55Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think that\u2019s correct \u2014 @blipp?",
+          "createdAt": "2020-01-16T02:59:30Z",
+          "updatedAt": "2020-01-16T02:59:30Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Yes, that's my understanding as well, it's not relevant for HPKE.\r\n\r\nIf an initiator sends an HPKE message to an adversary-chosen public key, that's where the oracle would be \u2013 but it is not exposing the bare curve operation, it is wrapped into Extract and Expand.",
+          "createdAt": "2020-01-20T16:17:32Z",
+          "updatedAt": "2020-01-20T16:17:32Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Great! I'll close this and move the point validation question over to a separate issue (#30).",
+          "createdAt": "2020-01-20T16:23:09Z",
+          "updatedAt": "2020-01-20T16:23:09Z"
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "MDU6SXNzdWU1NTIzNjU5Nzg=",
+      "title": "Clarify directionality of HPKE with multiple encryptions",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/29",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "chris-wood"
+      ],
+      "labels": [],
+      "body": "There's currently a single sequence number space that's incremented by 1 for each message encrypted. This implies that only the initiator can encrypt messages to the receiver, else we risk key/nonce re-use. We should be clear about this in the draft!",
+      "createdAt": "2020-01-20T15:23:09Z",
+      "updatedAt": "2020-01-24T15:36:44Z",
+      "closedAt": "2020-01-24T15:36:44Z",
+      "comments": [
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "To be clear, you could allow both initiator and receiver to send, e.g., if they used disjoint portions of the nonce space.  For example, in a lock-step protocol where each side replies to the other, you could safely share context, since you would never have collisions.  (In theory!)  In any case, thogh, you would need operational coordination to avoid collisions.\r\n",
+          "createdAt": "2020-01-20T16:50:36Z",
+          "updatedAt": "2020-01-20T16:51:10Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> In any case, thogh, you would need operational coordination to avoid collisions.\r\n\r\nYeah, absent discussion of this coordination, risk of collision seems high. ",
+          "createdAt": "2020-01-20T16:52:55Z",
+          "updatedAt": "2020-01-20T16:52:55Z"
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "id": "MDU6SXNzdWU1NTIzOTg0NTA=",
+      "title": "Point validation?",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/30",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "question"
+      ],
+      "body": "If receivers don't validate ephemeral keys (point on the curve, and in the right subgroup), what can go wrong? An active and malicious initiator could, for example, use that to learn the responder's private key: https://safecurves.cr.yp.to/twist.html",
+      "createdAt": "2020-01-20T16:22:38Z",
+      "updatedAt": "2020-01-31T20:10:22Z",
+      "closedAt": "2020-01-31T20:10:22Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed by #35.",
+          "createdAt": "2020-01-31T20:10:22Z",
+          "updatedAt": "2020-01-31T20:10:22Z"
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "id": "MDU6SXNzdWU1Njg4MjcxMjk=",
+      "title": "Length of PSKs in test vectors don't match with requirements",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/41",
+      "state": "CLOSED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The PSKs used in the test vectors currently are of length 6 bytes but should be 32 bytes for HKDF-SHA256 and 64 bytes for HKDF-SHA512.",
+      "createdAt": "2020-02-21T09:10:33Z",
+      "updatedAt": "2020-02-28T14:35:28Z",
+      "closedAt": "2020-02-28T14:35:28Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Heh, yeah. The psk currently used is:\r\n\r\n```\r\n[]byte(\"mellon\")\r\n```\r\n\r\nNot the best!",
+          "createdAt": "2020-02-21T16:21:45Z",
+          "updatedAt": "2020-02-21T16:21:45Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed by #45.",
+          "createdAt": "2020-02-28T14:35:28Z",
+          "updatedAt": "2020-02-28T14:35:28Z"
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "MDU6SXNzdWU1Njg4Mjg2ODU=",
+      "title": "Nenc and Npk for P512 are inconsistent within the draft",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/42",
+      "state": "CLOSED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In Section \u201cDH-Based KEM\u201d:\r\n\r\n```\r\n* P-521: The X-coordinate of the point, encoded as a 66-octet\r\n  big-endian integer\r\n```\r\n\r\nIn \u201cAlgorithm Identifiers\u201d > \u201cKey Encapsulation Mechanisms\u201d:\r\n\r\n```\r\n| Value  | KEM               | Nenc | Npk | Reference      |\r\n|:-------|:------------------|:-----|:----|:---------------|\r\n| 0x0012 | DHKEM(P-521)      | 65   | 65  | {{NISTCurves}} |\r\n```",
+      "createdAt": "2020-02-21T09:13:44Z",
+      "updatedAt": "2020-02-27T13:28:47Z",
+      "closedAt": "2020-02-27T13:28:46Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in #44 ",
+          "createdAt": "2020-02-27T13:28:46Z",
+          "updatedAt": "2020-02-27T13:28:46Z"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "MDU6SXNzdWU1Njk1MDI5Njc=",
+      "title": "Add CCM ciphersuites",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/43",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "chris-wood"
+      ],
+      "labels": [],
+      "body": "... for use in ECHO.\r\n\r\nAES-GCM-128: https://tools.ietf.org/html/rfc5116\r\nAES-CCM-128 (8-byte IV): https://tools.ietf.org/html/rfc6655\r\n\r\nWe should reference where these AEADs are defined, too (5116 for GCM, 8439 for ChaCha20Poly1305).",
+      "createdAt": "2020-02-23T14:24:22Z",
+      "updatedAt": "2020-02-25T22:00:42Z",
+      "closedAt": "2020-02-25T22:00:42Z",
+      "comments": []
+    },
+    {
+      "number": 46,
+      "id": "MDU6SXNzdWU1NzI3OTA4MzI=",
+      "title": "Add domain separation for expanded secrets",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/46",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We currently have none!",
+      "createdAt": "2020-02-28T14:29:29Z",
+      "updatedAt": "2020-03-20T14:36:31Z",
+      "closedAt": "2020-03-20T14:36:31Z",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in #47.",
+          "createdAt": "2020-03-20T14:36:31Z",
+          "updatedAt": "2020-03-20T14:36:31Z"
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "id": "MDU6SXNzdWU1NzgxNjY4NzU=",
+      "title": "Mismatch on psk length for SHA256",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/52",
+      "state": "OPEN",
+      "author": "R1kM",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "At the moment, the length of psk in the test vectors is the same for SHA256 and SHA512. As far as I can tell, psk should only contain 32 bytes for SHA256 instead of 64.\r\nAdditionally, psk, pskID and pkS are not needed in the Base setup (https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#base-setup-information for instance)",
+      "createdAt": "2020-03-09T20:21:10Z",
+      "updatedAt": "2020-03-09T20:21:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 53,
+      "id": "MDU6SXNzdWU1ODAxNjQyNzU=",
+      "title": "Mismatch on zz length for P-256",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/issues/53",
+      "state": "OPEN",
+      "author": "R1kM",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "`zz`, as computed by `Decap`, is indicated to have length `Npk` https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#dh-based-kem.\r\nThis does not match the length of the test vector provided for P-256 https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#base-setup-information-2",
+      "createdAt": "2020-03-12T19:15:52Z",
+      "updatedAt": "2020-03-12T19:15:52Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mjg5MDcyNTg2",
+      "title": "Comments from @dwd (and one thing I found)",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/1",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-06-18T01:17:07Z",
+      "updatedAt": "2019-07-02T16:48:34Z",
+      "closedAt": "2019-07-02T16:48:34Z",
+      "mergedAt": "2019-07-02T16:48:34Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU2OTk3NDIw",
+          "commit": {
+            "abbreviatedOid": "1f394fe"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-07-02T16:05:51Z",
+          "updatedAt": "2019-07-02T16:08:26Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n- `pk(skX)`: The public key corresponding to private key `skX`\r\n```",
+              "createdAt": "2019-07-02T16:05:51Z",
+              "updatedAt": "2019-07-02T16:46:46Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "Why is this needed?",
+              "createdAt": "2019-07-02T16:06:28Z",
+              "updatedAt": "2019-07-02T16:46:46Z"
+            },
+            {
+              "originalPosition": 84,
+              "body": "```suggestion\r\n  context = concat(ciphersuite, mode,\r\n```",
+              "createdAt": "2019-07-02T16:07:53Z",
+              "updatedAt": "2019-07-02T16:46:46Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3MDE5MDI2",
+          "commit": {
+            "abbreviatedOid": "1f394fe"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-02T16:46:01Z",
+          "updatedAt": "2019-07-02T16:46:02Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "You mean the \"empty value\" part?  I thought it was needed for #2, but on further reflection, it need not be. ",
+              "createdAt": "2019-07-02T16:46:01Z",
+              "updatedAt": "2019-07-02T16:46:46Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3MDE5OTE1",
+          "commit": {
+            "abbreviatedOid": "7a9cf49"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-02T16:47:49Z",
+          "updatedAt": "2019-07-02T16:47:49Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "\ud83d\udc4d I'd remove it if not used.",
+              "createdAt": "2019-07-02T16:47:49Z",
+              "updatedAt": "2019-07-02T16:47:49Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "MDExOlB1bGxSZXF1ZXN0MjkzNDUzNDgx",
+      "title": "Consolidate the key schedule",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/2",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Prior versions had a lot of repetitive logic in the `SetupX` functions.  This PR consolidates that logic into a single `KeySchedule` method with some optional inputs to reflect variation among the modes.  As a side effect, it's now trivial to add a mode where the initiator is authenticated to hold *both* a PSK and a private key.\r\n\r\nNB: Based on top of #1, so this will read better once that is landed.",
+      "createdAt": "2019-07-01T18:39:33Z",
+      "updatedAt": "2019-07-04T01:04:45Z",
+      "closedAt": "2019-07-04T01:04:45Z",
+      "mergedAt": "2019-07-04T01:04:44Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NzgzMzA5",
+          "commit": {
+            "abbreviatedOid": "42bfa9f"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2019-07-04T00:15:48Z",
+          "updatedAt": "2019-07-04T00:27:54Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\r\nmechanism for translating the protocol inputs into an\r\n```",
+              "createdAt": "2019-07-04T00:15:48Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 35,
+              "body": "```suggestion\r\nencryption context.  The key schedule inputs are as follows:\r\n```",
+              "createdAt": "2019-07-04T00:16:06Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 43,
+              "body": "Can one supply a `pskID` but not a `psk`?",
+              "createdAt": "2019-07-04T00:19:09Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 46,
+              "body": "```suggestion\r\nIf any of the optional values is absent (e.g., set to `None`\r\n```",
+              "createdAt": "2019-07-04T00:19:09Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 51,
+              "body": "This seems to suggest that the key and nonce are outputs, but they're just put in the context. Perhaps we replace \"produced\" with \"computed\"?",
+              "createdAt": "2019-07-04T00:19:09Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 47,
+              "body": "```suggestion\r\nin a Python implementation), then it is treated as\r\n```",
+              "createdAt": "2019-07-04T00:19:09Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 65,
+              "body": "nit: can we rename `salt` to `psk`? I had to go down to see its invocation to learn that salt is really the psk here.",
+              "createdAt": "2019-07-04T00:19:48Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 61,
+              "body": "nit: instead of `default`, perhaps `empty`? And perhaps replace `salt` with `psk`?",
+              "createdAt": "2019-07-04T00:21:07Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 84,
+              "body": "We don't include `len(pkIm)`?",
+              "createdAt": "2019-07-04T00:21:54Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 84,
+              "body": "Question: if `Nenc` is fixed for the cipher suite, do we need to encode the length here? (This doesn't seem like it'd match the TLS struct below, since `opaque enc[Nenc];` is a fixed-length array. ",
+              "createdAt": "2019-07-04T00:25:16Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 80,
+              "body": "nit: either this should be `salt`, or the `salt` parameter to `KeySchedule` should be `psk`, right?",
+              "createdAt": "2019-07-04T00:25:54Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 65,
+              "body": "(I recognize we use `salt` since it's more natural for `Extract`, though `psk` I think being clear about the nature of the value is probably better here.",
+              "createdAt": "2019-07-04T00:26:43Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            },
+            {
+              "originalPosition": 31,
+              "body": "I might rename this to Encryption Context, and then the function `KeySchedule` to `EncryptionContext`, respectively. That seems to better match what's happening here. ",
+              "createdAt": "2019-07-04T00:27:51Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3Nzg4MTQw",
+          "commit": {
+            "abbreviatedOid": "42bfa9f"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-04T00:48:04Z",
+          "updatedAt": "2019-07-04T00:48:04Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "Actually, this whole section needs rewriting after the update.",
+              "createdAt": "2019-07-04T00:48:04Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3Nzg4Nzgy",
+          "commit": {
+            "abbreviatedOid": "42bfa9f"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-04T00:52:15Z",
+          "updatedAt": "2019-07-04T00:52:15Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "`pkIm` has fixed length `Npk`.",
+              "createdAt": "2019-07-04T00:52:15Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3Nzg4ODQx",
+          "commit": {
+            "abbreviatedOid": "42bfa9f"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-04T00:52:40Z",
+          "updatedAt": "2019-07-04T00:52:40Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "Don't like that; \"empty\" implies there's nothing there, whereas here clearly there is.",
+              "createdAt": "2019-07-04T00:52:40Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3Nzg4OTMz",
+          "commit": {
+            "abbreviatedOid": "42bfa9f"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-04T00:53:17Z",
+          "updatedAt": "2019-07-04T00:53:17Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "Good point.  Removed this length, and the length for `pkRm`, which is unnecessary for similar reasons.",
+              "createdAt": "2019-07-04T00:53:17Z",
+              "updatedAt": "2019-07-04T01:04:21Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "MDExOlB1bGxSZXF1ZXN0MjkzNDYyMDYz",
+      "title": "Use individual algorithm identifiers as opposed to a suite ",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/3",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This has been the trend, e.g., with TLS 1.3, and there's no inherent need to conjoin these choices here, except for \"level matching\".\r\n\r\nNB: Based on top of #1 and #2, so this will read better once they're landed",
+      "createdAt": "2019-07-01T19:08:10Z",
+      "updatedAt": "2019-07-04T01:31:27Z",
+      "closedAt": "2019-07-04T01:31:27Z",
+      "mergedAt": "2019-07-04T01:31:27Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3Nzg1Njkx",
+          "commit": {
+            "abbreviatedOid": "0ee0c5b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-07-04T00:31:49Z",
+          "updatedAt": "2019-07-04T00:31:49Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzEzMzc5ODE1",
+      "title": "Apply updates from the list",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/4",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "@bifurcation please have a look!\r\n\r\ncc @FredericJacobs, too.",
+      "createdAt": "2019-09-02T23:23:49Z",
+      "updatedAt": "2019-09-15T17:04:12Z",
+      "closedAt": "2019-09-06T20:07:56Z",
+      "mergedAt": "2019-09-06T20:07:56Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjgzNTMyMTkx",
+          "commit": {
+            "abbreviatedOid": "905e4c7"
+          },
+          "author": "FredericJacobs",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-09-04T10:53:11Z",
+          "updatedAt": "2019-09-04T10:53:11Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg0NDExMjU5",
+          "commit": {
+            "abbreviatedOid": "905e4c7"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Minor comments, no need to re-review.",
+          "createdAt": "2019-09-05T17:09:32Z",
+          "updatedAt": "2019-09-05T17:18:59Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "It seems like this could be made fixed-length, of length Nh:\r\n\r\n```\r\nopaque info_hash[Nh];\r\n```\r\n\r\nAnd likewise, drop the `len(info_hash)` above.",
+              "createdAt": "2019-09-05T17:09:32Z",
+              "updatedAt": "2019-09-06T20:04:31Z"
+            },
+            {
+              "originalPosition": 79,
+              "body": "Nit: s/which/that/",
+              "createdAt": "2019-09-05T17:09:59Z",
+              "updatedAt": "2019-09-06T20:04:31Z"
+            },
+            {
+              "originalPosition": 79,
+              "body": "It might be good to specify what they need to encode, namely:\r\n\r\n* The encapsulated value `enc`\r\n* Ciphertext value(s), in order if multiple\r\n* Any info values that are not implicit",
+              "createdAt": "2019-09-05T17:11:10Z",
+              "updatedAt": "2019-09-06T20:04:31Z"
+            },
+            {
+              "originalPosition": 50,
+              "body": "Also, we now have only one variable-length field in the context, `pskID`.  Maybe we should hash that as well?  Maybe that's a follow-on.",
+              "createdAt": "2019-09-05T17:18:40Z",
+              "updatedAt": "2019-09-06T20:04:31Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg0NDQyNTkw",
+          "commit": {
+            "abbreviatedOid": "905e4c7"
+          },
+          "author": "FredericJacobs",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-05T18:03:38Z",
+          "updatedAt": "2019-09-05T18:03:38Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "That's probably a good idea to get rid of variable-size fields.",
+              "createdAt": "2019-09-05T18:03:38Z",
+              "updatedAt": "2019-09-06T20:04:31Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzE1NzA5NDg0",
+      "title": "Add single-shot APIs.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/5",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Many applications may not need to use an encryption context for more than one message.\r\nThe current separation therefore adds complexity to clients which do not wrap\r\nthe Setup+Seal pattern in a single function. This change adds such a helper wrapper.",
+      "createdAt": "2019-09-09T20:47:38Z",
+      "updatedAt": "2019-09-14T13:57:27Z",
+      "closedAt": "2019-09-14T13:57:27Z",
+      "mergedAt": "2019-09-14T13:57:27Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg1ODAxOTcx",
+          "commit": {
+            "abbreviatedOid": "87b3d39"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2019-09-09T21:43:45Z",
+          "updatedAt": "2019-09-09T22:34:34Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "You're going to need to fence these with `~~~` and make the lines shorter, or else they're not going to render well.",
+              "createdAt": "2019-09-09T21:43:45Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "The `HPKE` at the front of these seems unnecessary, given that's what the whole document is about.",
+              "createdAt": "2019-09-09T21:44:40Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "The order of parameters seems unaesthetic to me.  My preference would be to go in the order you're going to use them: pkR, info, aad, pt.\r\n\r\nSo for example `SealBase(pkR, info, aad, pt) = ContextSeal(SetupBaseI(pkR, info), aad, pt)",
+              "createdAt": "2019-09-09T21:47:15Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 48,
+              "body": "I would still like this better if we just left it in a form that someone could fill in in the obvious way:\r\n\r\n```\r\ndef SealMODE(pkR, info, aad, pt, ...):\r\n  enc, ctx = SetupIMODE(pkR, info, ...)\r\n  ct = ctx.sesal(aad, pt)\r\n  return enc, ct\r\n```\r\n\r\nYou can actually [implement things exactly this way](https://gist.github.com/bifurcation/4bb8a0444d5abe41fbe8a816a282b0fb) in C++: \r\n\r\n```\r\ntemplate<Mode M, typename... Args>\r\ntuple<EncapsulatedKey, EncryptionContext>\r\nsetupI(const PublicKey& pkR, const Bytes& info, const Args&... args);\r\n\r\n// ... instantiations ...\r\n\r\ntemplate<Mode M, typename... Args>\r\ntuple<EncapsulatedKey, Bytes>\r\nseal(const PublicKey& pkR,\r\n     const Bytes& info,\r\n     const Bytes& aad,\r\n     const Bytes& pt,\r\n     const Args&... args)\r\n{\r\n  auto [enc, ctx] = setupI<M>(pkR, info, args...);\r\n  auto ct = ctx.seal(aad, pt);\r\n  return { enc, ct };\r\n}\r\n```",
+              "createdAt": "2019-09-09T22:34:02Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg1ODM1MjQ3",
+          "commit": {
+            "abbreviatedOid": "87b3d39"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-09T23:23:38Z",
+          "updatedAt": "2019-09-09T23:23:38Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": ":+1: agreed! With the template change, this should be fixed.",
+              "createdAt": "2019-09-09T23:23:38Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg1ODM1NDEw",
+          "commit": {
+            "abbreviatedOid": "87b3d39"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-09T23:24:13Z",
+          "updatedAt": "2019-09-09T23:24:13Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "Good idea! I refactored it a bit based on this suggestion. Please have a look.",
+              "createdAt": "2019-09-09T23:24:13Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg3MTUwNjkx",
+          "commit": {
+            "abbreviatedOid": "31b2ef9"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-12T01:17:35Z",
+          "updatedAt": "2019-09-12T01:20:01Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "Nice, I like the angle brackets",
+              "createdAt": "2019-09-12T01:17:35Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 40,
+              "body": "WLOG seems unnecessary.  I would just eliminate this sentence and end the prior sentence with a colon.",
+              "createdAt": "2019-09-12T01:18:10Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 54,
+              "body": "Maybe `The optional parameters indicated by \"...\"`",
+              "createdAt": "2019-09-12T01:18:56Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 58,
+              "body": "Don't you mean `SealAuthPSK`?",
+              "createdAt": "2019-09-12T01:19:16Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            },
+            {
+              "originalPosition": 58,
+              "body": "s/Using such a template/Thus/\r\ns/might be/would be/",
+              "createdAt": "2019-09-12T01:19:56Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg3MTU5MTEz",
+          "commit": {
+            "abbreviatedOid": "31b2ef9"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-12T01:58:48Z",
+          "updatedAt": "2019-09-12T01:58:49Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "Works for me!",
+              "createdAt": "2019-09-12T01:58:49Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg3MTU5MjIy",
+          "commit": {
+            "abbreviatedOid": "31b2ef9"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-12T01:59:19Z",
+          "updatedAt": "2019-09-12T01:59:19Z",
+          "comments": [
+            {
+              "originalPosition": 58,
+              "body": "> Don't you mean SealAuthPSK?\r\n \r\nOops, yeah. Will fix.",
+              "createdAt": "2019-09-12T01:59:19Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg4MTgzODQw",
+          "commit": {
+            "abbreviatedOid": "567f63b"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-13T18:33:32Z",
+          "updatedAt": "2019-09-13T18:33:32Z",
+          "comments": [
+            {
+              "originalPosition": 43,
+              "body": "We should make sure that the templates actually expand here.  Based on the AuthPSK example above, it looks like there are at least two issues:\r\n\r\n* `SetupR<MODE>` vs. `Setup<MODE>R`\r\n* Parameter order (standard parameters first)",
+              "createdAt": "2019-09-13T18:33:32Z",
+              "updatedAt": "2019-09-13T21:36:58Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mjg4MjYzMTk4",
+          "commit": {
+            "abbreviatedOid": "6cd4833"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-09-13T21:37:43Z",
+          "updatedAt": "2019-09-13T21:37:43Z",
+          "comments": [
+            {
+              "originalPosition": 43,
+              "body": "Great catch! Should be fixed now. ",
+              "createdAt": "2019-09-13T21:37:43Z",
+              "updatedAt": "2019-09-13T21:37:43Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzE3NjU1MjMy",
+      "title": "Editorial fixes",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/6",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Also, apply a couple editorial fixes.\r\n\r\ncc @bifurcation ",
+      "createdAt": "2019-09-15T17:15:43Z",
+      "updatedAt": "2019-09-18T22:20:20Z",
+      "closedAt": "2019-09-18T22:20:19Z",
+      "mergedAt": "2019-09-18T22:20:19Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzIzMzQ0MDUy",
+      "title": "Clarify pkI/pkIm usage",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/7",
+      "state": "CLOSED",
+      "author": "dwd",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-10-01T15:43:57Z",
+      "updatedAt": "2019-11-04T17:50:37Z",
+      "closedAt": "2019-11-04T17:02:40Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think this is incorporated by the current draft, so we can close it. @dwd please re-open if you disagree!",
+          "createdAt": "2019-11-04T17:02:40Z",
+          "updatedAt": "2019-11-04T17:02:53Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I believe the issue is not yet resolved; so either this pull-request should be re-opened or a new one created:\r\n\r\nIn the current draft (looking at branch master):\r\n```\r\ndef KeySchedule(mode, pkRm, zz, enc, info, psk, pskID, pkIm):\r\n  VerifyMode(mode, psk, pskID, pkI)\r\n\r\n  pkRm = Marshal(pkR)\r\n```\r\n- `pkRm` is given as parameter to `KeySchedule` but is calculated from `pkR` inside (suggestion: remove the line calculating it)\r\n- `pkI` is passed to `VerifyMode`, should be `pkIm`.\r\n\r\nThe explanations of `pkIm` and `pkRm` suggested by @dwd could also be interesting, because at the moment they are only defined implicitly.",
+          "createdAt": "2019-11-04T17:50:37Z",
+          "updatedAt": "2019-11-04T17:50:37Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA1MzEzNTU5",
+          "commit": {
+            "abbreviatedOid": "d8e0c50"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-10-22T15:44:32Z",
+          "updatedAt": "2019-10-22T15:45:12Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "Should we pass in `pkRm` instead?",
+              "createdAt": "2019-10-22T15:44:33Z",
+              "updatedAt": "2019-10-22T15:45:12Z"
+            },
+            {
+              "originalPosition": 4,
+              "body": "This is not currently an input, and if it were, then we should not send `pkR`.",
+              "createdAt": "2019-10-22T15:44:59Z",
+              "updatedAt": "2019-10-22T15:45:12Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzMxMDcwNjQx",
+      "title": "Add missing mode parameters",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/8",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In Sections 6.3, 6.4, and 6.5 is seems like KeySchedule's mode parameter is missing.",
+      "createdAt": "2019-10-22T15:53:26Z",
+      "updatedAt": "2019-10-30T22:46:07Z",
+      "closedAt": "2019-10-30T22:46:07Z",
+      "mergedAt": "2019-10-30T22:46:07Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA5NTU5Nzkx",
+          "commit": {
+            "abbreviatedOid": "48560c7"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-10-30T22:29:35Z",
+          "updatedAt": "2019-10-30T22:29:35Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA5NTY1NDkw",
+          "commit": {
+            "abbreviatedOid": "48560c7"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-10-30T22:45:41Z",
+          "updatedAt": "2019-10-30T22:45:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzMxMzQ2NDY3",
+      "title": "Add test vectors and remove lingering TODOs.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/9",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The script I used for formatting the JSON vectors is here: https://gist.github.com/chris-wood/e4309b89491ea9483062eb95c4ca5dd7",
+      "createdAt": "2019-10-23T05:27:53Z",
+      "updatedAt": "2019-10-23T23:13:58Z",
+      "closedAt": "2019-10-23T23:13:57Z",
+      "mergedAt": "2019-10-23T23:13:57Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA1ODkzOTkw",
+          "commit": {
+            "abbreviatedOid": "c326749"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-10-23T13:34:58Z",
+          "updatedAt": "2019-10-23T14:17:43Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "That URL doesn't actually exist :)\r\n\r\nIf you're going to add such a link, please add the file in the same PR.  And even then, the URL should be something like `https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/vectors.json`.\r\n\r\nNit: I would prefer `test-vectors.json`",
+              "createdAt": "2019-10-23T13:34:58Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            },
+            {
+              "originalPosition": 23,
+              "body": "Might be clearer if we had some hierarchy here: \r\n\r\n```\r\n## DHKEM(P-256), HKDF-SHA256, AES-GCM-128\r\n### Base\r\n### PSK\r\n### Auth\r\n### AuthPSK\r\n## DHKEM(Curve25519), HKDF-SHA256, ChaCha20Poly1305\r\n### [[ As above ]]\r\n## DHKEM(P-521), HKDF-SHA256, AES-GCM-256\r\n### [[ As above ]]\r\n```\r\n\r\nNote also: Suggest doing GCM with P-256 and ChaCHa with X25519, so that we get a fully non-NIST suite (except SHA).\r\n",
+              "createdAt": "2019-10-23T13:36:49Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            },
+            {
+              "originalPosition": 33,
+              "body": "I have a slight preference for just putting JSON in here.  Is there a particular reason to prefer this format?  Maybe the wrapping is easier?  For wrapping JSON, I would propose just pretending it as JS, e.g.,\r\n\r\n```\r\n{\r\n  \"zz: \"4a75c8fdba6bc5ae73a014071085931b814266dab50cf54cfacef1275294b9007ad5\" +\r\n       \"c9fdec1128c62bdbfa41eb604ff9488cda8fc3ef9c99015a7b61e730347e\"\r\n}\r\n```\r\n\r\nIf you end up writing a tool to do JSON wrapping, we should make sure to put that somewhere it can be reused.",
+              "createdAt": "2019-10-23T13:40:38Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            },
+            {
+              "originalPosition": 61,
+              "body": "What we're really testing here is the nonce updating logic.  So:\r\n* Doing a different pattern might better exercise the relevant code, e.g., seq=0,1,2,4,...\r\n* You should output the nonce here",
+              "createdAt": "2019-10-23T13:47:00Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA2MjE1MDky",
+          "commit": {
+            "abbreviatedOid": "c326749"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-10-23T21:54:45Z",
+          "updatedAt": "2019-10-23T21:54:45Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "That works for me. I'll add the file to this PR.",
+              "createdAt": "2019-10-23T21:54:45Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA2MjE1MjU0",
+          "commit": {
+            "abbreviatedOid": "c326749"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-10-23T21:55:05Z",
+          "updatedAt": "2019-10-23T21:55:06Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "I'll shuffle things around to do that, yeah.",
+              "createdAt": "2019-10-23T21:55:05Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA2MjE3MjQ2",
+          "commit": {
+            "abbreviatedOid": "c326749"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-10-23T21:59:45Z",
+          "updatedAt": "2019-10-23T21:59:45Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "Mainly, the formatting seemed cleaner and the additional pointer to the JSON format could help those which want to ingest them with minimal effort. (In contrast, if we did the quirky JSON wrapping in the document, without a JSON link, then folks would have to reconstruct it themselves.)",
+              "createdAt": "2019-10-23T21:59:45Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA2MjMxMDE0",
+          "commit": {
+            "abbreviatedOid": "c326749"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-10-23T22:36:06Z",
+          "updatedAt": "2019-10-23T22:36:06Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "Done!",
+              "createdAt": "2019-10-23T22:36:06Z",
+              "updatedAt": "2019-10-23T22:39:03Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA2MjQzNTAy",
+          "commit": {
+            "abbreviatedOid": "99453d6"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-10-23T23:13:50Z",
+          "updatedAt": "2019-10-23T23:13:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzM0MTQzMDQw",
+      "title": "Fix parameters in Single-Shot APIs",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/11",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "`OpenAuthPSK` was missing parameters, and the call to `SetupAuthPSKR` used `skI` instead of `pkI`.",
+      "createdAt": "2019-10-30T10:15:22Z",
+      "updatedAt": "2019-10-30T22:44:25Z",
+      "closedAt": "2019-10-30T22:44:25Z",
+      "mergedAt": "2019-10-30T22:44:25Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA5NTU5NjMw",
+          "commit": {
+            "abbreviatedOid": "c113b97"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-10-30T22:29:06Z",
+          "updatedAt": "2019-10-30T22:29:06Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzA5NTY0OTQ4",
+          "commit": {
+            "abbreviatedOid": "c113b97"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-10-30T22:44:19Z",
+          "updatedAt": "2019-10-30T22:44:19Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzM2MzU2NjY4",
+      "title": "Fix test vectors. Remove some options to cut down on text.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/13",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-11-04T16:06:39Z",
+      "updatedAt": "2019-11-04T16:41:33Z",
+      "closedAt": "2019-11-04T16:41:33Z",
+      "mergedAt": "2019-11-04T16:41:33Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjAyNzUz",
+          "commit": {
+            "abbreviatedOid": "2220a95"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-11-04T16:41:28Z",
+          "updatedAt": "2019-11-04T16:41:28Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzM2MzcxODg3",
+      "title": "Security Considerations",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/14",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-11-04T16:38:12Z",
+      "updatedAt": "2019-11-04T17:22:19Z",
+      "closedAt": "2019-11-04T17:22:19Z",
+      "mergedAt": "2019-11-04T17:22:19Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjA2NTI5",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T16:46:43Z",
+          "updatedAt": "2019-11-04T16:46:44Z",
+          "comments": [
+            {
+              "originalPosition": 143,
+              "body": "I wonder if this should be replaced with a more general \"use cases\" section in the document?",
+              "createdAt": "2019-11-04T16:46:44Z",
+              "updatedAt": "2019-11-04T17:20:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjA2Nzg4",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T16:47:05Z",
+          "updatedAt": "2019-11-04T16:47:05Z",
+          "comments": [
+            {
+              "originalPosition": 162,
+              "body": "```suggestion\r\nThis scheme is re-uses the authentication scheme of the underlying\r\n```",
+              "createdAt": "2019-11-04T16:47:05Z",
+              "updatedAt": "2019-11-04T17:20:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjA2OTA0",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T16:47:14Z",
+          "updatedAt": "2019-11-04T16:47:15Z",
+          "comments": [
+            {
+              "originalPosition": 163,
+              "body": "```suggestion\r\nAEAD algorithm, while using the KEM to establish a one-time authentication\r\n```",
+              "createdAt": "2019-11-04T16:47:15Z",
+              "updatedAt": "2019-11-04T17:20:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjA3MjM5",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T16:47:42Z",
+          "updatedAt": "2019-11-04T16:47:43Z",
+          "comments": [
+            {
+              "originalPosition": 164,
+              "body": "I'd drop the last sentence.",
+              "createdAt": "2019-11-04T16:47:42Z",
+              "updatedAt": "2019-11-04T17:20:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjA3NDA1",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-11-04T16:47:55Z",
+          "updatedAt": "2019-11-04T16:47:55Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjI4Mjcw",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T17:19:22Z",
+          "updatedAt": "2019-11-04T17:19:22Z",
+          "comments": [
+            {
+              "originalPosition": 162,
+              "body": "No, I think this is correct as-is -- e.g., with AES-GCM, we're not really using AES, we're using GMAC.",
+              "createdAt": "2019-11-04T17:19:22Z",
+              "updatedAt": "2019-11-04T17:20:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjI4NDIw",
+          "commit": {
+            "abbreviatedOid": "ab84319"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T17:19:35Z",
+          "updatedAt": "2019-11-04T17:19:35Z",
+          "comments": [
+            {
+              "originalPosition": 143,
+              "body": "Maybe, but I'm inclined to just do this for now.",
+              "createdAt": "2019-11-04T17:19:35Z",
+              "updatedAt": "2019-11-04T17:20:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjI5NDA1",
+          "commit": {
+            "abbreviatedOid": "0fa0658"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T17:21:15Z",
+          "updatedAt": "2019-11-04T17:21:16Z",
+          "comments": [
+            {
+              "originalPosition": 162,
+              "body": "I get that, but the suggestion doesn't change that fact? It's purely editorial.",
+              "createdAt": "2019-11-04T17:21:16Z",
+              "updatedAt": "2019-11-04T17:21:16Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjI5NTM4",
+          "commit": {
+            "abbreviatedOid": "0fa0658"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-11-04T17:21:25Z",
+          "updatedAt": "2019-11-04T17:21:26Z",
+          "comments": [
+            {
+              "originalPosition": 143,
+              "body": "Yep, just food for thought in the future.",
+              "createdAt": "2019-11-04T17:21:25Z",
+              "updatedAt": "2019-11-04T17:21:26Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjMwMDIy",
+          "commit": {
+            "abbreviatedOid": "0fa0658"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-11-04T17:22:13Z",
+          "updatedAt": "2019-11-04T17:22:13Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzM2Mzc0OTQ0",
+      "title": "Fix broken SECG link found by @blipp",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/15",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #10 ",
+      "createdAt": "2019-11-04T16:44:45Z",
+      "updatedAt": "2019-11-04T16:45:14Z",
+      "closedAt": "2019-11-04T16:45:14Z",
+      "mergedAt": "2019-11-04T16:45:14Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 17,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzM2Mzc5ODU4",
+      "title": "IANA Considerations",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/17",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-11-04T16:55:27Z",
+      "updatedAt": "2019-11-04T16:59:57Z",
+      "closedAt": "2019-11-04T16:59:57Z",
+      "mergedAt": "2019-11-04T16:59:57Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjE1OTMx",
+          "commit": {
+            "abbreviatedOid": "7e60a62"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-11-04T16:59:52Z",
+          "updatedAt": "2019-11-04T16:59:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzM2MzgzMDE2",
+      "title": "Remove references to the encryption context.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/18",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-11-04T17:02:18Z",
+      "updatedAt": "2019-11-04T17:30:04Z",
+      "closedAt": "2019-11-04T17:30:04Z",
+      "mergedAt": "2019-11-04T17:30:04Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzExMjM0OTAx",
+          "commit": {
+            "abbreviatedOid": "edda2fa"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-11-04T17:29:58Z",
+          "updatedAt": "2019-11-04T17:29:58Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzQ2NDAxMDky",
+      "title": "Mattson comments",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/23",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-11-27T19:46:50Z",
+      "updatedAt": "2020-01-23T17:16:35Z",
+      "closedAt": "2020-01-23T17:16:35Z",
+      "mergedAt": "2020-01-23T17:16:35Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzI0OTY4NTM2",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Typos.\r\n\r\nI tend to agree with others about reducing the number of primitives.",
+          "createdAt": "2019-12-01T22:35:55Z",
+          "updatedAt": "2019-12-01T22:37:06Z",
+          "comments": [
+            {
+              "originalPosition": 132,
+              "body": "```suggestion\r\n  Context.Open function in the same order they were generated by Context.Seal\r\n```",
+              "createdAt": "2019-12-01T22:35:55Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            },
+            {
+              "originalPosition": 123,
+              "body": "What is an \"ompon\"?",
+              "createdAt": "2019-12-01T22:36:09Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            },
+            {
+              "originalPosition": 121,
+              "body": "```suggestion\r\n## External Requirements / Non-Goals\r\n```",
+              "createdAt": "2019-12-01T22:36:21Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzI0OTc4NTYy",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "knarz",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-12-02T00:51:13Z",
+          "updatedAt": "2019-12-02T00:51:13Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "s/usign/using/",
+              "createdAt": "2019-12-02T00:51:13Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzI2NDQ5MDkw",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2019-12-03T21:08:12Z",
+          "updatedAt": "2019-12-03T21:10:15Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\nencrypted using that key.  This type of public key encryption has many\r\n```",
+              "createdAt": "2019-12-03T21:08:13Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            },
+            {
+              "originalPosition": 138,
+              "body": "The ciphertext also leaks if the public key is compromised before the ciphertext is created, so perhaps:\r\n\r\n```\r\n* Forward secrecy - HPKE ciphertexts are not forward-secure.  A given ciphertext\r\n   can be decrypted if the recipient's public encryption key is compromised.\r\n```",
+              "createdAt": "2019-12-03T21:10:11Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ1MzkzOTE0",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-20T15:44:13Z",
+          "updatedAt": "2020-01-20T15:44:14Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "In `mode_auth_psk`, the recipient's public key _and_ the psk need to be compromised. Suggestion:\r\n\r\n```\r\n* Forward secrecy - HPKE ciphertexts are not forward-secure. In mode_base\r\n  and mode_auth, a given ciphertext can be decrypted if the recipient's public\r\n  encryption key is compromised. In mode_psk and mode_auth_psk, a given\r\n  ciphertext can be decrypted if the recipient's public encryption key and the\r\n  psk are compromised.\r\n```",
+              "createdAt": "2020-01-20T15:44:14Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ1NDE5MTM0",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-20T16:24:00Z",
+          "updatedAt": "2020-01-20T16:24:00Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "Good suggestion!",
+              "createdAt": "2020-01-20T16:24:00Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ1NTU4NjU4",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-20T22:36:55Z",
+          "updatedAt": "2020-01-20T22:36:56Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "Note that this confuses post-compromise security and forward secrecy.  See the recent discussion on the lake list on this point.  In short, a PSK mode could have FS, but cannot have PCS.",
+              "createdAt": "2020-01-20T22:36:56Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ1NTYxNzgw",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-20T22:49:09Z",
+          "updatedAt": "2020-01-20T22:49:09Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "Hmm, I don't think this is true. (I agree with the claim about achieving FS by hash-racheting the PSK.). @blipp's text simply says that if the private key material is compromised, bad things happen. It doesn't rule out FS should that keying material be updated. I think the text is fine as is.",
+              "createdAt": "2020-01-20T22:49:09Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ1OTQ2NDc1",
+          "commit": {
+            "abbreviatedOid": "004d15b"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-21T15:04:35Z",
+          "updatedAt": "2020-01-21T15:04:36Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "I am not on the lake list, so I don't know what was discussed there (just mentioning such that you can read the following with a grain of salt).\r\n\r\nIn `mode_psk` and `mode_auth_psk`, it's right that if _only one_ of (psk, skR) gets compromised after encrypting the plaintext, the plaintext stays secret. That's some weird kind of forward secrecy assuming that skR and psk are stored sufficiently separated (weird because new ciphertexts are still created with the same key material, there is no key update, no transition to a new epoch, etc). I have a proof for this property within my analysis. I think it's a good idea to mention this in the security considerations section, but maybe it's already implicit with my previous text suggestion.\r\n\r\nA protocol building upon HPKE could try to add better properties, but I am not sure if this would be out of scope of this draft?",
+              "createdAt": "2020-01-21T15:04:36Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3MDM1MTE3",
+          "commit": {
+            "abbreviatedOid": "201c2af"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-01-23T02:56:47Z",
+          "updatedAt": "2020-01-23T02:56:47Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3NDY2NjQ2",
+          "commit": {
+            "abbreviatedOid": "201c2af"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-23T17:10:38Z",
+          "updatedAt": "2020-01-23T17:11:13Z",
+          "comments": [
+            {
+              "originalPosition": 248,
+              "body": "Nit: \"PSK\" (caps)",
+              "createdAt": "2020-01-23T17:10:38Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3NDcwMjI4",
+          "commit": {
+            "abbreviatedOid": "201c2af"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-23T17:16:04Z",
+          "updatedAt": "2020-01-23T17:16:05Z",
+          "comments": [
+            {
+              "originalPosition": 248,
+              "body": "```suggestion\r\n  PSK are compromised.\r\n```",
+              "createdAt": "2020-01-23T17:16:04Z",
+              "updatedAt": "2020-01-23T17:16:11Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzQ3NjQxNjk0",
+      "title": "update KeySchedule to remove pkRm redundancy",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/24",
+      "state": "MERGED",
+      "author": "suhasHere",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-12-02T14:05:46Z",
+      "updatedAt": "2019-12-05T14:14:24Z",
+      "closedAt": "2019-12-05T14:09:36Z",
+      "mergedAt": "2019-12-05T14:09:36Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Current callers of `KeySchedule` pass in `pkR`, not `pkRm`, so I think the correct thing here is to rename the KeySchedule parameter `pkRm` to `pkR`.",
+          "createdAt": "2019-12-03T21:11:58Z",
+          "updatedAt": "2019-12-03T21:11:58Z"
+        },
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@suhasHere I merged this before I saw Chris's comment.  I agree with his point, so I reverted.  Could you please update and submit a new PR?",
+          "createdAt": "2019-12-05T14:14:24Z",
+          "updatedAt": "2019-12-05T14:14:24Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 25,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzQ5NDYxNTU5",
+      "title": "Revert \"update KeySchedule to remove pkRm redundancy\"",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/25",
+      "state": "MERGED",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Reverts cfrg/draft-irtf-cfrg-hpke#24",
+      "createdAt": "2019-12-05T14:12:04Z",
+      "updatedAt": "2019-12-05T14:13:45Z",
+      "closedAt": "2019-12-05T14:13:45Z",
+      "mergedAt": "2019-12-05T14:13:45Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 26,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzUwMjc0OTc5",
+      "title": "fix pkrm computation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/26",
+      "state": "MERGED",
+      "author": "suhasHere",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-12-07T04:27:30Z",
+      "updatedAt": "2019-12-12T18:15:35Z",
+      "closedAt": "2019-12-12T18:15:35Z",
+      "mergedAt": "2019-12-12T18:15:35Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzMxNDI3MTk5",
+          "commit": {
+            "abbreviatedOid": "5c43e3d"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-12-12T18:15:29Z",
+          "updatedAt": "2019-12-12T18:15:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzUyNTQ5MjU0",
+      "title": "Add Export interface",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/27",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Some applications of HPKE, such as ESNI, require a way to produce a unique value from a HPKE \"invocation\". (For ESNI, this would replace a client-generated nonce that is separate from HPKE entirely.) This change derives an additional exporter secret alongside the HPKE key and nonce, and then adds an Export API that can be used to derive additional secrets from this key using the KDF's `Expand` function.",
+      "createdAt": "2019-12-12T18:22:08Z",
+      "updatedAt": "2019-12-15T02:34:27Z",
+      "closedAt": "2019-12-15T02:34:26Z",
+      "mergedAt": "2019-12-15T02:34:26Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzMxNDUyNjE0",
+          "commit": {
+            "abbreviatedOid": "dfe7fd0"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-12-12T18:58:36Z",
+          "updatedAt": "2019-12-12T18:58:36Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Note that this is different from the TLS exporter, which has both a label and a context.  Might not need all of that here, though.\r\n\r\n```\r\n   TLS-Exporter(label, context_value, key_length) =\r\n       HKDF-Expand-Label(Derive-Secret(Secret, label, \"\"),\r\n                         \"exporter\", Hash(context_value), key_length)\r\n```",
+              "createdAt": "2019-12-12T18:58:36Z",
+              "updatedAt": "2019-12-12T18:58:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzMxNDUyNjcx",
+          "commit": {
+            "abbreviatedOid": "dfe7fd0"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-12-12T18:58:42Z",
+          "updatedAt": "2019-12-12T18:58:42Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzY2MTU4NjI4",
+      "title": "s/mode_psk_auth/mode_auth_psk.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/31",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #21.",
+      "createdAt": "2020-01-23T02:59:44Z",
+      "updatedAt": "2020-01-23T17:20:23Z",
+      "closedAt": "2020-01-23T17:20:23Z",
+      "mergedAt": "2020-01-23T17:20:23Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bifurcation #23 should resolve the CI issue above. ",
+          "createdAt": "2020-01-23T03:04:54Z",
+          "updatedAt": "2020-01-23T03:04:54Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3NDcyOTI1",
+          "commit": {
+            "abbreviatedOid": "7f568f5"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-01-23T17:20:17Z",
+          "updatedAt": "2020-01-23T17:20:17Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzY2MTU5MTEw",
+      "title": "Fix VerifyMode parameter name.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/32",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #19.",
+      "createdAt": "2020-01-23T03:02:30Z",
+      "updatedAt": "2020-01-23T17:21:16Z",
+      "closedAt": "2020-01-23T17:21:15Z",
+      "mergedAt": "2020-01-23T17:21:15Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bifurcation #23 should resolve the CI issue above. ",
+          "createdAt": "2020-01-23T03:05:03Z",
+          "updatedAt": "2020-01-23T03:05:03Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3NDczNDcz",
+          "commit": {
+            "abbreviatedOid": "ed3644b"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-01-23T17:21:09Z",
+          "updatedAt": "2020-01-23T17:21:09Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzY2MTYxNzE3",
+      "title": "Clarify unidirectional nature of encryption contexts.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/33",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #29.",
+      "createdAt": "2020-01-23T03:17:10Z",
+      "updatedAt": "2020-01-24T15:36:44Z",
+      "closedAt": "2020-01-24T15:36:44Z",
+      "mergedAt": "2020-01-24T15:36:44Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3NDgyMTY5",
+          "commit": {
+            "abbreviatedOid": "a677637"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-23T17:35:15Z",
+          "updatedAt": "2020-01-23T17:35:21Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "The additions here seem overly restrictive for a low-level document like this.  The underlying hard requirement is that each nonce value MUST be used only once, so in the event of bidirectional comms, the initiator and responder need to coordinate on which nonces belong to which sender.  For example, they might agree that the initiator sends with even-numbered nonces, and the responder with odd-numbered.  Of course, the details of such a scheme are up to the application.  The simplest such scheme is to use a given HPKE interaction for unidirectional communication, so that the initiator's context would only be used for encrypting and the responder's only for decrypting.",
+              "createdAt": "2020-01-23T17:35:15Z",
+              "updatedAt": "2020-01-24T15:28:10Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ3NDg3ODMy",
+          "commit": {
+            "abbreviatedOid": "a677637"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-23T17:44:48Z",
+          "updatedAt": "2020-01-23T17:44:48Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "> they might agree that the initiator sends with even-numbered nonces, and the responder with odd-numbered.\r\n\r\nI agree that this is possible, but the document (as specified) doesn't do this. Each sequence number starts at 0 and is always incremented by 1. \r\n\r\n> The simplest such scheme is to use a given HPKE interaction for unidirectional communication\r\n\r\nMaybe we can simplify the text to say this? That is, each context must only be used for unidirectional communication.",
+              "createdAt": "2020-01-23T17:44:48Z",
+              "updatedAt": "2020-01-24T15:28:10Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ4MDEzMTEz",
+          "commit": {
+            "abbreviatedOid": "a677637"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-24T15:03:43Z",
+          "updatedAt": "2020-01-24T15:03:44Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Ok, I'm coming around on this.  If we're going to lock it down, though, let's lock it down.  Namely, the multi-stage encryption here is just an extension of the single-stage version to allow the sender to stream data:\r\n\r\n* Initiator's context MUST be used for encryption only\r\n* Responder's context MUST be used for decryption only\r\n* Any other case, use the exporter\r\n\r\nMaybe we should be more explicit that this is streaming PKE (thus unidirectional I->R).  Should we reflect this in the pseudocode?",
+              "createdAt": "2020-01-24T15:03:44Z",
+              "updatedAt": "2020-01-24T15:28:10Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ4MDI0NzIx",
+          "commit": {
+            "abbreviatedOid": "a677637"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-24T15:20:37Z",
+          "updatedAt": "2020-01-24T15:20:37Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "The proposed text works for me! \r\n\r\n> Maybe we should be more explicit that this is streaming PKE (thus unidirectional I->R). Should we reflect this in the pseudocode?\r\n\r\nI don't think that's needed. But maybe others will suggest differently?",
+              "createdAt": "2020-01-24T15:20:37Z",
+              "updatedAt": "2020-01-24T15:28:10Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzQ4MDM1OTky",
+          "commit": {
+            "abbreviatedOid": "7c20b2a"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-01-24T15:36:39Z",
+          "updatedAt": "2020-01-24T15:36:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzY4MTc0NTE0",
+      "title": "Unify terminology around Initiator and Responder.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/34",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We used terms such as sender, initiator, receiver, recipient, and responder interchangeably. Let's simplify the vocabulary.",
+      "createdAt": "2020-01-28T18:57:33Z",
+      "updatedAt": "2020-02-06T21:20:29Z",
+      "closedAt": "2020-02-06T21:20:29Z",
+      "mergedAt": "2020-02-06T21:20:28Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ping @bifurcation ",
+          "createdAt": "2020-01-29T23:04:47Z",
+          "updatedAt": "2020-01-29T23:04:47Z"
+        },
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm fine with converging to two words, but let's not use gratuitous capitals.",
+          "createdAt": "2020-01-30T20:46:07Z",
+          "updatedAt": "2020-01-30T20:46:07Z"
+        },
+        {
+          "author": "karthikbhargavan",
+          "authorAssociation": "NONE",
+          "body": "I agree with unifying terminology, but I find \"responder\" to be a bit weird, since the responder never sends any response in HPKE. I prefer sender/recipient. What do you think?",
+          "createdAt": "2020-01-30T21:05:26Z",
+          "updatedAt": "2020-01-30T21:05:26Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I agree with unifying terminology, but I find \"responder\" to be a bit weird, since the responder never sends any response in HPKE. I prefer sender/recipient. What do you think?\r\n\r\nThat's better! My thinking was that responder made sense for higher-level protocols into which HPKE would go, but in hindsight it's not the best term for plain old PKE. I moved to sender/receipient!",
+          "createdAt": "2020-01-30T21:19:53Z",
+          "updatedAt": "2020-01-30T21:19:53Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bifurcation good to go?",
+          "createdAt": "2020-02-05T18:42:40Z",
+          "updatedAt": "2020-02-05T18:42:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzUxMTU1NTI2",
+          "commit": {
+            "abbreviatedOid": "56a2e60"
+          },
+          "author": "karthikbhargavan",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-30T21:30:57Z",
+          "updatedAt": "2020-01-30T21:30:57Z",
+          "comments": [
+            {
+              "originalPosition": 3,
+              "body": "Do we want to change Initiator (I) to Sender (S)?\r\nIf so, do we want to change I everywhere (e.g. pkI) to S (i.e. pkS)?\r\nIts a biggish change, so we'd better all agree.",
+              "createdAt": "2020-01-30T21:30:57Z",
+              "updatedAt": "2020-01-30T21:39:14Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzUxMTYwMzk0",
+          "commit": {
+            "abbreviatedOid": "7cb0b92"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-30T21:39:39Z",
+          "updatedAt": "2020-01-30T21:39:39Z",
+          "comments": [
+            {
+              "originalPosition": 3,
+              "body": "Yep, I think so. I applied that suggestion. Please have a look!",
+              "createdAt": "2020-01-30T21:39:39Z",
+              "updatedAt": "2020-01-30T21:39:39Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzY5MjgzNjY1",
+      "title": "Recommend public key verification.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/35",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses (?) #30.",
+      "createdAt": "2020-01-30T20:58:07Z",
+      "updatedAt": "2020-01-31T19:47:01Z",
+      "closedAt": "2020-01-31T19:47:01Z",
+      "mergedAt": "2020-01-31T19:47:01Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Oh, wow, I just realized we have text that addresses this in the \"Key Encapsulation Mechanisms (KEMs)\" section: \r\n\r\n```\r\nFor the NIST curves P-256 and P-521, the Marshal function of the DH\r\nscheme produces the normal (non-compressed) representation of the\r\npublic key, according to {{SECG}}.  When these curves are used, the\r\nrecipient of an HPKE ciphertext MUST validate that the ephemeral public\r\nkey `pkE` is on the curve.  The relevant validation procedures are\r\ndefined in {{keyagreement}}.\r\n```\r\n\r\nSo I'll point to this text in the proposal.",
+          "createdAt": "2020-01-30T21:14:05Z",
+          "updatedAt": "2020-01-30T21:16:54Z"
+        },
+        {
+          "author": "karthikbhargavan",
+          "authorAssociation": "NONE",
+          "body": "I agree. We should require all keys to be validated. I wish there were an\nup to date rfc for validation we could cite.\n\nOn Thu, Jan 30, 2020, 22:12 Benjamin Lipp <notifications@github.com> wrote:\n\n> *@blipp* commented on this pull request.\n> ------------------------------\n>\n> In draft-irtf-cfrg-hpke.md\n> <https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/35#discussion_r373195756>\n> :\n>\n> > @@ -359,6 +359,11 @@ context. The key schedule inputs are as follows:\n>\n>  * `pkI` - The initiator's public key (optional; default\n>\n>    value `zero(Npk)`)\n>\n>\n>\n> +Responders SHOULD validate the initiator-provided encapsulated key for\n>\n> +correctness. For example, when using a DH-based KEM, the responder should\n>\n> +check that the resulting key share share is valid, i.e., a point on the\n>\n>\n> The sender should then also check if pkR is valid. For secrecy, that's\n> maybe even more important, because it's \u201cbefore the fact\u201d.\n>\n> \u2014\n> You are receiving this because you commented.\n> Reply to this email directly, view it on GitHub\n> <https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/35?email_source=notifications&email_token=ABFUVS46QQ3QVA3Z6DN6OYLRAM7CDA5CNFSM4KN4Y4EKYY3PNVWWK3TUL52HS4DFWFIHK3DMKJSXC5LFON2FEZLWNFSXPKTDN5WW2ZLOORPWSZGOCTXAVMY#discussion_r373195756>,\n> or unsubscribe\n> <https://github.com/notifications/unsubscribe-auth/ABFUVSY2KUOG2ASBIALOVBLRAM7CDANCNFSM4KN4Y4EA>\n> .\n>\n",
+          "createdAt": "2020-01-31T07:32:50Z",
+          "updatedAt": "2020-01-31T07:32:50Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzUxMTQyNjk1",
+          "commit": {
+            "abbreviatedOid": "50b0c20"
+          },
+          "author": "karthikbhargavan",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-30T21:08:36Z",
+          "updatedAt": "2020-01-30T21:08:37Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "\"key share share\"\r\n\r\nI am not sure what the \"resulting key share\" is.\r\nI would instead ask that the recipient/responder should check that pkI and pkE are valid.",
+              "createdAt": "2020-01-30T21:08:37Z",
+              "updatedAt": "2020-01-31T15:36:14Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzUxMTQ0NDI1",
+          "commit": {
+            "abbreviatedOid": "50b0c20"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-30T21:11:41Z",
+          "updatedAt": "2020-01-30T21:11:41Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Good suggestion -- thanks!",
+              "createdAt": "2020-01-30T21:11:41Z",
+              "updatedAt": "2020-01-31T15:36:14Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzUxMTQ0NjI3",
+          "commit": {
+            "abbreviatedOid": "50b0c20"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-01-30T21:11:59Z",
+          "updatedAt": "2020-01-30T21:12:00Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "The sender should then also check if pkR is valid. For secrecy, that's maybe even more important, because it's \u201cbefore the fact\u201d.",
+              "createdAt": "2020-01-30T21:12:00Z",
+              "updatedAt": "2020-01-31T15:36:14Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzUxNzM2Njkx",
+          "commit": {
+            "abbreviatedOid": "66f33c1"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-01-31T19:46:55Z",
+          "updatedAt": "2020-01-31T19:46:55Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzcyOTE0NzMz",
+      "title": "Size of exporter_secret must be at least Nh, Nk is too small",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/36",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, `exporter_secret` is created with Expand at a size of `Nk` octets. It is then used within Context.Export as first argument to another call to Expand. However, for HKDF-Expand, the RFC https://tools.ietf.org/html/rfc5869 defines the first input as follows (emphasis mine):\r\n\r\n```\r\n   Inputs:\r\n      PRK      a pseudorandom key of *at least HashLen* octets\r\n```\r\n\r\n`HashLen` corresponds to `Nh` in the HPKE draft.\r\n\r\nLooking at the definitions of `Nh`, `Nk`, and `Nn` in https://github.com/cfrg/draft-irtf-cfrg-hpke/blob/master/draft-irtf-cfrg-hpke.md#key-derivation-functions-kdfs-kdf-ids, it becomes clear that `Nh >= Nk` and `Nh >= Nn` for all combinations. Thus, to meet the security requirements of HKDF-Expand, `exporter_secret` should be generated with `Nh` bytes and not only with `Nk` bytes.\r\n\r\n(Said differently, `exporter_secret` is not yet the key, but the input to `Expand`)",
+      "createdAt": "2020-02-10T02:47:12Z",
+      "updatedAt": "2020-02-11T00:40:43Z",
+      "closedAt": "2020-02-10T04:05:07Z",
+      "mergedAt": "2020-02-10T04:05:07Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzU1NjgyMzky",
+          "commit": {
+            "abbreviatedOid": "01e32be"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-02-10T04:05:02Z",
+          "updatedAt": "2020-02-10T04:05:02Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzczMjY5NzMw",
+      "title": "Update test vectors (with new sender/responder notation).",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/37",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-02-10T17:51:18Z",
+      "updatedAt": "2020-02-24T14:14:17Z",
+      "closedAt": "2020-02-24T14:14:16Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing, since we should also use PSKs of the appropriate length as per #41.",
+          "createdAt": "2020-02-24T14:14:16Z",
+          "updatedAt": "2020-02-24T14:14:16Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 38,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzc4MTY5NjEx",
+      "title": "Fix typo at two occurrences of pskID",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/38",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-02-21T08:44:19Z",
+      "updatedAt": "2020-02-21T16:04:41Z",
+      "closedAt": "2020-02-21T16:04:41Z",
+      "mergedAt": "2020-02-21T16:04:41Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzYyNzM3MTY1",
+          "commit": {
+            "abbreviatedOid": "4d12b47"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-02-21T16:04:28Z",
+          "updatedAt": "2020-02-21T16:04:28Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzc4MTcwODk0",
+      "title": "Refactor to use byte consistently instead of octet",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/39",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-02-21T08:48:04Z",
+      "updatedAt": "2020-02-21T16:04:18Z",
+      "closedAt": "2020-02-21T16:04:18Z",
+      "mergedAt": "2020-02-21T16:04:18Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzYyNzM2MDkw",
+          "commit": {
+            "abbreviatedOid": "26c2bb0"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-02-21T16:02:53Z",
+          "updatedAt": "2020-02-21T16:02:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzc4MTc4MDY5",
+      "title": "Clarify definition of Npk and output of DH",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/40",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Confirming with the F* specs of P256 and Curve25516, DH returns an encoded curve point. This means the output of DH is of length Npk.",
+      "createdAt": "2020-02-21T09:08:07Z",
+      "updatedAt": "2020-02-21T16:02:18Z",
+      "closedAt": "2020-02-21T16:02:17Z",
+      "mergedAt": "2020-02-21T16:02:17Z",
+      "mergedBy": "chris-wood",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzYyNzM1NTcx",
+          "commit": {
+            "abbreviatedOid": "032a2ee"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-02-21T16:02:12Z",
+          "updatedAt": "2020-02-21T16:02:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzc5ODU5MDM0",
+      "title": "Summarize security properties.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/44",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Huzzah!\r\n\r\ncc @blipp ",
+      "createdAt": "2020-02-25T23:01:46Z",
+      "updatedAt": "2020-02-26T20:52:59Z",
+      "closedAt": "2020-02-26T20:52:59Z",
+      "mergedAt": "2020-02-26T20:52:59Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bifurcation should be good to go now!",
+          "createdAt": "2020-02-26T15:49:40Z",
+          "updatedAt": "2020-02-26T15:49:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTE4Njc2",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:12:32Z",
+          "updatedAt": "2020-02-25T23:15:39Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "Pseudo-Random Function",
+              "createdAt": "2020-02-25T23:12:32Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 73,
+              "body": "the gap Diffie-Hellman (GDH) problem is hard in the appropriate (sub)group.\r\n\r\nI think it is better to cite\r\n\r\n```\r\n@InProceedings{Okamoto01,\r\n  author = \t {Tatsuaki Okamoto and David Pointcheval},\r\n  title = \t {The Gap-Problems: a New Class of Problems for the Security of Cryptographic Schemes},\r\n  booktitle = {PKC 2001},\r\n  year = \t 2001,\r\n  editor = \t {K. Kim},\r\n  volume = \t 1992,\r\n  series = \t lncs,\r\n  pages = \t {104--118},\r\n  month = \t feb,\r\n  conflocation = \t {Cheju Islands, South Korea},\r\n  publisher = \"Springer\",\r\n}\r\n```\r\n\r\nbecause S01 uses a wrong/uncommon name for the assumption (gap computational), and basically also just cites this one.",
+              "createdAt": "2020-02-25T23:15:00Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIwNzcx",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:17:37Z",
+          "updatedAt": "2020-02-25T23:17:37Z",
+          "comments": [
+            {
+              "originalPosition": 73,
+              "body": "\ud83d\udc4d ",
+              "createdAt": "2020-02-25T23:17:37Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIwOTUx",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:18:02Z",
+          "updatedAt": "2020-02-25T23:18:03Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "I might actually change this to \"pseudorandom function\", as that's what was done in RFC8446!",
+              "createdAt": "2020-02-25T23:18:02Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIxMDIw",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:18:12Z",
+          "updatedAt": "2020-02-25T23:20:51Z",
+          "comments": [
+            {
+              "originalPosition": 81,
+              "body": "export secrets\r\n\r\n(could be multiple)",
+              "createdAt": "2020-02-25T23:18:13Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 81,
+              "body": "Or better:\r\n\r\nIndistinguishability of each export secret from a uniformly random bitstring of equal length.",
+              "createdAt": "2020-02-25T23:19:30Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 91,
+              "body": "s too much at the end of the line",
+              "createdAt": "2020-02-25T23:20:18Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIyMjcz",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:21:23Z",
+          "updatedAt": "2020-02-25T23:21:23Z",
+          "comments": [
+            {
+              "originalPosition": 91,
+              "body": "Pesky macbook keyboards.",
+              "createdAt": "2020-02-25T23:21:23Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIyMzA5",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:21:28Z",
+          "updatedAt": "2020-02-25T23:21:28Z",
+          "comments": [
+            {
+              "originalPosition": 81,
+              "body": "\ud83d\udc4d ",
+              "createdAt": "2020-02-25T23:21:28Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIyNTMy",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:21:59Z",
+          "updatedAt": "2020-02-25T23:22:00Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "ack! I was just suggesting this because you had Random Oracle capitalized. If you do \u201cpseudorandom function\u201d, then maybe also \u201crandom oracle\u201d",
+              "createdAt": "2020-02-25T23:21:59Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY0NTIwMjEy",
+          "commit": {
+            "abbreviatedOid": "06ea5b1"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-02-25T23:16:16Z",
+          "updatedAt": "2020-02-26T15:30:09Z",
+          "comments": [
+            {
+              "originalPosition": 97,
+              "body": "Nit: Please align the `|` characters",
+              "createdAt": "2020-02-25T23:16:16Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 31,
+              "body": "I might like to still have a summary up here, with a pointer down to the security considerations.  How about something like this (which also folds in the text from above):\r\n\r\n> As a hybrid authenticated encryption algorithm, we desire security\r\n> against (adaptive) chosen ciphertext attacks (IND-CCA2 secure). The\r\n> HPKE variants described in this document achieve this property under\r\n> standard assumptions about the underlying primitives {{HPKEAnalysis}}. \r\n> A summary of this analysis is in {{sec-considerations}}.\r\n\r\nI would be OK deleting the section header in any case.",
+              "createdAt": "2020-02-26T15:14:26Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 73,
+              "body": "It would also be good to say what property we expect of any non-DH KEMs.  That is, if someone is going to implement this with a new KEM, what do they need to verify about that KEM in order to be confident that HPKE with it is good?",
+              "createdAt": "2020-02-26T15:16:41Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 73,
+              "body": "Would it be worth a brief note that the DH groups, KDF, and KEMs defined in this document have these properties?",
+              "createdAt": "2020-02-26T15:17:27Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 81,
+              "body": "Nit: \"each exported secret\"",
+              "createdAt": "2020-02-26T15:18:21Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 91,
+              "body": "Nit: s/as/because/",
+              "createdAt": "2020-02-26T15:20:30Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 109,
+              "body": "Is this sentence still relevant?  Doesn't seem like it.  If we are still discussing an advanced case, put a subsection break before it.",
+              "createdAt": "2020-02-26T15:22:22Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 97,
+              "body": "Further nits:\r\n* You're going to overflow the RFC line length with this table.  Need shorter headings\r\n* The `X` /  `N/A` values should be centered\r\n* I think it looks nicer if you group the single-shot ones\r\n\r\nSo:\r\n```\r\n| Variant              | Message Sec. | Export Sec. | Sender Auth. |\r\n|:---------------------|:------------:|:-----------:|:------------:|\r\n| Base, single-shot    | X            | N/A         | N/A          |\r\n| PSK, single-shot     | X            | N/A         | X            |\r\n| Auth, single-shot    | X            | N/A         | X            |\r\n| AuthPSK, single-shot | X            | N/A         | X            |\r\n| Base, export         | X            | X           | N/A          |\r\n| PSK, export          | X            | X           | X            |\r\n| Auth, export         | X            | X           | X            |\r\n| AuthPSK, export      | X            | X           | X            |\r\n```",
+              "createdAt": "2020-02-26T15:29:49Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MDA3MzIw",
+          "commit": {
+            "abbreviatedOid": "9ca6448"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T15:42:03Z",
+          "updatedAt": "2020-02-26T15:42:04Z",
+          "comments": [
+            {
+              "originalPosition": 109,
+              "body": "I deleted it and wrapped this section in its own header (\"Security Properties\").",
+              "createdAt": "2020-02-26T15:42:03Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MDE0MTMz",
+          "commit": {
+            "abbreviatedOid": "dc26b14"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T15:49:24Z",
+          "updatedAt": "2020-02-26T15:49:25Z",
+          "comments": [
+            {
+              "originalPosition": 97,
+              "body": "Nice --fixed!",
+              "createdAt": "2020-02-26T15:49:24Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MDI1MzEy",
+          "commit": {
+            "abbreviatedOid": "dc26b14"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T16:01:16Z",
+          "updatedAt": "2020-02-26T16:02:33Z",
+          "comments": [
+            {
+              "originalPosition": 95,
+              "body": "Don't you need an assumption on the AEAD too?  Presumably just IND-CCA2",
+              "createdAt": "2020-02-26T16:01:16Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            },
+            {
+              "originalPosition": 100,
+              "body": "Nit: \"Moreover\" is unnecessary.  \r\n\r\nYou're also still missing what the general KEM property is.  I would arrange as \r\n\r\n* General KEM property\r\n* Probably a paragraph break\r\n* DH-KEM satisfies the general KEM property if gap DH\r\n* KDFs and AEAD functions in this doc meet the requirements\r\n",
+              "createdAt": "2020-02-26T16:02:00Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MDU0NDA5",
+          "commit": {
+            "abbreviatedOid": "dc26b14"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T16:33:54Z",
+          "updatedAt": "2020-02-26T16:33:55Z",
+          "comments": [
+            {
+              "originalPosition": 100,
+              "body": "We can't say anything about general KEMs yet. The analysis does not cover that!",
+              "createdAt": "2020-02-26T16:33:55Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MDU0NTYy",
+          "commit": {
+            "abbreviatedOid": "dc26b14"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T16:34:06Z",
+          "updatedAt": "2020-02-26T16:34:06Z",
+          "comments": [
+            {
+              "originalPosition": 95,
+              "body": "I'll add something, sure.",
+              "createdAt": "2020-02-26T16:34:06Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MTI1NDQ2",
+          "commit": {
+            "abbreviatedOid": "5cb7705"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T18:10:21Z",
+          "updatedAt": "2020-02-26T18:10:22Z",
+          "comments": [
+            {
+              "originalPosition": 162,
+              "body": "One last thing:\r\n\r\n> In addition, both {{CS01}} and {{HPKEAnalysis}} are premised on the classical random oracle model, and do not consider attackers capable of quantum computation.  A full proof of post-quantum security would need to take this difference into account, in addition to simply using a post-quantum KEM.",
+              "createdAt": "2020-02-26T18:10:21Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MTUxODMy",
+          "commit": {
+            "abbreviatedOid": "5cb7705"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-02-26T18:49:11Z",
+          "updatedAt": "2020-02-26T18:49:58Z",
+          "comments": [
+            {
+              "originalPosition": 124,
+              "body": "`The gap Diffie-Hellman (GDH) problem is hard {{GAP}}.`",
+              "createdAt": "2020-02-26T18:49:12Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MTU2ODk3",
+          "commit": {
+            "abbreviatedOid": "5cb7705"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-02-26T18:56:20Z",
+          "updatedAt": "2020-02-26T18:57:33Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "Will we make cryptographers nervous when we say \u201cstandard assumptions\u201d but use the ROM? Assuming ROM for HPKE or Hash is pretty standard, but it is not the \u201cstandard _model_\u201d. We don't say the word _model_ here, so it might be ok\u2026 Is \u201cstandard\u201d here meant in the sense of \u201ccommon\u201d, or in the sense of \u201cclassical\u201d (not post-quantum)? Maybe we could use one of these two instead of standard.",
+              "createdAt": "2020-02-26T18:56:20Z",
+              "updatedAt": "2020-02-26T18:58:50Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MTU5Mjc4",
+          "commit": {
+            "abbreviatedOid": "61ed7d9"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-26T18:59:36Z",
+          "updatedAt": "2020-02-26T18:59:36Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "Hmm... I hadn't considered that. I replaced this with classical, as that seems to best describe what we've done. ",
+              "createdAt": "2020-02-26T18:59:36Z",
+              "updatedAt": "2020-02-26T18:59:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY1MjMzMTYw",
+          "commit": {
+            "abbreviatedOid": "61ed7d9"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-02-26T20:52:52Z",
+          "updatedAt": "2020-02-26T20:52:52Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzc5OTczMDQw",
+      "title": "Update test vectors.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/45",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "With new PSK lengths and more fields. Addresses #41.",
+      "createdAt": "2020-02-26T02:29:04Z",
+      "updatedAt": "2020-02-28T14:34:05Z",
+      "closedAt": "2020-02-28T14:34:05Z",
+      "mergedAt": "2020-02-28T14:34:05Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY2NDM4NTg4",
+          "commit": {
+            "abbreviatedOid": "4515e6c"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-02-28T14:32:59Z",
+          "updatedAt": "2020-02-28T14:32:59Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzgxNDE5ODcx",
+      "title": "Domain separation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/47",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Tries to address #46. \r\n\r\ncc @blipp ",
+      "createdAt": "2020-02-28T14:30:09Z",
+      "updatedAt": "2020-02-28T14:30:57Z",
+      "closedAt": "2020-02-28T14:30:57Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 48,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzgxNDIyMTM3",
+      "title": "Add domain separation",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/48",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add RFC number domain separation tag. Clone KeySchedule Hash calls with one-byte prefix.\r\n\r\nThis attempts to address #47.\r\n\r\n",
+      "createdAt": "2020-02-28T14:34:38Z",
+      "updatedAt": "2020-03-08T02:19:35Z",
+      "closedAt": "2020-03-08T02:19:35Z",
+      "mergedAt": "2020-03-08T02:19:35Z",
+      "mergedBy": "chris-wood",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@blipp @beurdouche @bifurcation what do we want to do with this?",
+          "createdAt": "2020-03-04T22:42:32Z",
+          "updatedAt": "2020-03-04T22:42:32Z"
+        },
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don't think this change is necessary.  As I understand it, the proofs we have do not rely on independent ROs, so there's no need to assure independence in this way.  @blipp, please correct me if this impression is wrong.\r\n\r\nThe 0x00/0x01 prepending has nothing to do with RO separation.  At best it ensures that a specific type of programming error causes a failure (reversal of pskID and info fields).  It seems fairly certain that in any practical case, such an error would be caught quickly anyway, since it is only hidden when `pskID == info`.",
+          "createdAt": "2020-03-06T19:26:49Z",
+          "updatedAt": "2020-03-06T19:26:49Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I don't think this change is necessary. As I understand it, the proofs we have do not rely on independent ROs, so there's no need to assure independence in this way. @blipp, please correct me if this impression is wrong.\r\n\r\nAs discussed offline, I think this is the wrong mental model for domain separation. The rationale in the security considerations section attempts to make the idea clear: adding a prefix to the extract calls ensures that secrets derived from the *same* shares in HPKE do not conflict with secrets derived in other protocols. Can you state with certainty this type of cross-protocol collision is safe? \r\n\r\n> The 0x00/0x01 prepending has nothing to do with RO separation. At best it ensures that a specific type of programming error causes a failure (reversal of pskID and info fields). It seems fairly certain that in any practical case, such an error would be caught quickly anyway, since it is only hidden when pskID == info.\r\n\r\nYes, this change aims to prevent programmer error. I think the API should fail on misuse. As it stands now, that is *not the case*.",
+          "createdAt": "2020-03-06T19:29:21Z",
+          "updatedAt": "2020-03-06T19:29:59Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bifurcation I removed the Hash prefix changes, limiting this change to `identifier`-based separation. (We can address the Hash proposal in a separate issue/PR if desired!)",
+          "createdAt": "2020-03-06T19:38:24Z",
+          "updatedAt": "2020-03-06T19:38:24Z"
+        },
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Can you state with certainty this type of cross-protocol collision is safe?\r\n\r\nAbsent some globally-enforced standard for hash inputs and a managed namespace for prefixes, you will never achieve certainty.\r\n\r\nI'll grant that \"RFCXXXX\" is probably a bit better than just \"hpke\", and centralizing the prefix is better than how it was before.  So I can live with this.\r\n",
+          "createdAt": "2020-03-06T20:08:24Z",
+          "updatedAt": "2020-03-06T20:08:24Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY2NDQ1MTI2",
+          "commit": {
+            "abbreviatedOid": "797ded8"
+          },
+          "author": "beurdouche",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-28T14:42:06Z",
+          "updatedAt": "2020-02-28T14:42:06Z",
+          "comments": [
+            {
+              "originalPosition": 64,
+              "body": "I think you can remove \"(or oracle query)\".\r\nI wouldn't use that reference either... There is nothing new here, that said I don't have a good one in mind : )",
+              "createdAt": "2020-02-28T14:42:06Z",
+              "updatedAt": "2020-03-06T19:51:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY2NTAyMTI1",
+          "commit": {
+            "abbreviatedOid": "3fa8824"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-28T15:57:03Z",
+          "updatedAt": "2020-02-28T15:57:03Z",
+          "comments": [
+            {
+              "originalPosition": 64,
+              "body": "I dropped the parenthetical. As I don't have a better reference for domain separation, I'm inclined to keep the citation. (Better to point somewhere than rely on folklore?)",
+              "createdAt": "2020-02-28T15:57:03Z",
+              "updatedAt": "2020-03-06T19:51:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY2NTczOTE4",
+          "commit": {
+            "abbreviatedOid": "3fa8824"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-28T17:46:55Z",
+          "updatedAt": "2020-02-28T17:46:55Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "`This domain separation does not protect the KeySchedule 'secret' from use in other\r\nprotocols.`: maybe this sentence is not needed, because `secret` is not exposed by the protocol, and thus not used in any other construction.",
+              "createdAt": "2020-02-28T17:46:55Z",
+              "updatedAt": "2020-03-06T19:51:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY2NTc1ODk5",
+          "commit": {
+            "abbreviatedOid": "3fa8824"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-28T17:50:27Z",
+          "updatedAt": "2020-02-28T17:50:27Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "Or maybe we add that clarification? \r\n\r\nDerivation of the KeySchedule 'secret' does not include domain separation as it is an intermediate value not exposed by the protocol.",
+              "createdAt": "2020-02-28T17:50:27Z",
+              "updatedAt": "2020-03-06T19:51:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY2NTc2Nzk3",
+          "commit": {
+            "abbreviatedOid": "3fa8824"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-02-28T17:52:02Z",
+          "updatedAt": "2020-02-28T17:52:03Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "Yes, sounds good.",
+              "createdAt": "2020-02-28T17:52:03Z",
+              "updatedAt": "2020-03-06T19:51:36Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzgyNTQxNTcx",
+      "title": "Correct KEM sizes for NIST curves.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/49",
+      "state": "MERGED",
+      "author": "Bren2010",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-03-02T18:34:43Z",
+      "updatedAt": "2020-03-04T18:46:11Z",
+      "closedAt": "2020-03-04T18:46:11Z",
+      "mergedAt": "2020-03-04T18:46:11Z",
+      "mergedBy": "bifurcation",
+      "comments": [
+        {
+          "author": "Bren2010",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bifurcation ",
+          "createdAt": "2020-03-02T18:35:03Z",
+          "updatedAt": "2020-03-02T18:35:03Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This probably needs to update the DHKEM section, too, right?\r\n\r\n```\r\nThe GenerateKeyPair, Marshal, and Unmarshal functions are the same as for the underlying DH group. The Marshal functions for the curves referenced in {#ciphersuites} are as follows:\r\n\r\nP-256: The X-coordinate of the point, encoded as a 32-byte big-endian integer\r\nP-521: The X-coordinate of the point, encoded as a 66-byte big-endian integer\r\n```",
+          "createdAt": "2020-03-02T20:07:26Z",
+          "updatedAt": "2020-03-02T20:07:26Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY3NTI3NzI3",
+          "commit": {
+            "abbreviatedOid": "39bf43a"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Good catch!",
+          "createdAt": "2020-03-02T21:07:44Z",
+          "updatedAt": "2020-03-02T21:08:02Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n  Y-coordinate of the point, encoded as 32-byte big-endian integers\r\n```",
+              "createdAt": "2020-03-02T21:07:44Z",
+              "updatedAt": "2020-03-02T21:14:16Z"
+            },
+            {
+              "originalPosition": 11,
+              "body": "```suggestion\r\n  Y-coordinate of the point, encoded as 66-byte big-endian integers\r\n```",
+              "createdAt": "2020-03-02T21:07:54Z",
+              "updatedAt": "2020-03-02T21:14:16Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzY5MDI5NzI0",
+          "commit": {
+            "abbreviatedOid": "6d24cc7"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-03-04T18:45:48Z",
+          "updatedAt": "2020-03-04T18:45:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzg0OTIyOTkx",
+      "title": "Use hash function to derive DHKEM shared secret",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/50",
+      "state": "OPEN",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The isolated DHKEM cannot be proven IND-CCA-secure as it is: In the current Encap, nothing is done with the result of the DH operation, `zz`. This means there is nowhere where the GDH assumption can be applied, as for this we need a comparison of a value with `g^ab` in the game, like `g^c = g^ab`, which we can then change in a game hop to `false`.\r\n\r\nThis is not a problem when looking at HPKE as a whole, because `zz` is fed into Extract which we model as a random oracle. For DHKEM isolated, this problem can be fixed by feeding the Diffie-Hellman shared secret through another random oracle before returning the result as `zz`.\r\n\r\nThe hash functions suggested in this pull request are chosen to correspond to the security level of the elliptic curve DH, respectively. If users of HPKE want to use only one hash function, then they need to choose the KDF depending on the used DHKEM. Specifying each DHKEM for multiple (i.e. different output size) hash functions seems overkill and like sending wrong signals about the security level of DHKEM.\r\n\r\nRegarding random oracle cloning: By introducing another call to a random oracle, which might be implemented by the same hash function, this becomes now more relevant than before. I think we need to make sure that Hash' and the calls to Hash inside HMAC are independent, to be able to use the indifferentiability theorem on SHAxxx. I looked at the input domains of these two calls for SHA256, SHA384, and SHA512 and they are indeed _already disjoint_ by their lengths. An open question is if we need to do something about the Hash calls `Hash(pskID)` and `Hash(info)` that we model as collision resistant. I like to discuss this with Bruno and/or Karthik before proceeding.\r\n\r\nThis pull request is to keep you in the loop, please feel free to provide preliminary feedback.",
+      "createdAt": "2020-03-06T16:54:50Z",
+      "updatedAt": "2020-03-09T16:30:28Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I came to the conclusion that we need to separate `HashDH` and `Hash`: If we model `HashDH` as random oracle, and `Hash` as collision resistant, then this model is not sound if they are instantiated by the same function. (because then the `HashDH` random oracle should have taken into account collisions with `Hash` and vice versa, but they didn't in the model because they are modeled as independent)\r\n\r\nI introduced prefixes for `HashDH` and `Hash`.\r\n\r\nI somewhat incorporated the proposals from #48:\r\n- The prefix is \u201cRFCXXXX\u201d plus \u201cDHKEM\u201d or \u201cHPKE\u201d\r\n- However, if the prefix is already inside pskID_hash and info_hash, I think it's not additionally needed as `identifier` at the beginning of context.\r\n- \u201chpke\u201d is removed from the Expand contexts, as it's already in the prefix.\r\n- comment on the independence of derived secrets form other protocols using the same KEM.\r\n\r\nI am open to suggestions to replace the hash function name `HashDH` and the variable name `dh` by something else; same for `label_dhkem` and `label_hash`.",
+          "createdAt": "2020-03-08T02:17:36Z",
+          "updatedAt": "2020-03-08T02:27:48Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> However, if the prefix is already inside pskID_hash and info_hash, I think it's not additionally needed as identifier at the beginning of context.\r\n\r\nI would prefer we keep `identifier` as a prefix in `context` since that's fed directly into Expand. ",
+          "createdAt": "2020-03-08T02:28:12Z",
+          "updatedAt": "2020-03-08T02:28:12Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I would prefer we keep `identifier` as a prefix in `context` since that's fed directly into Expand.\r\n\r\nThat's fair; because it's different issues being addressed (random oracle cloning and binding the keys to the primitive name).",
+          "createdAt": "2020-03-08T02:35:14Z",
+          "updatedAt": "2020-03-08T02:35:14Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "One way to resolve the merge conflict would be\r\n```\r\ndef KeySchedule(mode, pkR, zz, enc, info, psk, pskID, pkSm):\r\n  VerifyMode(mode, psk, pskID, pkSm)\r\n\r\n  pkRm = Marshal(pkR)\r\n  identifier = \"RFCXXXX\"\r\n  label_hash = \"RFCXXXX HPKE\"\r\n  ciphersuite = concat(kem_id, kdf_id, aead_id)\r\n  pskID_hash = Hash(concat(label_hash, pskID))\r\n  info_hash = Hash(concat(label_hash, info))\r\n  context = concat(identifier, ciphersuite, mode, enc, pkRm,\r\n                   pkSm, pskID_hash, info_hash)\r\n\r\n  secret = Extract(psk, zz)\r\n  key = Expand(secret, concat(\"key\", context), Nk)\r\n  nonce = Expand(secret, concat(\"nonce\", context), Nn)\r\n  exporter_secret = Expand(secret, concat(\"exp\", context), Nh)\r\n\r\n  return Context(key, nonce, exporter_secret)\r\n~~~~~\r\n\\[\\[RFC editor: please change \"RFCXXXX\" to the correct number before publication.]]\r\n\r\n```",
+          "createdAt": "2020-03-08T02:47:55Z",
+          "updatedAt": "2020-03-08T02:47:55Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "```\r\nThe KeySchedule procedure includes the domain separation string \"RFCXXXX\" in\r\neach Expand invocation. This ensures any secrets derived in HPKE are independent\r\nfrom those used in other protocols, even when derived from the same IKM (secret).\r\n```\r\n\r\nI am not happy at the moment with the language of the description of the `identifier`. As 2020/241 says, and I agree, domain separation is a method, not a goal. What's the goal with `identifier`? I think the goal is to bind the key to the protocol/primitive name. I don't see at the moment how \u201dindependent\u201d is defined here? (maybe we can have a formulation without that, like `This ensures any secrets derived in HPKE are bound to the scheme's name, even when possibly derived from the same KEM shared secret as in another scheme.`)\r\n\r\n```\r\nDerivation of the KeySchedule 'secret' does not include domain separation as it\r\nis an intermediate value not exposed by the protocol.\r\n```\r\n\r\nI would drop this sentence: If we agree that the goal is binding of keys to the primitive name, then we don't need to bind an intermediary value to the primitive name.",
+          "createdAt": "2020-03-08T03:01:27Z",
+          "updatedAt": "2020-03-08T03:01:27Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> This ensures any secrets derived in HPKE are bound to the scheme's name, even when possibly derived from the same KEM shared secret as in another scheme.\r\n\r\nI like it! Want to make that change?\r\n\r\n> I would drop this sentence: If we agree that the goal is binding of keys to the primitive name, then we don't need to bind an intermediary value to the primitive name.\r\n\r\nHmm... this sentence is clarifying why we don't prefix extraction for `secret`. I don't think this conflicts with the stated goal.",
+          "createdAt": "2020-03-08T03:08:41Z",
+          "updatedAt": "2020-03-08T03:08:41Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I like it! Want to make that change?\r\n\r\nAck, I'll make the change (when we know what to do with the rest).\r\n\r\n> Hmm... this sentence is clarifying why we don't prefix extraction for `secret`. I don't think this conflicts with the stated goal.\r\n\r\nWe could also add the prefix to `secret`, it would have the same effect of binding HPKE's output secrets to the primitive name. In my view we chose to add the prefix to `context` because that's a place where we already add all the other context. Now that I am looking closer, the outputs of the three Expand calls are also not exposed by the protocol and thus can be considered intermediary values as well (`key` and `nonce` are used to produce ciphertexts, only those are exposed; `exporter_secret` is used to derive the actual exported secrets). That's why I would not comment on another intermediary value (secret), and drop this sentence.\r\n\r\nI think I can now express my weird feeling towards \u201cindependent\u201d better: the goal of binding the secrets to the primitive name is not assured by a security proof. I think we cannot prove that other protocols do not derive the same keys, because we do not have control over these other protocols. They could still derive the same keys on purpose. What we achieve by the `identifier` string is that the probability gets small that someone does it by accident. But we cannot get a guarantee like with `HashDH` and `Hash`, where we control both protocols. That's why I felt uncomfortable with \u201cindependent\u201d, because it suggests a more formal guarantee as it actually gives.",
+          "createdAt": "2020-03-08T04:00:26Z",
+          "updatedAt": "2020-03-08T04:00:26Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "By this reasoning, `label_hash` would be enough to bind HPKE's outputs to its name/identifier. It just happens one computation step earlier.",
+          "createdAt": "2020-03-08T04:16:49Z",
+          "updatedAt": "2020-03-08T04:16:49Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "What happens if either pskID or label are unspecified? Their hashes would be a singe, fixed value. Aren\u2019t other (attacker-controlled?) parameters added to context? Don\u2019t we need to separate inline with those values? (Sorry for possibly hand wavy nonsense!)",
+          "createdAt": "2020-03-08T04:29:58Z",
+          "updatedAt": "2020-03-08T04:29:58Z"
+        },
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> What happens if either pskID or label are unspecified? Their hashes would be a singe, fixed value. Aren\u2019t other (attacker-controlled?) parameters added to context? Don\u2019t we need to separate inline with those values? (Sorry for possibly hand wavy nonsense!)\r\n\r\nOur goal is to make the derived values dependent on the primitives name. This is still the case even if application info or pskID are empty, because the prefix stays.\r\n\r\nNoise protocols like WireGuard add the protocol name in a similar way. In WireGuard, the protocol starts with [1]:\r\n\r\n```\r\nC_i := Hash(Construction)\r\nH_i := Hash(C_i || Identifier)\r\n\u2026\r\n```\r\n\r\nwith the constants being\r\n\r\n```\r\nConstruction = The UTF-8 string literal \u201cNoise_IKpsk2_25519_ChaChaPoly_BLAKE2s\u201d, 37 bytes of\r\noutput.\r\nIdentifier = The UTF-8 string literal \u201cWireGuard v1 zx2c4 Jason@zx2c4.com\u201d, 34 bytes of output.\r\n```\r\n\r\n[1] https://www.wireguard.com/papers/wireguard.pdf page 10",
+          "createdAt": "2020-03-09T11:31:07Z",
+          "updatedAt": "2020-03-09T11:31:07Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDc5NTYy",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-03-06T16:58:37Z",
+          "updatedAt": "2020-03-06T16:59:01Z",
+          "comments": [
+            {
+              "originalPosition": 63,
+              "body": "Can we introduce this notation (`DHKEM(curve, hash)`) in the DHKEM section?",
+              "createdAt": "2020-03-06T16:58:38Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDc5Njcy",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-06T16:58:47Z",
+          "updatedAt": "2020-03-06T17:02:17Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "I would just add this to the above list of required functions.  \"Suppose we are given a Diffie-Hellman group and a hash function ...\"",
+              "createdAt": "2020-03-06T16:58:47Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            },
+            {
+              "originalPosition": 15,
+              "body": "For compatibility with programming languages, might call this \"Hash2\" or something that could actually be a function name in.",
+              "createdAt": "2020-03-06T16:59:45Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            },
+            {
+              "originalPosition": 16,
+              "body": "`Nzz` needs to be defined somewhere; TBH seems like this would be good to know for other KEMs as well.  I think this loses the idea that the DH output is fixed-size, though.  Do we need that?",
+              "createdAt": "2020-03-06T17:01:01Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDg0NTgz",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-06T17:06:09Z",
+          "updatedAt": "2020-03-06T17:06:10Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Putting it alongside the `Nh` et al. definitions would suffice. \r\n\r\n> I think this loses the idea that the DH output is fixed-size, though. Do we need that?\r\n\r\n@bifurcation I'm not sure I follow. Nzz *is* fixed, so isn't the output fixed size?",
+              "createdAt": "2020-03-06T17:06:10Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDg2ODI2",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-06T17:09:47Z",
+          "updatedAt": "2020-03-06T17:09:47Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Good point, I'll add `Nzz` to the \u201cCryptographic Dependencies\u201d part; I am not sure what you mean regarding the fixed-size DH output? (sorry for the double question, I was writing at the same time with Chris ;) )",
+              "createdAt": "2020-03-06T17:09:47Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDkwMTE0",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-06T17:14:47Z",
+          "updatedAt": "2020-03-06T17:14:48Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Might be relevant: Encap and AuthEncap now have the same output size for `zz`. Before, AuthEncap's `zz` had double the size of Encap's `zz`.",
+              "createdAt": "2020-03-06T17:14:47Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDkxMTE5",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-06T17:16:19Z",
+          "updatedAt": "2020-03-06T17:16:19Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Interesting -- does that affect analysis?",
+              "createdAt": "2020-03-06T17:16:19Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcwNDk0NzMw",
+          "commit": {
+            "abbreviatedOid": "67382c4"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-06T17:22:02Z",
+          "updatedAt": "2020-03-06T17:22:02Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Not so much I'd say \u2013 it makes analysis of Extract a bit easier because it's input length has one case distinction less.",
+              "createdAt": "2020-03-06T17:22:02Z",
+              "updatedAt": "2020-03-09T16:30:28Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzg1NjQ0NjEw",
+      "title": "Clarify KeySchedule inputs: it's an encoded public key",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/51",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-03-09T15:09:51Z",
+      "updatedAt": "2020-03-09T16:11:29Z",
+      "closedAt": "2020-03-09T16:08:52Z",
+      "mergedAt": "2020-03-09T16:08:52Z",
+      "mergedBy": "chris-wood",
+      "comments": [
+        {
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Also, deleted the default for pskID being zero(0) because for info it's also just defined as \"\".",
+          "createdAt": "2020-03-09T15:13:15Z",
+          "updatedAt": "2020-03-09T15:13:15Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcxMjc3MjEw",
+          "commit": {
+            "abbreviatedOid": "4de3de8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2020-03-09T15:20:48Z",
+          "updatedAt": "2020-03-09T15:20:53Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n* `pskID` - An identifier for the PSK (optional; default value `zero(0)`)\r\n```",
+              "createdAt": "2020-03-09T15:20:49Z",
+              "updatedAt": "2020-03-09T15:50:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcxMjc5MjIw",
+          "commit": {
+            "abbreviatedOid": "4de3de8"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-09T15:23:03Z",
+          "updatedAt": "2020-03-09T15:23:03Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "That works as well. I would change it for `info` as well then, to zero(0)?",
+              "createdAt": "2020-03-09T15:23:03Z",
+              "updatedAt": "2020-03-09T15:50:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcxMjkxMDQy",
+          "commit": {
+            "abbreviatedOid": "4de3de8"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-09T15:36:18Z",
+          "updatedAt": "2020-03-09T15:36:18Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Well, pskID is an opaque byte string and has a default value in the pseudocode (`zero(0)`), whereas `info` is traditionally considered to be a UTF8-encoded string. Maybe we could clarify that instead?  @bifurcation, penny for your thoughts?",
+              "createdAt": "2020-03-09T15:36:18Z",
+              "updatedAt": "2020-03-09T15:50:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcxMjk3ODI0",
+          "commit": {
+            "abbreviatedOid": "4de3de8"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-03-09T15:43:48Z",
+          "updatedAt": "2020-03-09T15:43:48Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Ah you are right, I forgot about the default for pskID. Given that, I like your suggestion to have zero(0) for pskID and \"\" for info.",
+              "createdAt": "2020-03-09T15:43:48Z",
+              "updatedAt": "2020-03-09T15:50:59Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MzcxMzE4OTk0",
+          "commit": {
+            "abbreviatedOid": "ecede56"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-03-09T16:08:18Z",
+          "updatedAt": "2020-03-09T16:08:18Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mzg3NTI5NDA2",
+      "title": "Add self as author.",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/54",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-03-13T00:09:51Z",
+      "updatedAt": "2020-03-13T20:32:50Z",
+      "closedAt": "2020-03-13T20:32:50Z",
+      "mergedAt": "2020-03-13T20:32:50Z",
+      "mergedBy": "bifurcation",
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 55,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzkxNDYyMzE1",
+      "title": "Reference revision 3 of NIST.SP.800-56A (and insert newlines to make .md more readable on Github)",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/55",
+      "state": "MERGED",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There is revision 3 of NIST.SP.800-56A since a while. Is there a specific reason why revision 2 is referenced? If not then this pull request proposes to change the reference to revision 3.\r\n\r\nI did /not/ check if, for example, broadly-deployed implementations are not yet implementing revision 3.",
+      "createdAt": "2020-03-20T10:43:06Z",
+      "updatedAt": "2020-03-20T14:37:28Z",
+      "closedAt": "2020-03-20T14:36:58Z",
+      "mergedAt": "2020-03-20T14:36:58Z",
+      "mergedBy": "chris-wood",
+      "comments": [
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "None that I'm aware of. We can always change to revision 3 if folks tell us otherwise!",
+          "createdAt": "2020-03-20T14:37:28Z",
+          "updatedAt": "2020-03-20T14:37:28Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mzc4NTM4MTk4",
+          "commit": {
+            "abbreviatedOid": "30c4527"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2020-03-20T14:36:47Z",
+          "updatedAt": "2020-03-20T14:36:47Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "MDExOlB1bGxSZXF1ZXN0MzkxNTE1MDM5",
+      "title": "Clarify key validation, as it is different for NIST curves and Curve25519/448",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/56",
+      "state": "OPEN",
+      "author": "blipp",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Points to discuss:\r\n\r\n- I made this proposal with \u201cMAY check whether the shared secret is the all-zero value\u201d for Curve25519/448 because this how the RFC states it. We can discuss if HPKE should be more opinionated on it\r\n- I shortened the discussion of validation in Section \u201cCreating the Encryption Context\u201d and instead link to {{kem-ids}}. I added the more or less same paragraph to Section \u201cDH-Based KEM\u201d because that is where DHKEM is actually defined. We can discuss if one of the two places is enough to mention validation.",
+      "createdAt": "2020-03-20T12:50:14Z",
+      "updatedAt": "2020-03-20T12:50:14Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
